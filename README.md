@@ -1,7 +1,18 @@
-Myriad-RF Utilities
-======================================
+# Myriad-RF Utilities
 
-This repository contains the [Myriad-RF project](http://myriadrf.org/) utilities, which are designed mainly for use with Reference Hardware.
+This repository contains utilities which are designed to be used with the Myriad-RF 1 together with an interface board.
+
+## Contents
+
+The utilities allow calibration of the LMS6002D transceiver IC, and configuration of it plus support devices such as clock generators.
+
+### ctr_6002dr2_myriad
+
+This is for use with the original DE0-Nano interface board and is a Windows-only application.
+
+### control_LMS6002
+
+This is for use with the Zipper interface board (FMC and HSMC) and can be built for Windows or Linux.
 
 Licence
 -------
