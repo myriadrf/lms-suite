@@ -14,6 +14,10 @@ This is for use with the original DE0-Nano interface board and is a Windows-only
 
 This is for use with the Zipper interface board (FMC and HSMC) and can be built for Windows or Linux.
 
+### FFTviewer
+
+This is for use with the DE0-Nano and RASDR DigiRED interfaces, and can be built for Windows or Linux.
+
 Licence
 -------
 
