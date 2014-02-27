@@ -1,5 +1,5 @@
 #include "ConnectionCOM.h"
-#include "LMS7002M_Commands.h"
+#include "LMS_Commands.h"
 #include <fstream>
 #include <sstream>
 #include "MessageLog.h"

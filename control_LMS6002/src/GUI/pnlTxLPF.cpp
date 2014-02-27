@@ -1,6 +1,6 @@
 #include "pnlTxLPF.h"
 #include "ctr_6002dr2_LogicDLL.h"
-#include "CommonFile.h"
+#include "common.h"
 
 #include "pnlADDC.h"
 

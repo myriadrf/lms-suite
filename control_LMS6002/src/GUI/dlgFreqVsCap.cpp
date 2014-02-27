@@ -252,14 +252,14 @@ bool dlgFreqVsCap::CheckValues(wxGrid *grd)
 	char *ends;
 	for (int i = 0; i < grdVco1->GetRows(); i++)
 	{
-		dtry = strtod(toCString(grd->GetCellValue(0, i)), &ends);
+		dtry = strtod((grd->GetCellValue(0, i).ToStdString().c_str()), &ends);
 		if (*ends != NULL)
 		{
 			// ShowMessage("Allowed Input: +-1234567890.");
 			return false;
 		};
 
-		dtry = strtod(toCString(grd->GetCellValue(1, i)), &ends);
+		dtry = strtod((grd->GetCellValue(1, i).ToStdString().c_str()), &ends);
 		if (*ends != NULL)
 		{
 			// ShowMessage("Allowed Input: +-1234567890.");
@@ -404,8 +404,8 @@ void dlgFreqVsCap::ConstructValues(sVcoVsCap &Vco, wxGrid *grdVco,
 	Vco.iCap = new double[Vco.iRef];
 	for (int i = 0; i < Vco.iRef; i++)
 	{
-		Vco.dFreq[i] = atof(toCString(grdVco->GetCellValue(i, 0)));
-		Vco.iCap[i] = atof(toCString(grdVco->GetCellValue(i, 1)));
+		Vco.dFreq[i] = atof((grdVco->GetCellValue(i, 0).ToStdString().c_str()));
+		Vco.iCap[i] = atof((grdVco->GetCellValue(i, 1).ToStdString().c_str()));
 	};
 };
 
@@ -503,7 +503,7 @@ void dlgFreqVsCap::Initialize(wxString Name)
 
 	if (FileExists(FName))
 	{
-		LoadValuesFromFile(toCString(FName));
+		LoadValuesFromFile((FName.ToStdString().c_str()));
 	}
 	else
 	{

@@ -5,12 +5,12 @@
 
 //(*Headers(pnlSi5351C)
 #include <wx/panel.h>
+class wxCheckBox;
 class wxTextCtrl;
-class wxStaticBoxSizer;
+class wxStaticText;
 class wxFlexGridSizer;
 class wxButton;
-class wxStaticText;
-class wxCheckBox;
+class wxStaticBoxSizer;
 //*)
 
 class pnlSi5351C: public wxPanel
@@ -21,48 +21,48 @@ public:
     virtual ~pnlSi5351C();
 
     //(*Declarations(pnlSi5351C)
-    wxTextCtrl* txtFreq_CLK0;
-    wxCheckBox* chkEN_CLK5;
-    wxStaticText* StaticText13;
-    wxCheckBox* chkInvert_CLK7;
-    wxTextCtrl* txtFreq_CLK1;
-    wxCheckBox* chkInvert_CLK4;
-    wxStaticText* StaticText1;
     wxStaticText* StaticText10;
-    wxCheckBox* chkInvert_CLK2;
-    wxTextCtrl* txtFreq_CLK2;
-    wxStaticText* StaticText3;
-    wxCheckBox* chkEN_CLK2;
-    wxTextCtrl* txtFreq_CLK6;
-    wxCheckBox* chkEN_CLK7;
-    wxStaticText* StaticText8;
-    wxStaticText* StaticText12;
+    wxButton* btnUpload;
+    wxStaticText* StaticText9;
+    wxCheckBox* chkEN_CLK5;
+    wxCheckBox* chkInvert_CLK6;
+    wxTextCtrl* txtFreq_CLK7;
+    wxTextCtrl* txtFreq_CLK1;
+    wxCheckBox* chkEN_CLK3;
+    wxCheckBox* chkEN_CLK4;
+    wxCheckBox* chkInvert_CLK3;
+    wxTextCtrl* txtFreq_CLK5;
+    wxStaticText* StaticText13;
+    wxStaticText* StaticText2;
+    wxButton* btnLoadFile;
+    wxTextCtrl* txtFreq_CLK0;
+    wxStaticText* StaticText6;
     wxButton* btnResetToDefaults;
-    wxTextCtrl* txtFreq_CLK3;
-    wxStaticText* StaticText7;
+    wxStaticText* StaticText8;
+    wxStaticText* StaticText11;
+    wxStaticText* StaticText1;
+    wxStaticText* StaticText3;
+    wxButton* btnConfigure;
     wxCheckBox* chkEN_CLK6;
+    wxTextCtrl* txtFreq_CLK3;
+    wxTextCtrl* txtFreq_CLK6;
+    wxTextCtrl* txtFreq_CLK2;
+    wxStaticText* StaticText5;
+    wxStaticText* StaticText7;
+    wxCheckBox* chkInvert_CLK2;
+    wxCheckBox* chkInvert_CLK0;
+    wxCheckBox* chkEN_CLK1;
+    wxStaticText* StaticText12;
+    wxCheckBox* chkEN_CLK7;
+    wxCheckBox* chkInvert_CLK1;
     wxTextCtrl* txtFreq_CLK4;
     wxStaticText* StaticText4;
-    wxCheckBox* chkInvert_CLK5;
-    wxStaticText* StaticText5;
-    wxStaticText* StaticText2;
-    wxCheckBox* chkEN_CLK3;
-    wxCheckBox* chkInvert_CLK6;
-    wxCheckBox* chkEN_CLK4;
-    wxStaticText* StaticText6;
-    wxTextCtrl* txtFreq_CLK5;
-    wxButton* btnLoadFile;
-    wxTextCtrl* txtFreq_CLK7;
     wxTextCtrl* txtCLKIN_MHz;
-    wxCheckBox* chkInvert_CLK0;
-    wxCheckBox* chkInvert_CLK1;
-    wxButton* btnConfigure;
+    wxCheckBox* chkInvert_CLK7;
+    wxCheckBox* chkInvert_CLK5;
+    wxCheckBox* chkEN_CLK2;
     wxCheckBox* chkEN_CLK0;
-    wxStaticText* StaticText9;
-    wxCheckBox* chkInvert_CLK3;
-    wxButton* btnUpload;
-    wxCheckBox* chkEN_CLK1;
-    wxStaticText* StaticText11;
+    wxCheckBox* chkInvert_CLK4;
     //*)
 
 protected:
@@ -117,6 +117,7 @@ private:
     void OnbtnLoadFileClick(wxCommandEvent& event);
     void OnbtnConfigureClockClick(wxCommandEvent& event);
     void OnbtnResetToDefaultsClick(wxCommandEvent& event);
+    void OnbtnUploadClick(wxCommandEvent& event);
     //*)
 
 protected:

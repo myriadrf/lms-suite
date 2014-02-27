@@ -12,23 +12,22 @@
 #include "pnlRxPLL.h"
 #include "pnlCustomer.h"
 #include "pnlADF.h"
-#include "pnlSi5351C.h"
+#include "pnlBoard.h"
 #include <wx/toolbar.h>
 #include "dlgSerPort.h"
 
 //(*Headers(frControlPanel)
 #include <wx/frame.h>
-class wxPanel;
-class wxFileDialog;
-class wxStatusBar;
-class wxNotebookEvent;
-class wxMenuBar;
-class wxImage;
-class wxRichTextCtrl;
-class wxNotebook;
-class wxMenu;
-class wxFlexGridSizer;
 class wxToolBar;
+class wxMenu;
+class wxNotebook;
+class wxFlexGridSizer;
+class wxStatusBar;
+class wxMenuBar;
+class wxFileDialog;
+class wxNotebookEvent;
+class wxRichTextCtrl;
+class wxPanel;
 //*)
 
 class frControlPanel: public wxFrame
@@ -68,45 +67,43 @@ class frControlPanel: public wxFrame
         static void ReceiveLogMessage(char *msg);
 
 		//(*Declarations(frControlPanel)
-		wxToolBar* ToolBar1;
-		pnlCustomer* m_Customer;
-		wxBitmap              *Image1_BMP;
-		wxToolBarToolBase* ToolBarItem3;
-		wxRichTextCtrl* lbMsgs;
-		pnlADDC* m_ADDC;
-		wxStatusBar* sbMain;
-		wxMenuItem* mnuRefClk;
-		wxMenuItem* mnuChipToGUI;
-		pnlRxFE* m_RxFE;
-		wxMenu* Menu3;
-		wxMenuItem* mnuSaveAs;
-		pnlRxPLL* m_RxPLL;
-		pnlTxLPF* m_TxLPF;
-		wxToolBarToolBase* tbtnDownload;
-		wxFileDialog* dlgOpen;
-		pnlTxRF* m_TxRF;
-		pnlRxVGA2* m_RxVGA2;
-		wxMenu* Menu1;
-		wxMenuItem* mnuOpen;
-		wxMenuItem* mnuReadRVF_rfif;
-		wxToolBarToolBase* ToolBarItem1;
-		wxMenuItem* mnuAutoDwnld;
-		wxMenuItem* mnuNew;
-		pnlADF* m_ADF;
-		wxMenuItem* RegisterTest1;
-		wxNotebook* pcSPIS;
-		pnlSi5351C* m_Board;
 		wxMenuItem* mnuAbout;
-		pnlTop* m_top;
-		pnlTxPLL* m_TxPLL;
-		pnlRxLPF* m_RxLPF;
-		wxMenuBar* MenuBar1;
+		wxToolBarToolBase* tbtnDownload;
 		wxMenuItem* CommunicationSettings1;
-		wxMenu* Menu2;
+		pnlTxRF* m_TxRF;
+		wxMenuItem* RegisterTest1;
+		wxMenu* Menu1;
+		pnlRxVGA2* m_RxVGA2;
+		wxFileDialog* dlgOpen;
+		pnlRxFE* m_RxFE;
+		wxMenuItem* mnuReadRVF_rfif;
+		wxMenu* Menu3;
+		pnlTxLPF* m_TxLPF;
+		pnlADF* m_ADF;
+		pnlRxLPF* m_RxLPF;
+		wxMenuItem* mnuNew;
+		wxStatusBar* sbMain;
+		wxMenuItem* mnuOpen;
 		wxToolBarToolBase* ToolBarItem2;
-		wxMenuItem* mnuSave;
-		wxImage               *Image1;
+		pnlADDC* m_ADDC;
 		wxMenu* Menu4;
+		wxMenuItem* mnuChipToGUI;
+		wxMenuItem* mnuSave;
+		wxToolBar* ToolBar1;
+		pnlTop* m_top;
+		wxToolBarToolBase* ToolBarItem1;
+		wxMenuBar* MenuBar1;
+		wxNotebook* pcSPIS;
+		wxToolBarToolBase* ToolBarItem3;
+		wxMenu* Menu2;
+		wxMenuItem* mnuRefClk;
+		pnlRxPLL* m_RxPLL;
+		pnlCustomer* m_Customer;
+		wxMenuItem* mnuAutoDwnld;
+		wxRichTextCtrl* lbMsgs;
+		pnlBoard* m_Board;
+		pnlTxPLL* m_TxPLL;
+		wxMenuItem* mnuSaveAs;
 		//*)
 
 	protected:

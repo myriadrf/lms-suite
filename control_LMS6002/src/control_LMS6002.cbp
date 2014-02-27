@@ -24,8 +24,8 @@
 				</Linker>
 			</Target>
 			<Target title="GUIDebug WIN32">
-				<Option output="DebugWin32/control_LMS6002_d" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="DebugWin32" />
+				<Option output="bin/control_LMS6002_d" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
 				<Option object_output="obj/Debug" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -95,8 +95,8 @@
 				</Linker>
 			</Target>
 			<Target title="GUIRelease WIN32">
-				<Option output="ReleaseWin32/control_LMS6002" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="ReleaseWin32" />
+				<Option output="bin/control_LMS6002" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
 				<Option object_output="obj/Release" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -170,8 +170,8 @@
 				</Linker>
 			</Target>
 			<Target title="GUIRelease Linux">
-				<Option output="ReleaseLinux/control_LMS6002" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="ReleaseLinux" />
+				<Option output="bin/control_LMS6002" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
 				<Option object_output="obj/Release" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -208,30 +208,20 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option='[[if (PLATFORM == PLATFORM_MSW &amp;&amp; (GetCompilerFactory().GetCompilerVersionString(_T(&quot;gcc&quot;)) &gt;= _T(&quot;4.0.0&quot;))) print(_T(&quot;-Wno-attributes&quot;));]]' />
-			<Add directory="C:/Libraries/wxWidgets-2.9.5/include" />
-			<Add directory="C:/Libraries/wxWidgets-2.9.5/contrib/include" />
-			<Add directory="C:/Libraries/wxWidgets-2.9.5/lib/gcc_lib/mswu" />
+			<Add directory="D:/Libraries/wxWidgets-2.9.5/include" />
+			<Add directory="D:/Libraries/wxWidgets-2.9.5/contrib/include" />
+			<Add directory="D:/Libraries/wxWidgets-2.9.5/lib/gcc_lib/mswu" />
 			<Add directory="Logic/include" />
 			<Add directory="Logic" />
 			<Add directory="GUI" />
 		</Compiler>
 		<ResourceCompiler>
-			<Add directory="C:/Libraries/wxWidgets-2.9.5/include" />
-			<Add directory="C:/Libraries/wxWidgets-2.9.5/lib/gcc_lib/mswu" />
+			<Add directory="D:/Libraries/wxWidgets-2.9.5/include" />
+			<Add directory="D:/Libraries/wxWidgets-2.9.5/lib/gcc_lib/mswu" />
 		</ResourceCompiler>
 		<Linker>
-			<Add directory="C:/Libraries/wxWidgets-2.9.5/lib/gcc_lib" />
+			<Add directory="D:/Libraries/wxWidgets-2.9.5/lib/gcc_lib" />
 		</Linker>
-		<Unit filename="FFTviewerApp.cpp">
-			<Option target="GUIDebug WIN32" />
-			<Option target="GUIRelease WIN32" />
-			<Option target="GUIRelease Linux" />
-		</Unit>
-		<Unit filename="FFTviewerApp.h">
-			<Option target="GUIDebug WIN32" />
-			<Option target="GUIRelease WIN32" />
-			<Option target="GUIRelease Linux" />
-		</Unit>
 		<Unit filename="GUI/CommonFile.cpp">
 			<Option target="GUIDebug WIN32" />
 			<Option target="GUIRelease WIN32" />
@@ -352,6 +342,16 @@
 			<Option target="GUIRelease WIN32" />
 			<Option target="GUIRelease Linux" />
 		</Unit>
+		<Unit filename="GUI/pnlBoard.cpp">
+			<Option target="GUIDebug WIN32" />
+			<Option target="GUIRelease WIN32" />
+			<Option target="GUIRelease Linux" />
+		</Unit>
+		<Unit filename="GUI/pnlBoard.h">
+			<Option target="GUIDebug WIN32" />
+			<Option target="GUIRelease WIN32" />
+			<Option target="GUIRelease Linux" />
+		</Unit>
 		<Unit filename="GUI/pnlCustomer.cpp">
 			<Option target="GUIDebug WIN32" />
 			<Option target="GUIRelease WIN32" />
@@ -398,16 +398,6 @@
 			<Option target="GUIRelease Linux" />
 		</Unit>
 		<Unit filename="GUI/pnlRxVGA2.h">
-			<Option target="GUIDebug WIN32" />
-			<Option target="GUIRelease WIN32" />
-			<Option target="GUIRelease Linux" />
-		</Unit>
-		<Unit filename="GUI/pnlSi5351C.cpp">
-			<Option target="GUIDebug WIN32" />
-			<Option target="GUIRelease WIN32" />
-			<Option target="GUIRelease Linux" />
-		</Unit>
-		<Unit filename="GUI/pnlSi5351C.h">
 			<Option target="GUIDebug WIN32" />
 			<Option target="GUIRelease WIN32" />
 			<Option target="GUIRelease Linux" />
@@ -493,7 +483,7 @@
 			<Option target="LogicRelease WIN32" />
 			<Option target="LogicRelease Linux" />
 		</Unit>
-		<Unit filename="Logic/include/LMS7002M_Commands.h">
+		<Unit filename="Logic/include/LMS_Commands.h">
 			<Option target="LogicDebug WIN32" />
 			<Option target="LogicRelease WIN32" />
 			<Option target="LogicRelease Linux" />
@@ -691,6 +681,16 @@
 			<Option target="LogicRelease WIN32" />
 			<Option target="LogicRelease Linux" />
 		</Unit>
+		<Unit filename="control_LMS6002App.cpp">
+			<Option target="GUIDebug WIN32" />
+			<Option target="GUIRelease WIN32" />
+			<Option target="GUIRelease Linux" />
+		</Unit>
+		<Unit filename="control_LMS6002App.h">
+			<Option target="GUIDebug WIN32" />
+			<Option target="GUIRelease WIN32" />
+			<Option target="GUIRelease Linux" />
+		</Unit>
 		<Unit filename="resource.rc">
 			<Option compilerVar="WINDRES" />
 			<Option target="GUIDebug WIN32" />
@@ -739,6 +739,7 @@
 		<Unit filename="wxsmith/pnlBoard.wxs">
 			<Option target="GUIDebug WIN32" />
 			<Option target="GUIRelease WIN32" />
+			<Option target="GUIRelease Linux" />
 		</Unit>
 		<Unit filename="wxsmith/pnlCustomer.wxs">
 			<Option target="GUIDebug WIN32" />
@@ -757,10 +758,6 @@
 			<Option target="GUIRelease WIN32" />
 		</Unit>
 		<Unit filename="wxsmith/pnlRxVGA2.wxs">
-			<Option target="GUIDebug WIN32" />
-			<Option target="GUIRelease WIN32" />
-		</Unit>
-		<Unit filename="wxsmith/pnlSi5351C.wxs">
 			<Option target="GUIDebug WIN32" />
 			<Option target="GUIRelease WIN32" />
 		</Unit>
@@ -796,7 +793,6 @@
 					<wxFrame wxs="wxsmith/frControlPanel.wxs" src="GUI/frControlPanel.cpp" hdr="GUI/frControlPanel.h" fwddecl="1" i18n="1" name="frControlPanel" language="CPP" />
 					<wxPanel wxs="wxsmith/pnlADDC.wxs" src="GUI/pnlADDC.cpp" hdr="GUI/pnlADDC.h" fwddecl="1" i18n="1" name="pnlADDC" language="CPP" />
 					<wxDialog wxs="wxsmith/dlgSerPort.wxs" src="GUI/dlgSerPort.cpp" hdr="GUI/dlgSerPort.h" fwddecl="1" i18n="1" name="dlgSerPort" language="CPP" />
-					<wxPanel wxs="wxsmith/pnlBoard.wxs" src="GUI/pnlBoard.cpp" hdr="GUI/pnlBoard.h" fwddecl="1" i18n="1" name="pnlBoard" language="CPP" />
 					<wxPanel wxs="wxsmith/pnlRxFE.wxs" src="GUI/pnlRxFE.cpp" hdr="GUI/pnlRxFE.h" fwddecl="1" i18n="1" name="pnlRxFE" language="CPP" />
 					<wxPanel wxs="wxsmith/pnlRxPLL.wxs" src="GUI/pnlRxPLL.cpp" hdr="GUI/pnlRxPLL.h" fwddecl="1" i18n="1" name="pnlRxPLL" language="CPP" />
 					<wxPanel wxs="wxsmith/pnlCustomer.wxs" src="GUI/pnlCustomer.cpp" hdr="GUI/pnlCustomer.h" fwddecl="1" i18n="1" name="pnlCustomer" language="CPP" />
@@ -806,8 +802,8 @@
 					<wxDialog wxs="wxsmith/dlgVcoGrph.wxs" src="GUI/dlgVcoGrph.cpp" hdr="GUI/dlgVcoGrph.h" fwddecl="1" i18n="1" name="dlgVcoGrph" language="CPP" />
 					<wxDialog wxs="wxsmith/dlgFreqVsCap.wxs" src="GUI/dlgFreqVsCap.cpp" hdr="GUI/dlgFreqVsCap.h" fwddecl="1" i18n="1" name="dlgFreqVsCap" language="CPP" />
 					<wxPanel wxs="wxsmith/pnlADF.wxs" src="GUI/pnlADF.cpp" hdr="GUI/pnlADF.h" fwddecl="1" i18n="1" name="pnlADF" language="CPP" />
-					<wxPanel wxs="wxsmith/pnlSi5351C.wxs" src="GUI/pnlSi5351C.cpp" hdr="GUI/pnlSi5351C.h" fwddecl="1" i18n="1" name="pnlSi5351C" language="CPP" />
 					<wxDialog wxs="wxsmith/dlgAbout.wxs" src="GUI/dlgAbout.cpp" hdr="GUI/dlgAbout.h" fwddecl="0" i18n="1" name="dlgAbout" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlBoard.wxs" src="GUI/pnlBoard.cpp" hdr="GUI/pnlBoard.h" fwddecl="1" i18n="0" name="pnlBoard" language="CPP" />
 				</resources>
 			</wxsmith>
 			<DoxyBlocks>

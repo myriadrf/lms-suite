@@ -124,7 +124,7 @@ void ConnectionManager::FindDevices()
     Forms packet header and sends given data buffer to chip.
     When using CMD_LMS7002_WR the data buffer should be pointer to array of unsigned shorts.
  */
-int ConnectionManager::SendData(eCMD_LMS7002M cmd, const unsigned char* data, long length)
+int ConnectionManager::SendData(eCMD_LMS cmd, const unsigned char* data, long length)
 {
     const int maxDataLen = cMAX_CONTROL_PACKET_SIZE-cPACKET_HEADER_SIZE;
     long sendLen;
@@ -165,7 +165,7 @@ int ConnectionManager::SendData(eCMD_LMS7002M cmd, const unsigned char* data, lo
 
     When using CMD_LMS7002_WR the data buffer should be pointer to array of unsigned shorts.
 */
-int ConnectionManager::MakeAndSendPacket( eCMD_LMS7002M cmd, const unsigned char *data, long length)
+int ConnectionManager::MakeAndSendPacket( eCMD_LMS cmd, const unsigned char *data, long length)
 {
     unsigned char temp;
     const int maxDataLen = cMAX_CONTROL_PACKET_SIZE-cPACKET_HEADER_SIZE;
@@ -227,6 +227,14 @@ int ConnectionManager::MakeAndSendPacket( eCMD_LMS7002M cmd, const unsigned char
             buffer[2] = 1;
             break;
 
+        case CMD_PE636040_WR:
+        //case CMD_PE636040_RD:
+            buffer[2] = sendLen/3;
+            break;
+        case CMD_MYRIAD_GPIO_WR:
+        //case CMD_MYRIAD_GPIO_RD:
+            buffer[2] = sendLen;
+            break;
         default:
             MessageLog::getInstance()->write("Sending packet with unrecognized command", LOG_WARNING);
         }
@@ -286,7 +294,7 @@ int ConnectionManager::ReadData(unsigned char* data, long& length)
 
     When using CMD_LMS7002_WR or CMD_LMS7002_RD commands the data buffers should be pointers to array of unsigned shorts.
 */
-int ConnectionManager::SendReadData( eCMD_LMS7002M cmd, const unsigned char *outData, unsigned long oLength, unsigned char *inData, unsigned long &iLength)
+int ConnectionManager::SendReadData( eCMD_LMS cmd, const unsigned char *outData, unsigned long oLength, unsigned char *inData, unsigned long &iLength)
 {
     const int maxDataLen = cMAX_CONTROL_PACKET_SIZE-cPACKET_HEADER_SIZE;
     unsigned char outBuffer[maxDataLen];
@@ -592,7 +600,7 @@ void ConnectionManager::SetBrdLNA(int i)
             buf[0] = 0x03;
             break;
     }
-    SendData((eCMD_LMS7002M)0x2A, buf, 1);
+    SendData((eCMD_LMS)0x2A, buf, 1);
 }
 void ConnectionManager::SetBrdPA(int i)
 {
@@ -609,5 +617,5 @@ void ConnectionManager::SetBrdPA(int i)
             buf[0] = 0;
             break;
     }
-    SendData((eCMD_LMS7002M)0x2B, buf, 1);
+    SendData((eCMD_LMS)0x2B, buf, 1);
 }

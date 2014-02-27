@@ -24,6 +24,7 @@ Main_Module* Main_Module::g_pMain = NULL;
 */
 Main_Module::Main_Module()
 {
+    m_GPIO = 0;
     m_initialized = false;
 	g_pMain = this;
 	m_RefClk = 0;
@@ -2542,4 +2543,29 @@ void Main_Module::UpdateInterface(int code, char *opt_Msg)
 {
 	if(updateInterfaceCallback && code != 0)
 		updateInterfaceCallback(code, opt_Msg);
+}
+
+void Main_Module::SetGPIO(unsigned int msb, unsigned int lsb, int value)
+{
+    unsigned int mask = 0;
+    for(int i=0; i<=msb-lsb; ++i)
+    {
+        mask = mask << 1;
+        mask |= 1;
+    }
+    mask = mask << lsb;
+    m_GPIO = m_GPIO & (~mask);
+    unsigned int newValue = 0;
+//    for(int i=0; i<=msb-lsb; ++i)
+//    {
+//        newValue = newValue << 1;
+//        newValue |= (value  i);
+//    }
+    newValue = value;
+    newValue = newValue << lsb;
+    newValue = newValue & mask;
+    m_GPIO |= newValue;
+    unsigned char buf[64];
+    buf[0] = m_GPIO;
+    getSerPort()->SendData(CMD_MYRIAD_GPIO_WR, buf, 1);
 }

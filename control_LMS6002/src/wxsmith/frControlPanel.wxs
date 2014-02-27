@@ -58,8 +58,8 @@
 						<label>ADC / DAC</label>
 					</object>
 					<object class="notebookpage">
-						<object class="wxPanel" name="ID_PANEL13" subclass="pnlSi5351C" variable="m_Board" member="yes" />
-						<label>Clock Gen</label>
+						<object class="wxPanel" name="ID_PANEL13" subclass="pnlBoard" variable="m_Board" member="yes" />
+						<label>Board</label>
 					</object>
 					<object class="notebookpage">
 						<object class="wxPanel" name="ID_PANEL1" subclass="pnlADF" variable="m_ADF" member="yes" />
@@ -162,6 +162,7 @@
 			<object class="separator" />
 			<object class="tool" name="ID_TOOLBARITEM4" variable="tbtnDownload" member="yes">
 				<label>Send configuration</label>
+				<bitmap stock_id="wxART_HELP_SIDE_PANEL" stock_client="wxART_TOOLBAR" />
 				<tooltip>Send all configuration</tooltip>
 				<handler function="OntbtnDownloadClicked" entry="EVT_TOOL" />
 			</object>
@@ -173,68 +174,6 @@
 			<fields>3</fields>
 			<widths>10,-10,-10</widths>
 			<styles>wxSB_NORMAL,wxSB_NORMAL,wxSB_NORMAL</styles>
-		</object>
-		<object class="wxImage" variable="Image1" member="yes">
-			<image>
-				<Item>static const char *xpm_data[] = {</Item>
-				<Item>&quot;22 22 3 1&quot;,</Item>
-				<Item>&quot;. c #FF0000&quot;,</Item>
-				<Item>&quot;X c #0000FF&quot;,</Item>
-				<Item>&quot;_ c None&quot;,</Item>
-				<Item>&quot;______________________&quot;,</Item>
-				<Item>&quot;______________________&quot;,</Item>
-				<Item>&quot;______......._________&quot;,</Item>
-				<Item>&quot;_______.......________&quot;,</Item>
-				<Item>&quot;_______..___..._______&quot;,</Item>
-				<Item>&quot;_______..____.._______&quot;,</Item>
-				<Item>&quot;_______..____.._______&quot;,</Item>
-				<Item>&quot;_______..____.._______&quot;,</Item>
-				<Item>&quot;_______..____.._______&quot;,</Item>
-				<Item>&quot;_______..___..._______&quot;,</Item>
-				<Item>&quot;_______.......________&quot;,</Item>
-				<Item>&quot;______......._________&quot;,</Item>
-				<Item>&quot;_________XXX__________&quot;,</Item>
-				<Item>&quot;_________XXX__________&quot;,</Item>
-				<Item>&quot;_________XXX__________&quot;,</Item>
-				<Item>&quot;_________XXX__________&quot;,</Item>
-				<Item>&quot;_______XXXXXXX________&quot;,</Item>
-				<Item>&quot;________XXXXX_________&quot;,</Item>
-				<Item>&quot;_________XXX__________&quot;,</Item>
-				<Item>&quot;__________X___________&quot;,</Item>
-				<Item>&quot;______________________&quot;,</Item>
-				<Item>&quot;______________________&quot;</Item>
-				<Item>};</Item>
-			</image>
-			<image_text>
-				<item2>static const char *xpm_data[] = {</item2>
-				<item2>&quot;22 22 3 1&quot;,</item2>
-				<item2>&quot;. c #FF0000&quot;,</item2>
-				<item2>&quot;X c #0000FF&quot;,</item2>
-				<item2>&quot;_ c None&quot;,</item2>
-				<item2>&quot;______________________&quot;,</item2>
-				<item2>&quot;______________________&quot;,</item2>
-				<item2>&quot;______......._________&quot;,</item2>
-				<item2>&quot;_______.......________&quot;,</item2>
-				<item2>&quot;_______..___..._______&quot;,</item2>
-				<item2>&quot;_______..____.._______&quot;,</item2>
-				<item2>&quot;_______..____.._______&quot;,</item2>
-				<item2>&quot;_______..____.._______&quot;,</item2>
-				<item2>&quot;_______..____.._______&quot;,</item2>
-				<item2>&quot;_______..___..._______&quot;,</item2>
-				<item2>&quot;_______.......________&quot;,</item2>
-				<item2>&quot;______......._________&quot;,</item2>
-				<item2>&quot;_________XXX__________&quot;,</item2>
-				<item2>&quot;_________XXX__________&quot;,</item2>
-				<item2>&quot;_________XXX__________&quot;,</item2>
-				<item2>&quot;_________XXX__________&quot;,</item2>
-				<item2>&quot;_______XXXXXXX________&quot;,</item2>
-				<item2>&quot;________XXXXX_________&quot;,</item2>
-				<item2>&quot;_________XXX__________&quot;,</item2>
-				<item2>&quot;__________X___________&quot;,</item2>
-				<item2>&quot;______________________&quot;,</item2>
-				<item2>&quot;______________________&quot;</item2>
-				<item2>};</item2>
-			</image_text>
 		</object>
 	</object>
 </wxsmith>

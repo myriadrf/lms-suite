@@ -3,13 +3,13 @@
 #include <vector>
 using namespace std;
 //(*InternalHeaders(pnlCustomer)
-#include <wx/combobox.h>
 #include <wx/sizer.h>
-#include <wx/button.h>
-#include <wx/string.h>
-#include <wx/intl.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
+#include <wx/intl.h>
+#include <wx/button.h>
+#include <wx/string.h>
+#include <wx/combobox.h>
 //*)
 
 //(*IdInit(pnlCustomer)
@@ -60,19 +60,19 @@ void pnlCustomer::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& pos
 {
 	//(*Initialize(pnlCustomer)
 	wxStaticBoxSizer* StaticBoxSizer2;
-	wxFlexGridSizer* FlexGridSizer1;
-	wxFlexGridSizer* FlexGridSizer2;
-	wxStaticBoxSizer* StaticBoxSizer5;
-	wxFlexGridSizer* FlexGridSizer7;
-	wxBoxSizer* BoxSizer2;
 	wxFlexGridSizer* FlexGridSizer4;
-	wxStaticBoxSizer* StaticBoxSizer3;
-	wxFlexGridSizer* FlexGridSizer6;
-	wxFlexGridSizer* FlexGridSizer3;
 	wxStaticBoxSizer* StaticBoxSizer4;
-	wxBoxSizer* BoxSizer1;
+	wxFlexGridSizer* FlexGridSizer3;
 	wxFlexGridSizer* FlexGridSizer5;
+	wxFlexGridSizer* FlexGridSizer2;
+	wxBoxSizer* BoxSizer2;
+	wxFlexGridSizer* FlexGridSizer7;
+	wxStaticBoxSizer* StaticBoxSizer3;
+	wxBoxSizer* BoxSizer1;
+	wxFlexGridSizer* FlexGridSizer6;
 	wxStaticBoxSizer* StaticBoxSizer1;
+	wxFlexGridSizer* FlexGridSizer1;
+	wxStaticBoxSizer* StaticBoxSizer5;
 
 	Create(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("wxID_ANY"));
 	FlexGridSizer5 = new wxFlexGridSizer(2, 1, 0, 0);

@@ -44,6 +44,11 @@ Main_Module* getMainModule()
 	return mainModule;
 }
 
+CTR_6002DR2_API Main_Module* LMLL_GetControlModule()
+{
+	return getMainModule();
+}
+
 extern "C"
 {
 // Main Module
@@ -7379,6 +7384,15 @@ CTR_6002DR2_API void LMLL_BoardConfigureSi5351C()
 
 /**
     @ingroup Board
+    @brief Writes register map values to chip
+*/
+CTR_6002DR2_API void LMLL_BoardUploadValuesSi5351C()
+{
+    getMainModule()->getSi5351C()->UploadConfiguration();
+}
+
+/**
+    @ingroup Board
     @brief Resets register map to default values
 */
 CTR_6002DR2_API void LMLL_BoardResetToDefaults()
@@ -7396,7 +7410,7 @@ CTR_6002DR2_API void LMLL_BoardResetToDefaults()
 */
 CTR_6002DR2_API void LMLL_BoardSetFrequency(unsigned int clkID, float fOut_MHz, bool enabled, bool inverted)
 {
-    getMainModule()->getSi5351C()->SetClock(clkID, fOut_MHz, enabled, inverted);
+    getMainModule()->getSi5351C()->SetClock(clkID, fOut_MHz*1000000, enabled, inverted);
 }
 
 /**
@@ -7406,7 +7420,8 @@ CTR_6002DR2_API void LMLL_BoardSetFrequency(unsigned int clkID, float fOut_MHz, 
 */
 CTR_6002DR2_API void LMLL_BoardSetCLKIN(float CLKIN_MHz)
 {
-    getMainModule()->getSi5351C()->SetPLL(0, CLKIN_MHz);
+    getMainModule()->getSi5351C()->SetPLL(0, CLKIN_MHz*1000000);
+    getMainModule()->getSi5351C()->SetPLL(1, CLKIN_MHz*1000000);
 }
 
 //==============================================================================

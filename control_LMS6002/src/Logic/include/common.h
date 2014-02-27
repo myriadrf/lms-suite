@@ -98,4 +98,6 @@ struct BoolCheckBox
 	BoolCheckBox();
 };
 
+string Int2Hex(int integer, int symCount);
+
 #endif

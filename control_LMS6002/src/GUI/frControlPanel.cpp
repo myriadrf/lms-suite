@@ -1,7 +1,7 @@
 #include "frControlPanel.h"
 #include "ctr_6002dr2_LogicDLL.h"
 #include "CallbackCodes.h"
-#include "CommonFile.h"
+#include "common.h"
 #include <wx/msgdlg.h>
 #include "dlgRefClk.h"
 #include "dlgSerPort.h"
@@ -9,19 +9,19 @@
 #include "dlgAbout.h"
 #include <wx/time.h>
 //(*InternalHeaders(frControlPanel)
-#include <wx/artprov.h>
-#include <wx/notebook.h>
-#include <wx/sizer.h>
-#include <wx/menu.h>
-#include <wx/bitmap.h>
 #include <wx/toolbar.h>
-#include <wx/panel.h>
+#include <wx/sizer.h>
+#include <wx/notebook.h>
+#include <wx/menu.h>
 #include <wx/filedlg.h>
-#include <wx/richtext/richtextctrl.h>
-#include <wx/intl.h>
-#include <wx/image.h>
+#include <wx/panel.h>
 #include <wx/string.h>
 #include <wx/statusbr.h>
+#include <wx/intl.h>
+#include <wx/richtext/richtextctrl.h>
+#include <wx/bitmap.h>
+#include <wx/image.h>
+#include <wx/artprov.h>
 //*)
 
 #include <wx/numdlg.h>
@@ -111,7 +111,7 @@ void frControlPanel::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& 
 	m_RxVGA2 = new pnlRxVGA2(pcSPIS, ID_PANEL9, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL9"));
 	m_RxFE = new pnlRxFE(pcSPIS, ID_PANEL10, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL10"));
 	m_ADDC = new pnlADDC(pcSPIS, ID_PANEL11, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL11"));
-	m_Board = new pnlSi5351C(pcSPIS, ID_PANEL13, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL13"));
+	m_Board = new pnlBoard(pcSPIS, ID_PANEL13, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL13"));
 	m_ADF = new pnlADF(pcSPIS, ID_PANEL1, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
 	pcSPIS->AddPage(m_Customer, _("System"), false);
 	pcSPIS->AddPage(m_top, _("Top"), false);
@@ -123,7 +123,7 @@ void frControlPanel::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& 
 	pcSPIS->AddPage(m_RxVGA2, _("Rx VGA2"), false);
 	pcSPIS->AddPage(m_RxFE, _("Rx FE"), false);
 	pcSPIS->AddPage(m_ADDC, _("ADC / DAC"), false);
-	pcSPIS->AddPage(m_Board, _("Clock Gen"), false);
+	pcSPIS->AddPage(m_Board, _("Board"), false);
 	pcSPIS->AddPage(m_ADF, _("ADF4002"), false);
 	FlexGridSizer1->Add(pcSPIS, 1, wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
 	lbMsgs = new wxRichTextCtrl(this, ID_RICHTEXTCTRL1, _("Text"), wxDefaultPosition, wxDefaultSize, wxRE_MULTILINE, wxDefaultValidator, _T("ID_RICHTEXTCTRL1"));
@@ -171,7 +171,7 @@ void frControlPanel::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& 
 	ToolBarItem2 = ToolBar1->AddTool(ID_TOOLBARITEM2, _("Open"), wxArtProvider::GetBitmap(wxART_MAKE_ART_ID_FROM_STR(_T("wxART_FILE_OPEN")),wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString);
 	ToolBarItem3 = ToolBar1->AddTool(ID_TOOLBARITEM3, _("Save"), wxArtProvider::GetBitmap(wxART_MAKE_ART_ID_FROM_STR(_T("wxART_FILE_SAVE")),wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, wxEmptyString);
 	ToolBar1->AddSeparator();
-	tbtnDownload = ToolBar1->AddTool(ID_TOOLBARITEM4, _("Send configuration"), wxNullBitmap, wxNullBitmap, wxITEM_NORMAL, _("Send all configuration"), wxEmptyString);
+	tbtnDownload = ToolBar1->AddTool(ID_TOOLBARITEM4, _("Send configuration"), wxArtProvider::GetBitmap(wxART_MAKE_ART_ID_FROM_STR(_T("wxART_HELP_SIDE_PANEL")),wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, _("Send all configuration"), wxEmptyString);
 	ToolBar1->Realize();
 	SetToolBar(ToolBar1);
 	dlgOpen = new wxFileDialog(this, _("Select file"), wxEmptyString, wxEmptyString, wxFileSelectorDefaultWildcardStr, wxFD_DEFAULT_STYLE, wxDefaultPosition, wxDefaultSize, _T("wxFileDialog"));
@@ -181,36 +181,6 @@ void frControlPanel::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& 
 	sbMain->SetFieldsCount(3,__wxStatusBarWidths_1);
 	sbMain->SetStatusStyles(3,__wxStatusBarStyles_1);
 	SetStatusBar(sbMain);
-	static const char *Image1_XPM[] = {
-	"22 22 3 1",
-	". c #FF0000",
-	"X c #0000FF",
-	"_ c None",
-	"______________________",
-	"______________________",
-	"______......._________",
-	"_______.......________",
-	"_______..___..._______",
-	"_______..____.._______",
-	"_______..____.._______",
-	"_______..____.._______",
-	"_______..____.._______",
-	"_______..___..._______",
-	"_______.......________",
-	"______......._________",
-	"_________XXX__________",
-	"_________XXX__________",
-	"_________XXX__________",
-	"_________XXX__________",
-	"_______XXXXXXX________",
-	"________XXXXX_________",
-	"_________XXX__________",
-	"__________X___________",
-	"______________________",
-	"______________________"
-	};
-	Image1 = new wxImage(Image1_XPM);
-	Image1_BMP = new wxBitmap(Image1_XPM);
 	FlexGridSizer1->Fit(this);
 	FlexGridSizer1->SetSizeHints(this);
 
@@ -233,9 +203,9 @@ void frControlPanel::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& 
 	//*)
 
 	//Set image for download all tool button
-	ToolBar1->SetToolNormalBitmap(ID_TOOLBARITEM4, wxBitmap(*Image1));
+	//ToolBar1->SetToolNormalBitmap(ID_TOOLBARITEM4, wxBitmap(*Image1));
 
-	SetTitle("ctr_6002dr2 - ZIPPER EDITION");
+	//SetTitle("ctr_6002dr2 - ZIPPER EDITION");
 
 	t1 = wxGetUTCTimeMillis();
 	// Clear Messages
@@ -379,7 +349,7 @@ void frControlPanel::OnmnuSaveAsSelected(wxCommandEvent& event)
         return;
 
     setCurrentFileName(saveFileDialog.GetPath().ToStdString().c_str());
-    LMAL_MainFileSaveAs( (char*)toCString(m_sFileName));
+    LMAL_MainFileSaveAs( (char*)m_sFileName.ToStdString().c_str());
 }
 
 void frControlPanel::OnmnuAutoDwnldSelected(wxCommandEvent& event)
@@ -407,7 +377,7 @@ bool frControlPanel::FileIsNotEmpty(wxString filename)
 	long curpos, length;
 	FILE *stream;
 
-	stream = fopen(toCString(filename), "r");
+	stream = fopen((filename.ToStdString().c_str()), "r");
 
 	fseek(stream, 0L, SEEK_END);
 	length = ftell(stream);
@@ -419,7 +389,7 @@ bool frControlPanel::FileIsNotEmpty(wxString filename)
 // ---------------------------------------------------------------------------
 void frControlPanel::LoadConfiguration(wxString sIniName)
 {
-	LMAL_MainOpenFile((char*)toCString(sIniName));
+	LMAL_MainOpenFile((char*)sIniName.ToStdString().c_str());
 	ShowReferenceClk(LMAL_GetReferenceClock());
 };
 
@@ -679,7 +649,7 @@ void frControlPanel::setCurrentFileName(wxString fileName)
 	else
 		shownName = shownName + fileName;
 
-	shownName = shownName + " - Project File" + " - ZIPPER EDITION";
+	shownName = shownName + " - Project File";
 
 	this->SetTitle(shownName);
 }

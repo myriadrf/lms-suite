@@ -4,12 +4,12 @@
 //(*Headers(pnlCustomer)
 #include <wx/panel.h>
 class wxTextCtrl;
-class wxStaticBoxSizer;
 class wxComboBox;
-class wxFlexGridSizer;
-class wxButton;
-class wxBoxSizer;
 class wxStaticText;
+class wxFlexGridSizer;
+class wxBoxSizer;
+class wxButton;
+class wxStaticBoxSizer;
 //*)
 
 class pnlCustomer: public wxPanel
@@ -25,37 +25,37 @@ class pnlCustomer: public wxPanel
         void updateFrequency(bool ULRX);
 
 		//(*Declarations(pnlCustomer)
-		wxComboBox* cmbLoopback;
-		wxButton* btnDLTXFChan_T;
-		wxButton* btnDLTXFChan_M;
-		wxButton* btnULRXFChan_M;
-		wxComboBox* cmbULRXBands;
-		wxButton* btnCalLPFCore;
-		wxStaticText* StaticText1;
 		wxStaticText* StaticText10;
-		wxStaticText* StaticText3;
-		wxComboBox* cmbLNASEL_Cust;
-		wxTextCtrl* txtULRXFreq;
-		wxButton* btnClbrTx;
-		wxStaticText* StaticText8;
-		wxStaticText* StaticText12;
-		wxStaticText* StaticText7;
-		wxButton* btnULRXFChan_T;
-		wxStaticText* StaticText4;
-		wxStaticText* StaticText5;
-		wxStaticText* StaticText2;
-		wxComboBox* cmbULRXChan;
-		wxStaticText* StaticText6;
-		wxButton* btnDLTXFChan_B;
-		wxTextCtrl* txtDLTXFreq;
-		wxButton* btnClbrRx;
-		wxComboBox* cmbDLTXChan;
-		wxComboBox* cmbBypass;
-		wxComboBox* cmbTxBypass;
 		wxStaticText* StaticText9;
-		wxButton* btnULRXFChan_B;
-		wxComboBox* cmbDLTXBands;
+		wxButton* btnULRXFChan_M;
+		wxButton* btnDLTXFChan_T;
+		wxStaticText* StaticText2;
+		wxStaticText* StaticText6;
+		wxComboBox* cmbLoopback;
+		wxStaticText* StaticText8;
 		wxStaticText* StaticText11;
+		wxButton* btnDLTXFChan_B;
+		wxStaticText* StaticText1;
+		wxButton* btnULRXFChan_B;
+		wxStaticText* StaticText3;
+		wxComboBox* cmbDLTXChan;
+		wxComboBox* cmbLNASEL_Cust;
+		wxButton* btnULRXFChan_T;
+		wxButton* btnDLTXFChan_M;
+		wxStaticText* StaticText5;
+		wxStaticText* StaticText7;
+		wxComboBox* cmbDLTXBands;
+		wxComboBox* cmbULRXChan;
+		wxComboBox* cmbTxBypass;
+		wxButton* btnClbrRx;
+		wxStaticText* StaticText12;
+		wxTextCtrl* txtULRXFreq;
+		wxButton* btnCalLPFCore;
+		wxComboBox* cmbBypass;
+		wxStaticText* StaticText4;
+		wxTextCtrl* txtDLTXFreq;
+		wxButton* btnClbrTx;
+		wxComboBox* cmbULRXBands;
 		//*)
 
 	protected:

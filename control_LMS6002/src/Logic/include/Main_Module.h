@@ -187,6 +187,8 @@ public:
 	TextLog messagesLog;
 
 	void UpdateVerRevMask();
+	void SetGPIO(unsigned int msb, unsigned int lsb, int value);
+	unsigned char GetGPIO() {return m_GPIO;};
 
 private:
     bool m_initialized;
@@ -246,6 +248,8 @@ private:
 	SelectionContainer cmbRxBypass;
 	SelectionContainer cmbTxBypass;
 	SelectionContainer cmbLoopback;
+
+	unsigned char m_GPIO;
 };
 // ----------------------------------------------------------------------------
 #endif //Main_Module_H

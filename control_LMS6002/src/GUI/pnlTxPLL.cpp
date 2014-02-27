@@ -1,20 +1,20 @@
 #include "pnlTxPLL.h"
 #include "ctr_6002dr2_LogicDLL.h"
 //(*InternalHeaders(pnlTxPLL)
-#include <wx/combobox.h>
-#include <wx/checkbox.h>
-#include <wx/sizer.h>
 #include <wx/notebook.h>
-#include <wx/spinbutt.h>
+#include <wx/sizer.h>
+#include <wx/stattext.h>
+#include <wx/radiobox.h>
+#include <wx/textctrl.h>
+#include <wx/checkbox.h>
+#include <wx/intl.h>
 #include <wx/button.h>
 #include <wx/string.h>
-#include <wx/intl.h>
-#include <wx/stattext.h>
-#include <wx/textctrl.h>
-#include <wx/radiobox.h>
+#include <wx/spinbutt.h>
+#include <wx/combobox.h>
 //*)
 
-#include "CommonFile.h"
+#include "common.h"
 #include "dlgFreqVsCap.h"
 #include "dlgVcoCapLog.h"
 
@@ -122,34 +122,34 @@ void pnlTxPLL::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& pos,co
 {
 	//(*Initialize(pnlTxPLL)
 	wxStaticBoxSizer* StaticBoxSizer2;
-	wxFlexGridSizer* FlexGridSizer8;
-	wxStaticBoxSizer* StaticBoxSizer10;
-	wxFlexGridSizer* FlexGridSizer1;
-	wxFlexGridSizer* FlexGridSizer2;
-	wxStaticBoxSizer* StaticBoxSizer7;
-	wxStaticBoxSizer* StaticBoxSizer5;
-	wxFlexGridSizer* FlexGridSizer11;
-	wxStaticBoxSizer* StaticBoxSizer12;
-	wxFlexGridSizer* FlexGridSizer7;
 	wxFlexGridSizer* FlexGridSizer4;
-	wxFlexGridSizer* FlexGridSizer9;
-	wxStaticBoxSizer* StaticBoxSizer3;
-	wxFlexGridSizer* FlexGridSizer6;
-	wxStaticBoxSizer* StaticBoxSizer13;
-	wxFlexGridSizer* FlexGridSizer3;
+	wxStaticBoxSizer* StaticBoxSizer12;
 	wxStaticBoxSizer* StaticBoxSizer15;
-	wxStaticBoxSizer* StaticBoxSizer8;
-	wxStaticBoxSizer* StaticBoxSizer9;
-	wxStaticBoxSizer* StaticBoxSizer4;
-	wxStaticBoxSizer* StaticBoxSizer6;
 	wxStaticBoxSizer* StaticBoxSizer14;
+	wxStaticBoxSizer* StaticBoxSizer4;
 	wxFlexGridSizer* FlexGridSizer10;
+	wxFlexGridSizer* FlexGridSizer3;
+	wxFlexGridSizer* FlexGridSizer5;
+	wxFlexGridSizer* FlexGridSizer9;
+	wxFlexGridSizer* FlexGridSizer2;
+	wxStaticBoxSizer* StaticBoxSizer9;
+	wxFlexGridSizer* FlexGridSizer7;
+	wxStaticBoxSizer* StaticBoxSizer7;
+	wxStaticBoxSizer* StaticBoxSizer13;
+	wxStaticBoxSizer* StaticBoxSizer10;
+	wxStaticBoxSizer* StaticBoxSizer8;
+	wxStaticBoxSizer* StaticBoxSizer3;
+	wxStaticBoxSizer* StaticBoxSizer6;
+	wxFlexGridSizer* FlexGridSizer8;
+	wxStaticBoxSizer* StaticBoxSizer11;
 	wxBoxSizer* BoxSizer1;
 	wxFlexGridSizer* FlexGridSizer13;
-	wxStaticBoxSizer* StaticBoxSizer11;
 	wxFlexGridSizer* FlexGridSizer12;
-	wxFlexGridSizer* FlexGridSizer5;
+	wxFlexGridSizer* FlexGridSizer6;
 	wxStaticBoxSizer* StaticBoxSizer1;
+	wxFlexGridSizer* FlexGridSizer1;
+	wxFlexGridSizer* FlexGridSizer11;
+	wxStaticBoxSizer* StaticBoxSizer5;
 
 	Create(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("wxID_ANY"));
 	FlexGridSizer6 = new wxFlexGridSizer(2, 1, 0, 0);

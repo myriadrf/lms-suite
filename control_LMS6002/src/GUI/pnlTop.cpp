@@ -2,18 +2,18 @@
 #include "ctr_6002dr2_LogicDLL.h"
 
 //(*InternalHeaders(pnlTop)
-#include <wx/checklst.h>
-#include <wx/combobox.h>
-#include <wx/checkbox.h>
 #include <wx/sizer.h>
-#include <wx/button.h>
-#include <wx/string.h>
-#include <wx/intl.h>
-#include <wx/statbox.h>
-#include <wx/statline.h>
-#include <wx/tglbtn.h>
 #include <wx/stattext.h>
 #include <wx/radiobox.h>
+#include <wx/checklst.h>
+#include <wx/checkbox.h>
+#include <wx/tglbtn.h>
+#include <wx/statline.h>
+#include <wx/statbox.h>
+#include <wx/intl.h>
+#include <wx/button.h>
+#include <wx/string.h>
+#include <wx/combobox.h>
 //*)
 
 //(*IdInit(pnlTop)
@@ -84,25 +84,25 @@ void pnlTop::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& pos,cons
 {
 	//(*Initialize(pnlTop)
 	wxStaticBoxSizer* StaticBoxSizer2;
-	wxFlexGridSizer* FlexGridSizer8;
-	wxFlexGridSizer* FlexGridSizer1;
-	wxFlexGridSizer* FlexGridSizer2;
-	wxBoxSizer* BoxSizer3;
-	wxStaticBoxSizer* StaticBoxSizer7;
-	wxStaticBoxSizer* StaticBoxSizer5;
-	wxFlexGridSizer* FlexGridSizer11;
-	wxFlexGridSizer* FlexGridSizer7;
-	wxBoxSizer* BoxSizer2;
 	wxFlexGridSizer* FlexGridSizer4;
-	wxStaticBoxSizer* StaticBoxSizer3;
-	wxFlexGridSizer* FlexGridSizer6;
-	wxFlexGridSizer* FlexGridSizer3;
 	wxStaticBoxSizer* StaticBoxSizer4;
-	wxStaticBoxSizer* StaticBoxSizer6;
 	wxFlexGridSizer* FlexGridSizer10;
-	wxBoxSizer* BoxSizer1;
+	wxFlexGridSizer* FlexGridSizer3;
 	wxFlexGridSizer* FlexGridSizer5;
+	wxFlexGridSizer* FlexGridSizer2;
+	wxBoxSizer* BoxSizer2;
+	wxFlexGridSizer* FlexGridSizer7;
+	wxStaticBoxSizer* StaticBoxSizer7;
+	wxStaticBoxSizer* StaticBoxSizer3;
+	wxStaticBoxSizer* StaticBoxSizer6;
+	wxFlexGridSizer* FlexGridSizer8;
+	wxBoxSizer* BoxSizer1;
+	wxFlexGridSizer* FlexGridSizer6;
 	wxStaticBoxSizer* StaticBoxSizer1;
+	wxFlexGridSizer* FlexGridSizer1;
+	wxFlexGridSizer* FlexGridSizer11;
+	wxBoxSizer* BoxSizer3;
+	wxStaticBoxSizer* StaticBoxSizer5;
 
 	Create(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("wxID_ANY"));
 	FlexGridSizer1 = new wxFlexGridSizer(0, 2, 0, 0);

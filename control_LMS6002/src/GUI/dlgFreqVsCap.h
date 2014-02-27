@@ -13,7 +13,7 @@ class wxButton;
 class wxGridEvent;
 //*)
 
-#include "CommonFile.h"
+#include "common.h"
 
 class dlgFreqVsCap: public wxDialog
 {

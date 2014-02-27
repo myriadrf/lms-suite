@@ -22,7 +22,7 @@
 
 #include <stddef.h>
 #include <cstddef>
-
+#include "Main_Module.h"
 
 
 struct sVcoVsCap;
@@ -901,6 +901,7 @@ CTR_6002DR2_API sVcoVsCap *LMLL_FreqVsCapGetVco(int number, bool TxPLL);
 
 CTR_6002DR2_API bool LMLL_BoardLoadRegValuesFromFile(char *FName);
 CTR_6002DR2_API void LMLL_BoardConfigureSi5351C();
+CTR_6002DR2_API void LMLL_BoardUploadValuesSi5351C();
 CTR_6002DR2_API void LMLL_BoardResetToDefaults();
 CTR_6002DR2_API void LMLL_BoardSetFrequency(unsigned int clkID, float fOut_MHz, bool enabled, bool inverted);
 CTR_6002DR2_API void LMLL_BoardSetCLKIN(float CLKIN_MHz);
@@ -980,5 +981,7 @@ CTR_6002DR2_API void LMLL_Transmitter_LoadSamplesFromFile(char *filename, bool b
 CTR_6002DR2_API void LMLL_Transmitter_LoadSamplesFromArray(unsigned char*array, long length);
 CTR_6002DR2_API void LMLL_Transmitter_GetSamples(float *Ichannel, float *Qchannel, int &samplesCount);
 //==============================================================================
+
+CTR_6002DR2_API Main_Module* LMLL_GetControlModule();
 }
 #endif

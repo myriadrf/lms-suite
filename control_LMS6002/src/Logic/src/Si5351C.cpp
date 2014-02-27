@@ -4,7 +4,9 @@
 #include <iomanip>
 #include <fstream>
 #include <sstream>
+#include <set>
 using namespace std;
+#include "MessageLog.h"
 
 /// Splits float into fraction integers A + B/C
 void realToFrac(const float real, int &A, int &B, int &C)
@@ -24,6 +26,23 @@ void realToFrac(const float real, int &A, int &B, int &C)
     }
     B = B/a;
     C = C/a;
+}
+
+long GCD(long a, long b)
+{
+    long temp;
+    while( b!= 0) // greatest common divider
+    {
+        temp = a % b;
+        a = b;
+        b = temp;
+    }
+    return a;
+}
+
+long LCM(long *numbers, const int size)
+{
+    return 0;
 }
 
 /// Default configuration
@@ -286,7 +305,7 @@ void Si5351C::UploadConfiguration()
     vector<unsigned char> out;
 	if (!device)
     {
-        //MessageLog::getInstance()->write("Si5351C - connection manager not set. Configuring aborted.\n", LOG_ERROR);
+        MessageLog::getInstance()->write("Si5351C - connection manager not set. Configuring aborted.\n", LOG_ERROR);
 		return;
     }
     //Disable outputs
@@ -296,7 +315,7 @@ void Si5351C::UploadConfiguration()
 	for(int i=0; i<8; ++i)
     {
         out.push_back(16+i);
-        out.push_back(0x80);
+        out.push_back(0x84);
     }
 	//write new configuration
 	for (int i = 15; i <= 92; ++i)
@@ -315,8 +334,17 @@ void Si5351C::UploadConfiguration()
     //Enabe desired outputs
 	out.push_back(3);
 	out.push_back(m_newConfiguration[3]);
-	device->SendData(CMD_SI5351_WR, &out[0], out.size());
-    //MessageLog::getInstance()->write("Si5351C - Configuration upload completed.\n", LOG_INFO);
+
+	if( !device->IsOpen() )
+	{
+        MessageLog::getInstance()->write("Si5351C - Configuration upload FAILED: control port not connected\n", LOG_WARNING);
+        return;
+	}
+
+	if( device->SendData(CMD_SI5351_WR, &out[0], out.size()) == STATUS_COMPLETED_CMD )
+        MessageLog::getInstance()->write("Si5351C - Configuration upload completed.\n", LOG_INFO);
+    else
+        MessageLog::getInstance()->write("Si5351C - Configuration upload FAILED.\n", LOG_WARNING);
 }
 
 // ---------------------------------------------------------------------------
@@ -327,8 +355,8 @@ void Si5351C::UploadConfiguration()
 void Si5351C::Initialize(ConnectionManager *mng)
 {
 	device = mng;
-	//if (device == NULL)
-        //MessageLog::getInstance()->write("Si5351C - Initializing without connection manager.\n", LOG_WARNING);
+	if (device == NULL)
+        MessageLog::getInstance()->write("Si5351C - Initializing without connection manager.\n", LOG_WARNING);
 }
 
 /**
@@ -337,7 +365,6 @@ void Si5351C::Initialize(ConnectionManager *mng)
 */
 bool Si5351C::LoadRegValuesFromFile(string FName)
 {
-    //cout << "loading register values" << endl;
     fstream fin;
     fin.open(FName.c_str(), ios::in);
 
@@ -354,7 +381,6 @@ bool Si5351C::LoadRegValuesFromFile(string FName)
             continue;
         if( strcmp(line, "#END_PROFILE") == 0)
             break;
-
         sscanf(line, "%i,%x",&addr,&value);
         m_newConfiguration[addr] = value;
     }
@@ -363,220 +389,420 @@ bool Si5351C::LoadRegValuesFromFile(string FName)
 	return false;
 };
 
+/** @brief Calculates multisynth dividers and VCO frequencies
+    @param clocks output clocks configuration
+    @param plls plls configurations
+    @param Fmin lowest VCO frequency
+    @param Fmax highest VCO frequency
+*/
+void Si5351C::FindVCO(Si5351_Channel *clocks, Si5351_PLL *plls, const unsigned long Fmin, const unsigned long Fmax)
+{
+    int clockCount = 8;
+    //reset output parameters
+    for(int i=0; i<clockCount; i++)
+    {
+        clocks[i].pllSource = 0;
+        clocks[i].int_mode = 0;
+        clocks[i].multisynthDivider = 0;
+    }
+
+    bool clk6satisfied = !clocks[6].powered;
+    bool clk7satisfied = !clocks[7].powered;
+
+    bool pllAused = false;
+    bool pllBused = false;
+
+    map< unsigned long, int> availableFrequenciesPLLA; //all available frequencies for VCO
+    map< unsigned long, int> availableFrequenciesPLLB; //all available frequencies for VCO
+
+    //if clk6 or clk7 is used make available frequencies according to them
+    if(clocks[6].powered || clocks[7].powered)
+    {
+        set<unsigned long> clk6freqs;
+        set<unsigned long> clk7freqs;
+        set<unsigned long> sharedFreqs;
+        unsigned int mult = 6;
+        if(!clk6satisfied)
+        {
+            unsigned long freq = clocks[6].outputFreqHz;
+            while(freq <= Fmax && mult <= 254)
+            {
+                freq = clocks[6].outputFreqHz*mult;
+                if(freq >= Fmin && freq <= Fmax)
+                {
+                    clk6freqs.insert(freq);
+                }
+                mult += 2;
+            }
+        }
+        mult = 6;
+        if(!clk7satisfied)
+        {
+            unsigned long freq = clocks[7].outputFreqHz;
+            while(freq <= Fmax && mult <= 254)
+            {
+                freq = clocks[7].outputFreqHz*mult;
+                if(freq >= Fmin && freq <= Fmax)
+                {
+                    clk7freqs.insert(freq);
+                }
+                mult += 2;
+            }
+        }
+        bool canShare = false;
+        //find if clk6 and clk7 can share the same pll
+        for (set<unsigned long>::iterator it6=clk6freqs.begin(); it6!=clk6freqs.end(); ++it6)
+        {
+            for (set<unsigned long>::iterator it7=clk7freqs.begin(); it7!=clk7freqs.end(); ++it7)
+            {
+                if(*it6 == *it7)
+                {
+                    canShare = true;
+                    sharedFreqs.insert(*it6);
+                }
+            }
+        }
+        cout << endl;
+        if(canShare) //assign PLLA for both clocks
+        {
+            clocks[6].pllSource = 0;
+            clocks[7].pllSource = 0;
+            pllAused = true;
+            for (set<unsigned long>::iterator it=sharedFreqs.begin(); it!=sharedFreqs.end(); ++it)
+            {
+                availableFrequenciesPLLA.insert( pair<unsigned long, int> (*it, 0) );
+            }
+            clk6satisfied = true;
+            clk7satisfied = true;
+        }
+        else //if clocks 6 and 7 can't share pll, assign pllA to clk6 and pllB to clk7
+        {
+            if(!clk6satisfied)
+            {
+                clocks[6].pllSource = 0;
+                clk6satisfied = true;
+                pllAused = true;
+                for (set<unsigned long>::iterator it6=clk6freqs.begin(); it6!=clk6freqs.end(); ++it6)
+                {
+                    availableFrequenciesPLLA.insert( pair<unsigned long, int>(*it6, 0) );
+                }
+            }
+            if(!clk7satisfied)
+            {
+                clocks[7].pllSource = 1;
+                clk7satisfied = true;
+                pllBused = true;
+                for (set<unsigned long>::iterator it7=clk7freqs.begin(); it7!=clk7freqs.end(); ++it7)
+                {
+                    availableFrequenciesPLLB.insert( pair<unsigned long, int> (*it7, 0) );
+                }
+            }
+        }
+    }
+
+    //PLLA stage, find  all clocks that have integer coefficients with PLLA
+    //if pllA is not used by clk6 or clk7, fill available frequencies according to clk1-clk5 clocks
+    if( availableFrequenciesPLLA.size() == 0 && !pllAused)
+    {
+        for(int i=0; i<6; ++i)
+        {
+            if(clocks[i].powered == false)
+                continue;
+
+            unsigned long freq = clocks[i].outputFreqHz > Fmin ? clocks[i].outputFreqHz : (clocks[i].outputFreqHz*((Fmin/clocks[i].outputFreqHz) + ((Fmin%clocks[i].outputFreqHz)!=0)));
+            while(freq >= Fmin && freq <= Fmax)
+            {
+                //add all output frequency multiples that are in VCO interval
+                availableFrequenciesPLLA.insert( pair<unsigned long, int> (freq, 0));
+                freq += clocks[i].outputFreqHz;
+            }
+        }
+    }
+
+    unsigned int bestScore = 0; //score shows how many outputs have integer dividers
+    //calculate scores for all available frequencies
+    unsigned long bestVCOA = 0;
+    for (map<unsigned long, int>::iterator it=availableFrequenciesPLLA.begin(); it!=availableFrequenciesPLLA.end(); ++it)
+    {
+        for(int i=0; i<8; ++i)
+        {
+            if(clocks[i].powered == false)
+                continue;
+
+            if( (it->first % clocks[i].outputFreqHz) == 0)
+            {
+                it->second = it->second+1;
+            }
+        }
+        if(it->second >= bestScore)
+        {
+            bestScore = it->second;
+            bestVCOA = it->first;
+        }
+    }
+    //scores calculated
+    //cout << "PLLA stage: " << endl;
+    //cout << "best score: " << bestScore << "     best VCO: " << bestVCOA << endl;
+    plls[0].VCO_Hz = bestVCOA;
+    plls[0].feedbackDivider = (double)bestVCOA/plls[0].inputFreqHz;
+
+    for(int i=0; i<clockCount; ++i)
+    {
+        if(clocks[i].powered == false)
+            continue;
+
+        clocks[i].multisynthDivider = bestVCOA/clocks[i].outputFreqHz;
+        if(bestVCOA%clocks[i].outputFreqHz == 0)
+        {
+            clocks[i].int_mode = true;
+            clocks[i].multisynthDivider = bestVCOA/clocks[i].outputFreqHz;
+        }
+        else
+        {
+            clocks[i].int_mode = false;
+            clocks[i].multisynthDivider = (double)bestVCOA/clocks[i].outputFreqHz;
+        }
+        clocks[i].pllSource = 0;
+    }
+
+
+    //PLLB stage, find  all clocks that have integer coefficients with PLLB
+    //if pllB is not used by clk6 or clk7, fill available frequencies according to clk1-clk5 clocks, that don't have integer dividers
+    if( availableFrequenciesPLLB.size() == 0 && !pllBused)
+    {
+        for(int i=0; i<6; ++i)
+        {
+            if(clocks[i].powered==false)
+                continue;
+
+            if(clocks[i].int_mode) //skip clocks with integer dividers
+                continue;
+            unsigned long freq = clocks[i].outputFreqHz > Fmin ? clocks[i].outputFreqHz : (clocks[i].outputFreqHz*((Fmin/clocks[i].outputFreqHz) + ((Fmin%clocks[i].outputFreqHz)!=0)));
+            while(freq >= Fmin && freq <= Fmax)
+            {
+                availableFrequenciesPLLB.insert( pair<unsigned long, int> (freq, 0));
+                freq += clocks[i].outputFreqHz;
+            }
+        }
+    }
+
+    bestScore = 0;
+    //calculate scores for all available frequencies
+    unsigned long bestVCOB = 0;
+    for (map<unsigned long, int>::iterator it=availableFrequenciesPLLB.begin(); it!=availableFrequenciesPLLB.end(); ++it)
+    {
+        for(int i=0; i<8; ++i)
+        {
+            if(clocks[i].powered==false)
+                continue;
+            if( (it->first % clocks[i].outputFreqHz) == 0)
+            {
+                it->second = it->second+1;
+            }
+        }
+        if(it->second >= bestScore)
+        {
+            bestScore = it->second;
+            bestVCOB = it->first;
+        }
+    }
+    //scores calculated
+//    cout << "PLLB stage: " << endl;
+//    cout << "best score: " << bestScore << "     best VCO: " << bestVCOB << endl;
+    if(bestVCOB == 0) //just in case if pllb is not used make it the same frequency as plla
+        bestVCOB = bestVCOA;
+    plls[1].VCO_Hz = bestVCOB;
+    plls[1].feedbackDivider = (double)bestVCOB/plls[0].inputFreqHz;
+    for(int i=0; i<clockCount; ++i)
+    {
+        if(clocks[i].powered == false)
+            continue;
+
+        if(clocks[i].int_mode)
+            continue;
+        clocks[i].multisynthDivider = bestVCOB/clocks[i].outputFreqHz;
+        if(bestVCOB%clocks[i].outputFreqHz == 0)
+        {
+            clocks[i].int_mode = true;
+            clocks[i].multisynthDivider = bestVCOB/clocks[i].outputFreqHz;
+        }
+        else
+        {
+            clocks[i].int_mode = false;
+            clocks[i].multisynthDivider = (double)bestVCOB/clocks[i].outputFreqHz;
+        }
+        clocks[i].pllSource = 1;
+    }
+}
+
+
 /** @brief Modifies register map with clock settings
     @return true if success
 */
 bool Si5351C::ConfigureClocks()
 {
+    FindVCO(CLK, PLL, 600000000, 900000000);
     stringstream ss;
-    int MSNA_P1;
-    int MSNA_P2;
-    int MSNA_P3;
-
-    eSi_CLOCK_INPUT m_PLLA_inputSource = Si_CLKIN;
-    eSi_CLOCK_INPUT m_PLLB_inputSource = Si_CLKIN;
-
-    float m_PLLx_InputFreq = m_PLLA.inputFreqMHz;
-
-    float fVCO = 1;
-    int CLKIN_DIV = 1;
-    //PLL input range 10-40 MHz
-    if(m_PLLx_InputFreq < 10)
-    {
-        //MessageLog::getInstance()->write("Si5351C - PLL input frequency < 10 MHz.\n", LOG_ERROR);
-        return false;
-    }
-    else if(m_PLLx_InputFreq > 40) //need to set divider
-    {
-        for(int i=0; i<4; ++i)
-            if(m_PLLx_InputFreq/CLKIN_DIV > 40)
-                CLKIN_DIV = CLKIN_DIV << 2;
-    }
-    if(CLKIN_DIV > 8 || m_PLLx_InputFreq/CLKIN_DIV > 40)
-    {
-        //MessageLog::getInstance()->write("Si5351C - PLL input CLKDIV_IN > 8.\n", LOG_ERROR);
-        return false;
-    }
-
-    unsigned int MS1_P1;
-    unsigned int MS1_P2;
-    unsigned int MS1_P3;
-
-    unsigned int *MSX_P1 = &MS1_P1;
-    unsigned int *MSX_P2 = &MS1_P2;
-    unsigned int *MSX_P3 = &MS1_P3;
-
     int addr;
     m_newConfiguration[3] = 0;
-    float foutmax = 0;
     for(int i=0; i<8; ++i)
     {
-        if(clk_channels[i].outputFreqMHz > foutmax)
-            foutmax = clk_channels[i].outputFreqMHz;
-    }
-    float Divider = 8;
-    while( foutmax * Divider < 600 && foutmax * Divider < 900)
-    {
-        ++Divider;
-        fVCO = foutmax * Divider;
-    }
+        m_newConfiguration[3] |= (!CLK[i].powered) << i; //enabled
+        m_newConfiguration[16+i] |= !CLK[i].powered << 7; // powered
+        m_newConfiguration[16+i] = 0;
+        if(CLK[i].int_mode)
+        {
+            m_newConfiguration[16+i] |= 1 << 6; //integer mode
+        }
+        else
+            m_newConfiguration[16+i] |= 0 << 6;
 
-    for(int i=0; i<8; ++i)
-    {
-        m_newConfiguration[3] |= (!clk_channels[i].powered) << i;
+        m_newConfiguration[16+i] |= CLK[i].pllSource << 5; //PLL source
+        m_newConfiguration[16+i] |= CLK[i].inverted << 4; // invert
+        m_newConfiguration[16+i] |= 3 << 2;
+        m_newConfiguration[16+i] |= 3;
+
         addr = 42+i*8;
-        float fout = clk_channels[i].outputFreqMHz;// clk_configs[i].fOut_MHz;
         ss.clear();
         ss.str( string() );
-        ss << "fOut = " << fout << " MHz" << endl;
-        //MessageLog::getInstance()->write(ss.str(), LOG_WARNING);
+        ss << "CLK" << i << " fOut = " << CLK[i].outputFreqHz/1000000.0 << " MHz";
         int DivA;
         int DivB;
         int DivC;
-        float Divider;
-        if(fout == 0) Divider = 8;
-        else Divider = fVCO / fout;
-        realToFrac(Divider, DivA, DivB, DivC);
-        ss.clear();
-        ss.str( string() );
-        ss << "Si5351C : fOut ratio   a = " << DivA << "  b = " << DivB << "  c = " << DivC << endl;
-        //MessageLog::getInstance()->write(ss.str(), LOG_WARNING);
 
+        realToFrac(CLK[i].multisynthDivider, DivA, DivB, DivC);
+        ss << "  Multisynth Divider " << DivA << " " << DivB << "/" << DivC;
+        ss << "  R divider = " << CLK[i].outputDivider << " source = " << (CLK[i].pllSource == 0 ? "PLLA" : "PLLB") << endl;
 
-        if( Divider < 6 || 1800 < Divider)
+        MessageLog::getInstance()->write(ss.str(), LOG_INFO);
+
+        if( (CLK[i].multisynthDivider < 8 || 900 < CLK[i].multisynthDivider) && CLK[i].powered )
         {
-            //MessageLog::getInstance()->write("Si5351C - Output multisynth divider is outside [6;1800] interval.", LOG_ERROR);
+            MessageLog::getInstance()->write("Si5351C - Output multisynth divider is outside [8;900] interval.", LOG_ERROR);
             return false;
         }
-        if(fout <= 150)
-        {
-            *MSX_P1 = 128 * DivA + floor(128 * ( (float)DivB/DivC)) - 512;
-            *MSX_P2 = 128 * DivB - DivC * floor( 128 * DivB/DivC );
-            *MSX_P3 = DivC;
 
-            m_newConfiguration[addr] = *MSX_P3 >> 8;
-            m_newConfiguration[addr+1] = *MSX_P3;
+        if(CLK[i].outputFreqHz <= 150000000)
+        {
+            unsigned MSX_P1 = 128 * DivA + floor(128 * ( (float)DivB/DivC)) - 512;
+            unsigned MSX_P2 = 128 * DivB - DivC * floor( 128 * DivB/DivC );
+            unsigned MSX_P3 = DivC;
+
+            m_newConfiguration[addr] = MSX_P3 >> 8;
+            m_newConfiguration[addr+1] = MSX_P3;
 
             m_newConfiguration[addr+2] = 0;
-            m_newConfiguration[addr+2] |= (*MSX_P1 >> 16 ) & 0x03;
-            m_newConfiguration[addr+3] = *MSX_P1 >> 8;
-            m_newConfiguration[addr+4] = *MSX_P1;
+            m_newConfiguration[addr+2] |= (MSX_P1 >> 16 ) & 0x03;
+            m_newConfiguration[addr+3] = MSX_P1 >> 8;
+            m_newConfiguration[addr+4] = MSX_P1;
 
             m_newConfiguration[addr+5] = 0;
-            m_newConfiguration[addr+5] = (*MSX_P2 >> 16) & 0x0F;
-            m_newConfiguration[addr+5] |= (*MSX_P3 >> 16) << 4;
+            m_newConfiguration[addr+5] = (MSX_P2 >> 16) & 0x0F;
+            m_newConfiguration[addr+5] |= (MSX_P3 >> 16) << 4;
 
-            m_newConfiguration[addr+6] = *MSX_P2;
-            m_newConfiguration[addr+7] = *MSX_P2 >> 8;
+            m_newConfiguration[addr+6] = MSX_P2;
+            m_newConfiguration[addr+7] = MSX_P2 >> 8;
         }
-        else if( fout <= 160) // AVAILABLE ONLY ON 0-5 MULTISYNTHS
+        else if( CLK[i].outputFreqHz <= 160000000) // AVAILABLE ONLY ON 0-5 MULTISYNTHS
         {
 
         }
+
     }
 
-    float fCLKIN = m_PLLx_InputFreq;
-    float fVCO_divider = fVCO / fCLKIN;
-    if(fVCO_divider < 15 || fVCO_divider > 90)
+    //configure pll
+    for(int i=0; i<2; ++i)
     {
-        //MessageLog::getInstance()->write("Si5351C - VCO frequency divider out of range [15:90].\n", LOG_ERROR);
-        return false;
+        addr = 26+i*8;
+        if(PLL[i].feedbackDivider < 15 || PLL[i].feedbackDivider > 90)
+        {
+            MessageLog::getInstance()->write("Si5351C - VCO frequency divider out of range [15:90].\n", LOG_ERROR);
+            //return false;
+        }
+        if( PLL[i].VCO_Hz < 600000000 || PLL[i].VCO_Hz > 900000000)
+        {
+            MessageLog::getInstance()->write("Si5351C - Can't calculate valid VCO frequency.\n", LOG_ERROR);
+            //return false;
+        }
+        ss.clear();
+        ss.str(string());
+        ss << "Si5351C : VCO" << (i==0 ? "A" : "B") << " = " << PLL[i].VCO_Hz/1000000.0 << " MHz";
+
+        //calculate MSNx_P1, MSNx_P2, MSNx_P3
+        int MSNx_P1;
+        int MSNx_P2;
+        int MSNx_P3;
+
+        int DivA;
+        int DivB;
+        int DivC;
+        realToFrac(PLL[i].feedbackDivider, DivA, DivB, DivC);
+        ss << "  Feedback Divider " << DivA << " " << DivB << "/" << DivC << endl;
+        MessageLog::getInstance()->write(ss.str(), LOG_INFO);
+
+        MSNx_P1 = 128 * DivA + floor(128 * ( (float)DivB/DivC)) - 512;
+        MSNx_P2 = 128 * DivB - DivC * floor( 128 * DivB/DivC );
+        MSNx_P3 = DivC;
+
+        m_newConfiguration[addr+4] = MSNx_P1;
+        m_newConfiguration[addr+3] = MSNx_P1 >> 8;
+        m_newConfiguration[addr+2] = MSNx_P1 >> 16;
+
+        m_newConfiguration[addr+7] = MSNx_P2;
+        m_newConfiguration[addr+6] = MSNx_P2 >> 8;
+        m_newConfiguration[addr+5] = 0;
+        m_newConfiguration[addr+5] = (MSNx_P2 >> 16) & 0x0F;
+
+        m_newConfiguration[addr+5] |= (MSNx_P3 >> 16) << 4;
+        m_newConfiguration[addr+1] |= MSNx_P3;
+        m_newConfiguration[addr] |= MSNx_P3 >> 8;
     }
-    if( fVCO < 600 || fVCO > 900)
-    {
-        //MessageLog::getInstance()->write("Si5351C - Can't calculate valid VCO frequency.\n", LOG_ERROR);
-        return false;
-    }
-    ss.clear();
-    ss.str(string());
-    ss << "Si5351C : fVCO = " << fVCO << " MHz" << endl;
-    //MessageLog::getInstance()->write(ss.str(), LOG_WARNING);
-
-    //calculate MSNx_P1, MSNx_P2, MSNx_P3
-    int *MSNx_P1;
-    int *MSNx_P2;
-    int *MSNx_P3;
-
-    MSNx_P1 = &MSNA_P1;
-    MSNx_P2 = &MSNA_P2;
-    MSNx_P3 = &MSNA_P3;
-
-    int DivA;
-    int DivB;
-    int DivC;
-    Divider = fVCO_divider;
-    realToFrac(Divider, DivA, DivB, DivC);
-    ss.clear();
-    ss.str( string() );
-    ss << "Si5351C : fVCO ratio  a = " << DivA << "  b = " << DivB << "  c = " << DivC << endl;
-    //MessageLog::getInstance()->write(ss.str(), LOG_WARNING);
-
-    *MSNx_P1 = 128 * DivA + floor(128 * ( (float)DivB/DivC)) - 512;
-    *MSNx_P2 = 128 * DivB - DivC * floor( 128 * DivB/DivC );
-    *MSNx_P3 = DivC;
-
-    m_newConfiguration[30] = MSNA_P1;
-    m_newConfiguration[30-1] = MSNA_P1 >> 8;
-    m_newConfiguration[30-2] = MSNA_P1 >> 16;
-
-    m_newConfiguration[33] = MSNA_P2;
-    m_newConfiguration[32] = MSNA_P2 >> 8;
-    m_newConfiguration[31] = 0;
-    m_newConfiguration[31] = (MSNA_P2 >> 16) & 0x0F;
-
-    m_newConfiguration[31] |= (MSNA_P3 >> 16) << 4;
-    m_newConfiguration[27] |= MSNA_P3;
-    m_newConfiguration[26] |= MSNA_P3 >> 8;
-
     //CLK input divider
     unsigned char cbyte = 0;
-    cbyte = (m_newConfiguration[15] & 0x3F) | ((int)log2(CLKIN_DIV) << 6);
+    cbyte = (m_newConfiguration[15] & 0x3F) | ((int)log2(PLL[0].feedbackDivider) << 6);
     //PLLA source
-    if(m_PLLA_inputSource == Si_CLKIN)
-        cbyte |= 0x04;
-    else
-        cbyte |= 0x00;
-    //PLLB source
-    if(m_PLLB_inputSource == Si_CLKIN)
-        cbyte |= 0x08;
-    else
-        cbyte |= 0x00;
+    cbyte |= 0x04;
+    cbyte |= 0x08;
     m_newConfiguration[15] = cbyte;
-
-
 
     return true;
 }
 
-void Si5351C::SetClock(unsigned char id, float fOut_MHz, bool enabled, bool inverted)
+/** @brief Sets output clock parameters
+    @param id clock id 0-CLK0 1-CLK1 ...
+    @param fOut_Hz output frequency in Hz
+    @param enabled is this output powered
+    @param inverted invert clock
+*/
+void Si5351C::SetClock(unsigned char id, unsigned long fOut_Hz, bool enabled, bool inverted)
 {
     if( id < 8)
     {
-        if(fOut_MHz < 0.008 || fOut_MHz > 160)
+        CLK[id].powered = enabled;
+        CLK[id].inverted = inverted;
+        CLK[id].outputFreqHz = fOut_Hz;
+        if(fOut_Hz < 8000 || fOut_Hz > 160000000)
         {
             stringstream ss;
-            ss << "Si5351C - CLK" << (int)id << " output frequency must be between 8kHz and 160MHz. fOut_MHz = " << fOut_MHz << endl;
-            //MessageLog::getInstance()->write(ss.str(), LOG_ERROR);
+            ss << "Si5351C - CLK" << (int)id << " output frequency must be between 8kHz and 160MHz. fOut_MHz = " << fOut_Hz/1000000.0 << endl;
+            MessageLog::getInstance()->write(ss.str(), LOG_ERROR);
             return;
         }
-        clk_channels[id].powered = enabled;
-        clk_channels[id].inverted = inverted;
-        clk_channels[id].outputFreqMHz = fOut_MHz;
     }
 }
 
-void Si5351C::SetPLL(unsigned char id, float CLKIN_MHz)
+/** @brief Sets PLL input frequency
+    @param id PLL id 0-PLLA 1-PLLB
+    @param CLKIN_Hz clock input in Hz
+*/
+void Si5351C::SetPLL(unsigned char id, unsigned long CLKIN_Hz)
 {
-    if( id == 0)
-    {
-        m_PLLA.inputFreqMHz = CLKIN_MHz;
-    }
-    if( id == 1)
-    {
-        m_PLLB.inputFreqMHz = CLKIN_MHz;
-    }
+    if(id < 2)
+        PLL[id].inputFreqHz = CLKIN_Hz;
 }
 
+/** @brief Resets configuration registers to default values
+*/
 void Si5351C::Reset()
 {
     memset(m_newConfiguration, 0, 255);

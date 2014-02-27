@@ -11,6 +11,7 @@
 #include "TxRf_Module.h"
 #include "ConnectionManager.h"
 #include "Main_Module.h"
+#include "ctr_6002dr2_LogicDLL.h"
 //---------------------------------------------------------------------------
 
 //0x0
@@ -751,6 +752,7 @@ void TxRf_Module::setPA(int index)
 
 	};
 	pMainModule->getSerPort()->SetBrdPA(index);
+	LMLL_GetControlModule()->SetGPIO(2, 2, index-1);
 }
 int TxRf_Module::getPA()
 {

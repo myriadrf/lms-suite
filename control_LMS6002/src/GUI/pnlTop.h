@@ -3,18 +3,18 @@
 
 //(*Headers(pnlTop)
 #include <wx/panel.h>
-class wxStaticBoxSizer;
-class wxComboBox;
-class wxFlexGridSizer;
-class wxToggleButton;
-class wxButton;
-class wxStaticLine;
-class wxCheckListBox;
-class wxBoxSizer;
-class wxStaticText;
-class wxRadioBox;
 class wxStaticBox;
 class wxCheckBox;
+class wxComboBox;
+class wxStaticLine;
+class wxRadioBox;
+class wxStaticText;
+class wxToggleButton;
+class wxFlexGridSizer;
+class wxBoxSizer;
+class wxButton;
+class wxStaticBoxSizer;
+class wxCheckListBox;
 //*)
 
 class pnlTop: public wxPanel
@@ -40,56 +40,56 @@ class pnlTop: public wxPanel
         void SetCalDefaults();
 
 		//(*Declarations(pnlTop)
-		wxRadioBox* rgrCLKSEL_LPFCAL;
-		wxRadioBox* rgrRFLB;
-		wxButton* btnReadRCCALVal;
-		wxButton* btnDCReadVal;
-		wxPanel* Panel7;
-		wxButton* btnDCRstClbr;
-		wxCheckListBox* chbSpiClkBuf;
-		wxCheckBox* chbSLFBXCOBUF;
-		wxCheckBox* chbPwrSoftTx;
-		wxButton* btnDCStartClbr;
-		wxCheckBox* chkLpfCalEnEnf;
-		wxRadioBox* rgrTDDMOD;
-		wxRadioBox* rgrBBLB;
-		wxButton* btnDCLoadVal;
-		wxCheckBox* chbPwrSoftRx;
 		wxCheckBox* chkLpfCalEn;
-		wxRadioBox* rgrSpiMode;
-		wxStaticText* lblDC_CLBR_DONE;
-		wxStaticText* lblDC_LOCK;
+		wxRadioBox* rgrCLKSEL_LPFCAL;
+		wxStaticText* StaticText9;
+		wxCheckBox* chbPwrSoftTx;
+		wxRadioBox* rgrDecode;
 		wxStaticText* lblRCCAL_LPFCAL;
-		wxStaticText* StaticText1;
-		wxCheckBox* chbPDXCOBUF;
-		wxStaticBox* StaticBox2;
-		wxStaticText* StaticText3;
-		wxCheckBox* chbRxTestModeEn;
-		wxStaticLine* StaticLine1;
-		wxCheckBox* chbPD_CLKLPFCAL;
+		wxButton* btnReadRCCALVal;
+		wxRadioBox* rgrRFLB;
+		wxCheckBox* chkLpfCalEnEnf;
+		wxButton* btnDCStartClbr;
+		wxStaticText* StaticText2;
+		wxStaticText* StaticText6;
 		wxComboBox* cmbDCCalAddr;
-		wxStaticText* lblDC_UD;
+		wxCheckBox* chbPDXCOBUF;
 		wxStaticText* StaticText8;
 		wxCheckBox* chbPwrRfLbsw;
-		wxStaticText* StaticText7;
-		wxComboBox* cmbCalVal;
-		wxStaticText* StaticText4;
-		wxStaticText* StaticText5;
-		wxCheckBox* chkLpfCalRst;
-		wxStaticText* StaticText2;
-		wxComboBox* cmbLpfCalBw;
+		wxStaticText* StaticText1;
+		wxCheckBox* chbSLFBXCOBUF;
+		wxStaticText* StaticText3;
+		wxRadioBox* rgrBBLB;
 		wxRadioBox* rgrRXOUTSW;
-		wxToggleButton* swReset;
-		wxStaticText* StaticText6;
-		wxRadioBox* rgrDecode;
-		wxComboBox* cmbLpfCalCode;
-		wxRadioBox* rgrFDDTDD;
-		wxStaticText* StaticText9;
-		wxCheckBox* chbBYPXCOBUF;
-		wxStaticText* lbDC_REGVAL;
-		wxCheckBox* chbPwrTopMods;
 		wxCheckBox* chbPwrLpfCal;
 		wxRadioBox* rgrDsmRst;
+		wxCheckBox* chkLpfCalRst;
+		wxStaticBox* StaticBox2;
+		wxCheckBox* chbPwrTopMods;
+		wxStaticText* StaticText5;
+		wxStaticText* StaticText7;
+		wxPanel* Panel7;
+		wxButton* btnDCRstClbr;
+		wxStaticLine* StaticLine1;
+		wxCheckBox* chbBYPXCOBUF;
+		wxComboBox* cmbLpfCalBw;
+		wxStaticText* lblDC_LOCK;
+		wxComboBox* cmbLpfCalCode;
+		wxCheckBox* chbPD_CLKLPFCAL;
+		wxRadioBox* rgrSpiMode;
+		wxButton* btnDCLoadVal;
+		wxToggleButton* swReset;
+		wxCheckListBox* chbSpiClkBuf;
+		wxComboBox* cmbCalVal;
+		wxButton* btnDCReadVal;
+		wxStaticText* lblDC_CLBR_DONE;
+		wxStaticText* lbDC_REGVAL;
+		wxStaticText* StaticText4;
+		wxRadioBox* rgrTDDMOD;
+		wxCheckBox* chbRxTestModeEn;
+		wxStaticText* lblDC_UD;
+		wxRadioBox* rgrFDDTDD;
+		wxCheckBox* chbPwrSoftRx;
 		//*)
 
 	protected:

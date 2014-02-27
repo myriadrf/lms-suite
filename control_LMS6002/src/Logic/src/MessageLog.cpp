@@ -110,7 +110,7 @@ void MessageLog::clear()
 
 /** @brief Creates message log, initializes filters.
 */
-MessageLog::MessageLog() : m_printToConsole(true), m_enableLogging(false)
+MessageLog::MessageLog() : m_printToConsole(false), m_enableLogging(false)
 {
     m_logFilter = LOG_INFO | LOG_WARNING | LOG_ERROR | LOG_DATA;
     m_consoleFilter = LOG_INFO | LOG_WARNING | LOG_ERROR | LOG_DATA;

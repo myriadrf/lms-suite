@@ -1956,12 +1956,24 @@ sprintf(Sect, "%i", (int)m_cMAddr);
 //---------------------------------------------------------------------------
 void RxFe_Module::CustSet_ActiveLNA(int ind)
 {
-  m_bAllowSend = false;
-  cmbLNASEL_RXFE.itemIndex = ind;
-  m_bAllowSend = true;
-  pMainModule->getSerPort()->SetBrdLNA(ind);
+    m_bAllowSend = false;
+    cmbLNASEL_RXFE.itemIndex = ind;
+    m_bAllowSend = true;
+    pMainModule->getSerPort()->SetBrdLNA(ind);
 
-  MakeData(0x80); pMainModule->CMAutoDownload(m_cMAddr);
+
+    if(ind == 0)
+        pMainModule->SetGPIO(1, 0, 2);
+    else if(ind == 1)
+        pMainModule->SetGPIO(1, 0, 3);
+    else if(ind == 2)
+        pMainModule->SetGPIO(1, 0, 1);
+    else if(ind == 3)
+        pMainModule->SetGPIO(1, 0, 0);
+
+    unsigned char c_gpio = pMainModule->GetGPIO();
+    pMainModule->getSerPort()->SendData(CMD_MYRIAD_GPIO_WR, &c_gpio, 1);
+    MakeData(0x80); pMainModule->CMAutoDownload(m_cMAddr);
 };
 
 void RxFe_Module::LNAPowerOn(bool on)

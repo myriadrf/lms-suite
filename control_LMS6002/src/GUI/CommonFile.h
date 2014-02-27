@@ -7,13 +7,16 @@
 // REVISIONS:
 // -----------------------------------------------------------------------------
 
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef COMMONFILE_H
+#define COMMONFILE_H
 
 #include <vector>
 #include <string>
 #include <stdio.h>
+#include <stdlib.h>
 #include "assert.h"
+#include <string.h>
+#include <wx/wx.h>
 using namespace std;
 
 #define RegistryString "Software\\ctr_6002d\\Settings"
@@ -84,7 +87,9 @@ struct sVcoVsCap
 	double *iCap;
 };
 
+
 //int QuadraticInterpol(int iRefVCnt, double *dFVco, double *dCVco, double dRealFvco);
+
 string Int2Hex(int integer, int symCount);
 string Val2Units(double value, char *units);
 double Units2Val(char *str, char *units);

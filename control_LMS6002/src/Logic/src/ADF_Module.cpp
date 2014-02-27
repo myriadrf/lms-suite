@@ -4,7 +4,6 @@
 
 #include "Main_Module.h"
 #include "ConnectionManager.h"
-extern string Int2Hex(int, int);
 
 /** @brief ADF_Module
   *
@@ -365,10 +364,10 @@ void ADF_Module::MakeData(int rAddr)
     default:
         m_psD.iToW = 0;
     };
-    cout << "DATA TO ADF -  address : " << rAddr << endl;
-    for(int i=0; i<m_psD.iToW; ++i)
-        cout << Int2Hex(m_psD.cDataW[m_psD.iWInd[i]], 2) << ' ';
-    cout << endl;
+//    cout << "DATA TO ADF -  address : " << rAddr << endl;
+//    for(int i=0; i<m_psD.iToW; ++i)
+//        cout << Int2Hex(m_psD.cDataW[m_psD.iWInd[i]], 2) << ' ';
+//    cout << endl;
 
 }
 

@@ -15,21 +15,25 @@ enum eSi_CLOCK_INPUT
 
 struct Si5351_Channel
 {
+    Si5351_Channel() : outputDivider(1), outputFreqHz(1), multisynthDivider(1), pllSource(0),
+        phaseOffset(0), powered(true), inverted(false), int_mode(false) {};
     int outputDivider;
-    float outputFreqMHz;
+    unsigned long outputFreqHz;
     float multisynthDivider;
     int pllSource;
     float phaseOffset;
     bool powered;
     bool inverted;
+    bool int_mode;
 };
 
 struct Si5351_PLL
 {
-    float inputFreqMHz;
-    float PFD_MHz;
-    float VCO_MHz;
+    Si5351_PLL() : inputFreqHz(0), VCO_Hz(0), feedbackDivider(0), CLKIN_DIV(1) {}
+    unsigned long inputFreqHz;
+    float VCO_Hz;
     float feedbackDivider;
+    int CLKIN_DIV;
 };
 
 class ConnectionManager;
@@ -41,22 +45,23 @@ public:
 	void Initialize(ConnectionManager *mng);
 	bool LoadRegValuesFromFile(string FName);
 
-    void SetPLL(unsigned char id, float CLKIN_MHz);
-    void SetClock(unsigned char id, float fOut_MHz, bool enabled = true, bool inverted = false);
+    void SetPLL(unsigned char id, unsigned long CLKIN_Hz);
+    void SetClock(unsigned char id, unsigned long fOut_Hz, bool enabled = true, bool inverted = false);
 
 	void UploadConfiguration();
 	bool ConfigureClocks();
 	void Reset();
 private:
+    void FindVCO(Si5351_Channel *clocks, Si5351_PLL *plls, const unsigned long Fmin, const unsigned long Fmax);
     ConnectionManager *device;
 
-    Si5351_PLL m_PLLA;
-    Si5351_PLL m_PLLB;
+    Si5351_PLL PLL[2];
+    Si5351_Channel CLK[8];
 
 	static const unsigned char m_defaultConfiguration[];
 	unsigned char m_newConfiguration[255];
 
-	Si5351_Channel clk_channels[8];
+
 };
 
 #endif // SI5351C_MODULE

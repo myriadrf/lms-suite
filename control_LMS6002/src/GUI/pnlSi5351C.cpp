@@ -2,13 +2,13 @@
 #include "ctr_6002dr2_LogicDLL.h"
 #include <wx/filedlg.h>
 //(*InternalHeaders(pnlSi5351C)
-#include <wx/checkbox.h>
 #include <wx/sizer.h>
-#include <wx/button.h>
-#include <wx/string.h>
-#include <wx/intl.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
+#include <wx/checkbox.h>
+#include <wx/intl.h>
+#include <wx/button.h>
+#include <wx/string.h>
 //*)
 
 //(*IdInit(pnlSi5351C)
@@ -69,12 +69,12 @@ pnlSi5351C::pnlSi5351C(wxWindow* parent,wxWindowID id,const wxPoint& pos,const w
 void pnlSi5351C::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize& size)
 {
 	//(*Initialize(pnlSi5351C)
-	wxFlexGridSizer* FlexGridSizer1;
-	wxFlexGridSizer* FlexGridSizer2;
 	wxFlexGridSizer* FlexGridSizer4;
-	wxFlexGridSizer* FlexGridSizer9;
 	wxFlexGridSizer* FlexGridSizer3;
+	wxFlexGridSizer* FlexGridSizer9;
+	wxFlexGridSizer* FlexGridSizer2;
 	wxStaticBoxSizer* StaticBoxSizer1;
+	wxFlexGridSizer* FlexGridSizer1;
 
 	Create(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("wxID_ANY"));
 	FlexGridSizer1 = new wxFlexGridSizer(0, 1, 0, 0);
@@ -204,7 +204,7 @@ void pnlSi5351C::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& pos,
 	FlexGridSizer1->Fit(this);
 	FlexGridSizer1->SetSizeHints(this);
 
-	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlSi5351C::OnbtnConfigureClockClick);
+	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlSi5351C::OnbtnUploadClick);
 	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlSi5351C::OnbtnLoadFileClick);
 	Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlSi5351C::OnbtnResetToDefaultsClick);
 	Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlSi5351C::OnbtnConfigureClockClick);
@@ -224,6 +224,7 @@ void pnlSi5351C::OnbtnLoadFileClick(wxCommandEvent& event)
         return;
 
     LMLL_BoardLoadRegValuesFromFile( (char*)openFileDialog.GetPath().ToStdString().c_str());
+    LMLL_BoardUploadValuesSi5351C();
 }
 
 void pnlSi5351C::OnbtnConfigureClockClick(wxCommandEvent& event)
@@ -256,4 +257,10 @@ void pnlSi5351C::OnbtnConfigureClockClick(wxCommandEvent& event)
 void pnlSi5351C::OnbtnResetToDefaultsClick(wxCommandEvent& event)
 {
     LMLL_BoardResetToDefaults();
+    LMLL_BoardUploadValuesSi5351C();
+}
+
+void pnlSi5351C::OnbtnUploadClick(wxCommandEvent& event)
+{
+    LMLL_BoardUploadValuesSi5351C();
 }

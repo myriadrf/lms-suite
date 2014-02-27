@@ -1,7 +1,7 @@
 #ifndef CONNECTION_MANAGER_H
 #define CONNECTION_MANAGER_H
 
-#include "LMS7002M_Commands.h"
+#include "LMS_Commands.h"
 #include "IConnection.h"
 #include <string>
 #include <map>
@@ -46,8 +46,8 @@ public:
     vector<string> GetReceiverList();
     vector<string> GetTransmitterList();
 
-    int SendData( eCMD_LMS7002M cmd, const unsigned char *data, long length);
-	int SendReadData( eCMD_LMS7002M cmd, const unsigned char *outData, unsigned long oLength, unsigned char *inData, unsigned long &iLength);
+    int SendData( eCMD_LMS cmd, const unsigned char *data, long length);
+	int SendReadData( eCMD_LMS cmd, const unsigned char *outData, unsigned long oLength, unsigned char *inData, unsigned long &iLength);
 
     void SPI_Rst();
 	void SPI_RstAct();
@@ -61,7 +61,7 @@ public:
 	void SetBrdPA(int i);
 
 protected:
-    int MakeAndSendPacket( eCMD_LMS7002M cmd, const unsigned char *data, long length);
+    int MakeAndSendPacket( eCMD_LMS cmd, const unsigned char *data, long length);
     int ReadData(unsigned char *data, long &length);
 
     vector<DeviceInfo> m_receivers;
