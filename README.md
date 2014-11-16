@@ -1,10 +1,18 @@
-# Myriad-RF Utilities
+# LMS Suite
 
-This repository contains utilities which are designed to be used with the Myriad-RF 1 together with an interface board.
+Utilities for use with Myriad-RF hardware based upon FPRF transceivers from Lime Microsystems.
 
-## Contents
+The utilities:
 
-The utilities allow calibration of the LMS6002D transceiver IC, and configuration of it plus support devices such as clock generators.
+* can be used to calibrate the transceiver;
+* allow configuration of the transceiver plus support devices such as clock generators;
+* provide an FFT display.
+
+Please note that the strategic solution is a single binary called *lms-suite*. However, at the time of writing this software only supports the Novena-RF module.
+
+Owners of Reference Development Kit (Myriad-RF 1 + DE0-Nano interface/Zipper) and RASDR (Myriad-RF 1 + DigiRED) hardware should use the board-specific legacy software for the present time.
+
+## Legacy
 
 ### ctr_6002dr2_myriad
 

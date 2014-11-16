@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxDialog" name="dlgRegisterTest">
+		<title>Registers test</title>
+		<pos_arg>1</pos_arg>
+		<size_arg>1</size_arg>
+		<style>wxDEFAULT_DIALOG_STYLE|wxMAXIMIZE_BOX</style>
+		<handler function="OnInit" entry="EVT_INIT_DIALOG" />
+		<object class="wxFlexGridSizer" variable="FlexGridSizer1" member="no">
+			<cols>1</cols>
+			<growablecols>0</growablecols>
+			<growablerows>0</growablerows>
+			<object class="sizeritem">
+				<object class="wxFlexGridSizer" variable="FlexGridSizer2" member="no">
+					<cols>1</cols>
+					<growablecols>0</growablecols>
+					<growablerows>1</growablerows>
+					<object class="sizeritem">
+						<object class="wxButton" name="ID_BUTTON2" variable="btnStart" member="yes">
+							<label>Start registers test</label>
+							<handler function="OnbtnStartClick" entry="EVT_BUTTON" />
+						</object>
+						<flag>wxTOP|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+						<option>1</option>
+					</object>
+					<object class="sizeritem">
+						<object class="wxRichTextCtrl" name="ID_RICHTEXTCTRL1" variable="richTextField" member="yes">
+							<size>300,400</size>
+							<style>wxRE_MULTILINE|wxRE_READONLY</style>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+						<option>1</option>
+					</object>
+				</object>
+				<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+				<border>5</border>
+				<option>1</option>
+			</object>
+			<object class="sizeritem">
+				<object class="wxButton" name="ID_BUTTON1" variable="btnClose" member="yes">
+					<label>Close</label>
+					<handler function="OnbtnCloseClick" entry="EVT_BUTTON" />
+				</object>
+				<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+				<border>5</border>
+				<option>1</option>
+			</object>
+		</object>
+	</object>
+</wxsmith>
