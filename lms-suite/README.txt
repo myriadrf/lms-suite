@@ -2,5 +2,5 @@ This folder contains documents and source code for LMS Suite software.
 
 Contents:
     docs - compiliation guides for Windows and Linux operating systems
-    lmssuite_src - LMS Suite source code
+    src - LMS Suite source code
 
