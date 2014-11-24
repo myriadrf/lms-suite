@@ -76,6 +76,7 @@ public:
 
 	string GetConnectionStatus();
     eLMS_DEV GetConnectedDeviceType();
+    eEXP_BOARD GetExpansionBoardType();
 
 	int BeginDataReading(char *buffer, long length);
 	int WaitForReading(int contextHandle, unsigned int timeout_ms);
@@ -91,6 +92,7 @@ protected:
     lmSemaphore m_lock;
     eLMS_PROTOCOL m_activeProtocol;
     eLMS_DEV m_currentDeviceType;
+    eEXP_BOARD m_expansionBoardType;
 
     vector<DeviceInfo> m_receivers;
     vector<DeviceInfo> m_transmitters;

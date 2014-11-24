@@ -50,6 +50,7 @@ ConnectionManager::ConnectionManager() : activeControlPort(NULL), activeTransmit
     lmCreateSemaphore(m_lock, 1, 1);
     m_activeProtocol = LMS_PROTOCOL_UNDEFINED;
     m_currentDeviceType = LMS_DEV_UNKNOWN;
+    m_expansionBoardType = EXP_BOARD_UNKNOWN;
     m_connectionStatus = "Board disconnected";
 	m_testWriting = false;
     m_tripleCheckRead = false;
@@ -230,6 +231,7 @@ bool ConnectionManager::OpenReceiver(unsigned int i)
                     m_currentDeviceType = LMS_DEV_UNKNOWN;
                     ss << "UNSPECIFIED ID";
                 }
+                m_expansionBoardType = (eEXP_BOARD)pkt.inBuffer[4];
                 ss << "  Protocol: " << (int)pkt.inBuffer[2] << endl;
             }
             else if(m_receivers[i].port == SPI_PORT)
@@ -238,9 +240,10 @@ bool ConnectionManager::OpenReceiver(unsigned int i)
                 if(IsNovenaBoard())
                 {
                     ss << "Firmware: ?" << "  Device: ";
-                    m_currentDeviceType = LMS_DEV_UNKNOWN;
+                    m_currentDeviceType = LMS_DEV_NOVENA;
                     ss << "Novena";
                     ss << "  Protocol: ?" << endl;
+                    m_expansionBoardType = EXP_BOARD_MYRIAD_NOVENA;
                 }
                 else
                 {
@@ -248,6 +251,7 @@ bool ConnectionManager::OpenReceiver(unsigned int i)
                     m_currentDeviceType = LMS_DEV_UNKNOWN;
                     ss << "UNSPECIFIED ID";
                     ss << "  Protocol: ?" << endl;
+                    m_expansionBoardType = EXP_BOARD_UNKNOWN;
                 }
             }
             else
@@ -268,6 +272,7 @@ bool ConnectionManager::OpenReceiver(unsigned int i)
                         m_currentDeviceType = LMS_DEV_UNKNOWN;
                         ss << "UNSPECIFIED ID";
                     }
+                    m_expansionBoardType = (eEXP_BOARD)pkt.inBuffer[4];
                     ss << "  Protocol: " << (int)pkt.inBuffer[2] << endl;
                 }
                 else
@@ -276,6 +281,7 @@ bool ConnectionManager::OpenReceiver(unsigned int i)
                     TransferPacket(pkt);
                     ss << "Firmware: ?" << "  Device: ";
                     ss << LMS_DEV_NAMES[m_currentDeviceType];
+                    m_expansionBoardType = EXP_BOARD_UNKNOWN;
                     ss << "  Protocol: ?" << endl;
                 }
             }
@@ -507,6 +513,11 @@ eConnectionType ConnectionManager::GetConnectionType()
 eLMS_DEV ConnectionManager::GetConnectedDeviceType()
 {
     return m_currentDeviceType;
+}
+
+eEXP_BOARD ConnectionManager::GetExpansionBoardType()
+{
+    return m_expansionBoardType;
 }
 
 /**

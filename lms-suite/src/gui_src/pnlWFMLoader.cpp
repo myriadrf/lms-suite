@@ -205,7 +205,7 @@ void pnlWFMLoader::OnbtnMifClick(wxCommandEvent& event)
         return;
 
     ofstream fout;
-    fout.open(dlg.GetPath().c_str(), ios::out);
+    fout.open(dlg.GetPath().ToStdString().c_str(), ios::out);
     fout << "WIDTH=13;" << endl;
     fout << "DEPTH=" << iq_pairs.size()*2 << ";" << endl << endl;
     fout << "ADDRESS_RADIX=UNS;" << endl;
@@ -247,7 +247,7 @@ void pnlWFMLoader::OnbtnHexClick(wxCommandEvent& event)
         return;
 
     ofstream fout;
-    fout.open(dlg.GetPath().c_str(), ios::out);
+    fout.open(dlg.GetPath().ToStdString().c_str(), ios::out);
     int addr = 0;
     for(unsigned i=0; i<iq_pairs.size(); ++i)
     {

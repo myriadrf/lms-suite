@@ -6,14 +6,17 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <errno.h>
-#include <strings.h>
 #include <string.h>
-#include <unistd.h>
 #include <sys/stat.h>
+
+#if defined(__GNUC__) || defined(__GNUG__)
+#include <unistd.h>
+#include <sys/time.h>
+#endif
+
 #ifdef __unix__
 #include <sys/mman.h>
 #include <stdint.h>
-
 #include <stdint.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -37,19 +40,7 @@
 #define IMX6_EIM_CS1_BASE_ADDR 0x0c040000
 
 #define DATA_FIFO_ADDR (IMX6_EIM_CS1_BASE_ADDR + 0xf000)
-
-#include <unistd.h>
-#include <sys/time.h>
-
-inline long getMilis()
-{
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-
-    double time_in_mill = (tv.tv_sec)*1000 + (tv.tv_usec)/1000;
-    return time_in_mill;
-}
-
+#include "CommonUtilities.h"
 
 using namespace std;
 

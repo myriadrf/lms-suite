@@ -25,6 +25,7 @@ class wxTextCtrl;
 class wxNotebookEvent;
 class wxSplitterEvent;
 class wxComboBox;
+class wxRadioBox;
 class wxNotebook;
 class wxStaticText;
 class wxGLCanvas;
@@ -102,6 +103,7 @@ class pnlFFTviewer: public wxPanel, public PluginPanel
         void OnbtnExtraControlsClick(wxCommandEvent& event);
         void OncmbWindowFunctionSelected(wxCommandEvent& event);
         void OnspinAvgChange(wxCommandEvent& event);
+        void OncmbBoardTypeSelect(wxCommandEvent& event);
         //*)
 
         //(*Identifiers(pnlFFTviewer)
@@ -123,6 +125,7 @@ class pnlFFTviewer: public wxPanel, public PluginPanel
         static const long ID_CHECKBOX4;
         static const long ID_COMBOBOX1;
         static const long ID_BUTTON2;
+        static const long ID_RADIOBOX1;
         static const long ID_STATICTEXT2;
         static const long ID_STATICTEXT3;
         static const long ID_STATICTEXT6;
@@ -181,6 +184,7 @@ class pnlFFTviewer: public wxPanel, public PluginPanel
         wxCheckBox* chkDCcorrection;
         wxStaticText* StaticText5;
         wxStaticText* StaticText7;
+        wxRadioBox* rgrFrameStart;
         wxTextCtrl* txtFFTsize;
         wxPanel* m_tabSpectrum;
         wxButton* btnStartStop;

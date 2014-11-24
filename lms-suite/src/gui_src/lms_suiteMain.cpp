@@ -38,7 +38,7 @@
 #include "Programmer.h"
 #include "pnlNovena.h"
 #include "pnlHPM1000.h"
-
+#include "pnlInfo.h"
 //(*IdInit(lms_suiteFrame)
 const long lms_suiteFrame::ID_STATICTEXT1 = wxNewId();
 const long lms_suiteFrame::ID_COMBOBOX1 = wxNewId();
@@ -200,6 +200,12 @@ lms_suiteFrame::lms_suiteFrame(wxWindow* parent,wxWindowID id)
     pnlHPM->Initialize(m_serPort);
     plugins.push_back(pnlHPM);
     panelsManager->AddPane(pnlHPM, wxAuiPaneInfo().Name("HPM1000").Caption("HPM1000").Bottom().Dock().Hide());
+
+    pnlGetInfo = new pnlInfo(Panel1, wxNewId());
+    pnlGetInfo ->AssignToConfigurations(PLUGINS_ALL ^ PLUGINS_NOVENA ^ PLUGINS_DIGIGREEN ^ PLUGINS_DIGIRED);
+    pnlGetInfo ->Initialize(m_serPort);
+    plugins.push_back(pnlGetInfo );
+    panelsManager->AddPane(pnlGetInfo , wxAuiPaneInfo().Name("INFO").Caption("INFO").Bottom().Dock().Hide());
 
     panelsManager->Update();
 

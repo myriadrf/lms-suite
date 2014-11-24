@@ -324,6 +324,9 @@ bool LMS6002_MainControl::UploadAll()
 {
     LMS_Message msg;
     int status = m_registersMap->UploadAll();
+    //set pa and lna, to update gpio values
+    SetParam(PA_EN, GetParam(PA_EN));
+    SetParam(LNASEL_RXFE, GetParam(LNASEL_RXFE));
     if(status == 1)
     {
         msg.type = MSG_INFO;
@@ -380,7 +383,7 @@ bool LMS6002_MainControl::DownloadAll()
     @param value new parameter value
     @return true if success
 */
-bool LMS6002_MainControl::SetParam(LMS_Parameter param, long value)
+bool LMS6002_MainControl::SetParam(LMS_Parameter param, const long value)
 {
     int N; double intFvco;
     bool status = m_registersMap->SetParameterValue(param, value);
@@ -393,7 +396,68 @@ bool LMS6002_MainControl::SetParam(LMS_Parameter param, long value)
     else if(param == SRXEN)
         m_registersMap->SetParameterValue(CLK_EN_2, value > 0);
     else if(param == LNASEL_RXFE)
+    {
         m_registersMap->SetParameterValue(SELOUT_RXPLL, value);
+        unsigned char buf[1];
+        switch(value)
+        {
+            case 1:
+                buf[0] = 0x03;
+                break;
+            case 2:
+                buf[0] = 0x01;
+                break;
+            case 3:
+                buf[0] = 0x00;
+                break;
+            default:
+                buf[0] = 0x03;
+                break;
+        }
+        GenericPacket pkt;
+        if(m_device->GetExpansionBoardType() != EXP_BOARD_HPM1000)
+        {
+            if(m_device->GetConnectedDeviceType() == LMS_DEV_ZIPPER)
+                SetGPIO(1, 0, buf[0]);
+            else
+            {
+                pkt.cmd = CMD_LMS_LNA;
+                pkt.outLen = 1;
+                pkt.outBuffer[0] = buf[0];
+                m_device->TransferPacket(pkt);
+            }
+        }
+    }
+    else if(param == PA_EN)
+    {
+        unsigned char buf[1];
+        switch(value)
+        {
+            case 1:
+                buf[0] = 0x00;
+                break;
+            case 2:
+                buf[0] = 0x01;
+                break;
+            default:
+                buf[0] = 0;
+                break;
+        }
+
+        if(m_device->GetExpansionBoardType() != EXP_BOARD_HPM1000)
+        {
+            if(m_device->GetConnectedDeviceType() == LMS_DEV_ZIPPER)
+                SetGPIO(2, 2, buf[0]);
+            else
+            {
+                GenericPacket pkt;
+                pkt.cmd = CMD_LMS_PA;
+                pkt.outLen = 1;
+                pkt.outBuffer[0] = buf[0];
+                m_device->TransferPacket(pkt);
+            }
+        }
+    }
     return status;
 }
 
@@ -903,11 +967,6 @@ void LMS6002_MainControl::SetGPIO(unsigned int msb, unsigned int lsb, int value)
     mask = mask << lsb;
     m_GPIO = m_GPIO & (~mask);
     unsigned int newValue = 0;
-//    for(int i=0; i<=msb-lsb; ++i)
-//    {
-//        newValue = newValue << 1;
-//        newValue |= (value  i);
-//    }
     newValue = value;
     newValue = newValue << lsb;
     newValue = newValue & mask;

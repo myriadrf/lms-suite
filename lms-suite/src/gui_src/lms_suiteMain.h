@@ -46,6 +46,7 @@ class pnlWFMLoader;
 class pnlProgramming;
 class pnlNovena;
 class pnlHPM1000;
+class pnlInfo;
 
 class lms_suiteFrame: public wxFrame, public SignalHandler
 {
@@ -75,6 +76,7 @@ class lms_suiteFrame: public wxFrame, public SignalHandler
         pnlProgramming* pnlProg;
         pnlNovena* pnlNovenaBoard;
         pnlHPM1000* pnlHPM;
+        pnlInfo* pnlGetInfo;
         ConnectionManager* m_serPort;
         std::vector<PluginPanel*> plugins;
         void OnPaneClose(wxAuiManagerEvent& event);

@@ -1,12 +1,14 @@
 #include "SamplesCollector.h"
 #include <stdio.h>
 #include <fstream>
-#include <unistd.h>
 #include <math.h>
 #include <stdlib.h>
 #include "CommonUtilities.h"
-
 #include "NovenaFPGA.h"
+
+#if defined(__GNUC__) || defined(__GNUG__)
+    #include <unistd.h>
+#endif
 
 SamplesCollector::SamplesCollector(ConnectionManager *serPort, BlockingFIFO<SamplesPacket> *channels) : m_running(false)
 {
@@ -81,8 +83,8 @@ void SamplesCollector::StopSampling()
 void* SamplesCollector::DigiGreenSamplingThread(void* pCollector)
 {
     int samplesCollected = 0;
-    int buffer_size = 32768;
-    int buffers_count = 32; // must be power of 2
+    const int buffer_size = 32768;
+    const int buffers_count = 32; // must be power of 2
     int buffers_count_mask = buffers_count-1;
     int handles[buffers_count];
     memset(handles, 0, sizeof(int)*buffers_count);
@@ -108,8 +110,9 @@ void* SamplesCollector::DigiGreenSamplingThread(void* pCollector)
     t2 = t1;
     unsigned long totalBytesReceived = 0;
 
-    long length = 64;
-	unsigned char out[length];
+	const long bufLen = 64;
+	long length = bufLen;
+	unsigned char out[bufLen];
 	memset(out, 0x00, length);
 	out[0] = 0x14; //CMD_CFG_I2C_WR 0x14
 	out[1] = 0xAA; //CFG_ADDR 0xAA
@@ -297,9 +300,9 @@ void* SamplesCollector::DigiGreenSamplingThread(void* pCollector)
 void* SamplesCollector::DigiRedSamplingThread(void* pCollector)
 {
     int samplesCollected = 0;
-    int buffer_size = 4096*64;
-    int buffers_count = 32; // must be power of 2
-    int buffers_count_mask = buffers_count-1;
+    const int buffer_size = 4096*64;
+    const int buffers_count = 32; // must be power of 2
+    const int buffers_count_mask = buffers_count-1;
     int handles[buffers_count];
     memset(handles, 0, sizeof(int)*buffers_count);
     char *buffers = NULL;
@@ -429,9 +432,9 @@ void* SamplesCollector::DigiRedSamplingThread(void* pCollector)
 void* SamplesCollector::StreamSamplingThread(void* pCollector)
 {
     int samplesCollected = 0;
-    int buffer_size = 4096*64;
-    int buffers_count = 32; // must be power of 2
-    int buffers_count_mask = buffers_count-1;
+    const int buffer_size = 4096*64;
+    const int buffers_count = 32; // must be power of 2
+    const int buffers_count_mask = buffers_count-1;
     int handles[buffers_count];
     memset(handles, 0, sizeof(int)*buffers_count);
     char *buffers = NULL;

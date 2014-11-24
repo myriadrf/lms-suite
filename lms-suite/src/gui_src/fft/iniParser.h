@@ -24,7 +24,7 @@ public:
     {
         stringstream fin;
         fin.str(buffer);
-        int bufSize = 256;
+        const int bufSize = 256;
         m_currentFilename = "ParsedBuffer.txt";
 
         char cline[bufSize];
@@ -98,7 +98,7 @@ public:
 
     bool Open(const char* filename)
     {
-        int bufSize = 256;
+        const int bufSize = 256;
         ifstream fin;
         fin.open(filename, ios::in);
         if(!fin.good())

@@ -17,8 +17,10 @@ const char LMS_DEV_NAMES[][80] = { "UNKNOWN", "EVB6", "DigiGreen", "DigiRed",
             "EVB7", "ZIPPER", "Socket Board", "EVB7_v2",
             "Stream", "Novena"};
 enum eEXP_BOARD {EXP_BOARD_UNKNOWN, EXP_BOARD_UNSUPPORTED, EXP_BOARD_NO,
-            EXP_BOARD_MYRIAD1, EXP_BOARD_MYRIAD2, EXP_BOARD_MYRIAD3,
-            EXP_BOARD_HPM1000};
+            EXP_BOARD_MYRIAD1, EXP_BOARD_MYRIAD2, EXP_BOARD_MYRIAD_NOVENA,
+            EXP_BOARD_HPM1000, EXP_BOARD_COUNT};
+const char EXP_BOARD_NAMES[][80] = { "UNKNOWN", "UNSUPPORTED", "NOT AVAILABLE",
+            "Myriad1", "Myriad2", "Novena", "HPM1000"};
 
 enum eCMD_LMS
 {

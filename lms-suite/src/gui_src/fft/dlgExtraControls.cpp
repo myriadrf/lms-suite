@@ -139,7 +139,7 @@ void dlgExtraControls::onRxDataSourceChangeNovena(wxCommandEvent &evt)
 void dlgExtraControls::onRxDataSourceChange(wxCommandEvent &evt)
 {
     long length = 64;
-	unsigned char out[length];
+	unsigned char out[64];
 	memset(out, 0x00, length);
 	out[0] = 0x14; //CMD_CFG_I2C_WR 0x14
 	out[1] = 0xAA; //CFG_ADDR 0xAA
@@ -196,7 +196,7 @@ void dlgExtraControls::SetSamplesCollector(SamplesCollector *pCollector)
 void dlgExtraControls::onResetSeq(wxCommandEvent &evt)
 {
     long length = 64;
-	unsigned char out[length];
+	unsigned char out[64];
 	memset(out, 0x00, length);
 	out[0] = 0x14; //CMD_CFG_I2C_WR 0x14
 	out[1] = 0xAA; //CFG_ADDR 0xAA

@@ -80,7 +80,7 @@ unsigned char* PreparePacket(const GenericPacket &pkt, int &length, const eLMS_P
         case CMD_PE636040_WR:
         case CMD_MYRIAD_GPIO_WR:
             packet.blockCount = pkt.outLen;
-            blockRatio = 2;
+            blockRatio = 1;
             break;
         default:
             packet.blockCount = pkt.outLen;

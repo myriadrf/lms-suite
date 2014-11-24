@@ -29,6 +29,7 @@ const int CHANNEL_COUNT = 2;
 #include <wx/notebook.h>
 #include <wx/sizer.h>
 #include <wx/stattext.h>
+#include <wx/radiobox.h>
 #include <wx/textctrl.h>
 #include <wx/checkbox.h>
 #include <wx/splitter.h>
@@ -60,6 +61,7 @@ const long pnlFFTviewer::ID_TEXTCTRL7 = wxNewId();
 const long pnlFFTviewer::ID_CHECKBOX4 = wxNewId();
 const long pnlFFTviewer::ID_COMBOBOX1 = wxNewId();
 const long pnlFFTviewer::ID_BUTTON2 = wxNewId();
+const long pnlFFTviewer::ID_RADIOBOX1 = wxNewId();
 const long pnlFFTviewer::ID_STATICTEXT2 = wxNewId();
 const long pnlFFTviewer::ID_STATICTEXT3 = wxNewId();
 const long pnlFFTviewer::ID_STATICTEXT6 = wxNewId();
@@ -134,6 +136,7 @@ pnlFFTviewer::pnlFFTviewer(ConnectionManager* pSerPort, wxWindow* parent,wxWindo
     wxFlexGridSizer* FlexGridSizer15;
     wxFlexGridSizer* FlexGridSizer8;
     wxFlexGridSizer* FlexGridSizer14;
+    wxFlexGridSizer* FlexGridSizer13;
     wxFlexGridSizer* FlexGridSizer12;
     wxFlexGridSizer* FlexGridSizer6;
     wxFlexGridSizer* FlexGridSizer1;
@@ -157,6 +160,7 @@ pnlFFTviewer::pnlFFTviewer(ConnectionManager* pSerPort, wxWindow* parent,wxWindo
     m_plotSplitter = new wxSplitterWindow(m_tabSpectrum, ID_SPLITTERWINDOW1, wxDefaultPosition, wxDefaultSize, wxSP_3D|wxSP_LIVE_UPDATE|wxFULL_REPAINT_ON_RESIZE, _T("ID_SPLITTERWINDOW1"));
     m_plotSplitter->SetMinSize(wxSize(100,100));
     m_plotSplitter->SetMinimumPaneSize(100);
+    m_plotSplitter->SetSashGravity(0.5);
     Panel1 = new wxPanel(m_plotSplitter, ID_PANEL1, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
     m_TimeConstSizer = new wxFlexGridSizer(0, 2, 0, 5);
     m_TimeConstSizer->AddGrowableCol(0);
@@ -262,8 +266,19 @@ pnlFFTviewer::pnlFFTviewer(ConnectionManager* pSerPort, wxWindow* parent,wxWindo
     StaticBoxSizer3 = new wxStaticBoxSizer(wxHORIZONTAL, m_tabSpectrum, _("Data Reading"));
     FlexGridSizer7 = new wxFlexGridSizer(0, 2, 0, 0);
     FlexGridSizer7->AddGrowableCol(1);
+    FlexGridSizer13 = new wxFlexGridSizer(0, 1, 0, 0);
     btnStartStop = new wxButton(m_tabSpectrum, ID_BUTTON2, _("START"), wxDefaultPosition, wxSize(76,76), 0, wxDefaultValidator, _T("ID_BUTTON2"));
-    FlexGridSizer7->Add(btnStartStop, 1, wxALIGN_LEFT|wxALIGN_TOP, 5);
+    FlexGridSizer13->Add(btnStartStop, 1, wxALIGN_LEFT|wxALIGN_TOP, 5);
+    wxString __wxRadioBoxChoices_1[2] =
+    {
+    	_("0"),
+    	_("1")
+    };
+    rgrFrameStart = new wxRadioBox(m_tabSpectrum, ID_RADIOBOX1, _("Frame start"), wxDefaultPosition, wxDefaultSize, 2, __wxRadioBoxChoices_1, 2, wxRA_SPECIFY_COLS, wxDefaultValidator, _T("ID_RADIOBOX1"));
+    rgrFrameStart->SetSelection(0);
+    rgrFrameStart->Disable();
+    FlexGridSizer13->Add(rgrFrameStart, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    FlexGridSizer7->Add(FlexGridSizer13, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer14 = new wxFlexGridSizer(0, 1, 0, 0);
     FlexGridSizer8 = new wxFlexGridSizer(0, 2, 5, 5);
     StaticText2 = new wxStaticText(m_tabSpectrum, ID_STATICTEXT2, _("Data rate:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT2"));
@@ -361,6 +376,7 @@ pnlFFTviewer::pnlFFTviewer(ConnectionManager* pSerPort, wxWindow* parent,wxWindo
     FlexGridSizer1->Fit(this);
     FlexGridSizer1->SetSizeHints(this);
 
+    Connect(ID_CHOICE2,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&pnlFFTviewer::OncmbBoardTypeSelect);
     Connect(ID_CHECKBOX1,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&pnlFFTviewer::OnspinAvgChange);
     Connect(ID_TEXTCTRL7,wxEVT_COMMAND_TEXT_ENTER,(wxObjectEventFunction)&pnlFFTviewer::OnspinAvgChange);
     Connect(ID_CHECKBOX4,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&pnlFFTviewer::OnchkDCcorrectionClick);
@@ -545,8 +561,10 @@ void pnlFFTviewer::OnbtnStartStopClick(wxCommandEvent& event)
         if(m_collector)
             delete m_collector;
         m_collector = new SamplesCollector(m_serPort, m_samplesChannels);
-        if(lmsControl)
+        if(lmsControl && cmbBoardType->GetSelection() != 3)
             m_collector->frameStart = !lmsControl->GetParam(lms6::MISC_CTRL_9);
+        else
+            m_collector->frameStart = rgrFrameStart->GetSelection();
         m_collector->SwitchSource((eBOARD_FFT_SOURCE)cmbBoardType->GetSelection());
         m_extraControls->SetSamplesCollector(m_collector);
         m_collector->m_dataSource = m_extraControls->rxDataSource->GetSelection() ? 3 : 0;
@@ -625,6 +643,7 @@ void pnlFFTviewer::OnbtnStartStopClick(wxCommandEvent& event)
         }
         m_dataReading = true;
         btnStartStop->SetLabel("STOP");
+        rgrFrameStart->Enable(false);
     }
     else //stop process
     {
@@ -633,6 +652,8 @@ void pnlFFTviewer::OnbtnStartStopClick(wxCommandEvent& event)
         m_collector->StopSampling();
         m_dataReading = false;
         btnStartStop->SetLabel("START");
+        if(cmbBoardType->GetSelection() == 3)
+            rgrFrameStart->Enable(true);
     }
     switchGUIEnables(m_dataReading);
 }
@@ -877,4 +898,13 @@ void pnlFFTviewer::SetBoardType(unsigned i)
 {
     if(i < cmbBoardType->GetCount())
         cmbBoardType->SetSelection(i);
+    if(i==3)
+        rgrFrameStart->Enable(true);
+    else
+        rgrFrameStart->Enable(false);
+}
+
+void pnlFFTviewer::OncmbBoardTypeSelect(wxCommandEvent& event)
+{
+    SetBoardType(event.GetInt());
 }

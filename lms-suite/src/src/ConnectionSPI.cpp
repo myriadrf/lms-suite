@@ -9,17 +9,20 @@
 #include <fstream>
 
 #include <stdint.h>
-#include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <getopt.h>
 #include <fcntl.h>
+
+#if defined(__GNUC__) || defined(__GNUG__)
+#include <unistd.h>
+#include <getopt.h>
+#endif
+
 #ifdef __unix__
 #include <sys/ioctl.h>
 #include <linux/types.h>
 #include <linux/spi/spidev.h>
 #include <linux/i2c-dev.h>
-#include <linux/i2c.h>
 #endif
 
 /** @brief Tries to read EEPROM for Novena board signature
@@ -34,7 +37,7 @@ bool IsNovenaBoard()
     int addr = 0;
     struct i2c_rdwr_ioctl_data session;
     struct i2c_msg messages[2];
-    unsigned char set_addr_buf[2];
+    char set_addr_buf[2];
     memset(set_addr_buf, 0, sizeof(set_addr_buf));
     memset(data, 0, count);
     set_addr_buf[0] = addr>>8;
@@ -46,7 +49,7 @@ bool IsNovenaBoard()
     messages[1].addr = 0xac>>1;
     messages[1].flags = I2C_M_RD;
     messages[1].len = count;
-    messages[1].buf = (unsigned char*)data;
+    messages[1].buf = data;
     session.msgs = messages;
     session.nmsgs = 2;
 
@@ -163,8 +166,10 @@ bool ConnectionSPI::Open(int i)
 
 void ConnectionSPI::Close()
 {
+#ifdef __unix__
     close(fd);
     fd = -1;
+#endif
 }
 
 bool ConnectionSPI::IsOpen()

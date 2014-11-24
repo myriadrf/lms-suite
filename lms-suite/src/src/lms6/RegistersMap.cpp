@@ -482,52 +482,6 @@ bool RegistersMap::SetParameterValue(const LMS_Parameter cp, unsigned long value
         value = value >> (param.registers[i].msb - param.registers[i].lsb +1);
         m_registers[tempAddr].value = tempVal;
     }
-
-    if(cp == LNASEL_RXFE)
-    {
-        unsigned char buf[1];
-        switch(startingValue)
-        {
-            case 1:
-                buf[0] = 0x03;
-                break;
-            case 2:
-                buf[0] = 0x01;
-                break;
-            case 3:
-                buf[0] = 0x00;
-                break;
-            default:
-                buf[0] = 0x03;
-                break;
-        }
-        GenericPacket pkt;
-        pkt.cmd = CMD_LMS_LNA;
-        pkt.outLen = 1;
-        pkt.outBuffer[0] = buf[0];
-        m_serPort->TransferPacket(pkt);
-    }
-    else if(cp == PA_EN)
-    {
-        unsigned char buf[1];
-        switch(startingValue)
-        {
-            case 1:
-                buf[0] = 0x00;
-                break;
-            case 2:
-                buf[0] = 0x01;
-                break;
-            default:
-                buf[0] = 0;
-                break;
-        }
-        GenericPacket pkt;
-        pkt.cmd = CMD_LMS_PA;
-        pkt.outLen = 1;
-        pkt.outBuffer[0] = buf[0];
-        m_serPort->TransferPacket(pkt);
-    }
     return true;
 }
 
