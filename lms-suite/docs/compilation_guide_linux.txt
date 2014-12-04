@@ -2,7 +2,8 @@ This is a compilation guide for LMS Suite on Linux operating system.
 
 1. Requirements
     To compile LMS Suite software the following libraries are required to be
-    installed on your system: wxWidgets, usb-1.0 and fftw3 libraries.
+    installed on your system: wxWidgets, usb-1.0 and fftw3 libraries. Also CMake
+	system is required to generate makefiles
 
 2. Installing required libraries
 
@@ -21,13 +22,17 @@ This is a compilation guide for LMS Suite on Linux operating system.
         make  #this command can take quite a while depending on your system power
         sudo make install
     After these commands wxWidgets will be installed on your system.
+	
+	Install CMake system with the following command:
+		sudo apt-get install cmake
 
 3. Compiling LMS Suite
     Open command line(terminal).
-    Change working directory to LMS Suite main folder.
-        e.g cd /home/user/Downloads/lms-suite
+    Change working directory to lms-suite source folder.
+        e.g cd /home/user/Downloads/lms-suite/src
     Execute the following command:
-        make
+        mkdir build && cd build && cmake .. && cmake --build .		
+		
     Wait for the compilation process to complete
-    The compiled application executable will be placed inside ./bin folder
+    The compiled application executable will be placed inside build folder
 

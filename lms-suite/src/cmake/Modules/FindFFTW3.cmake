@@ -10,7 +10,7 @@ if(WIN32)
 
 	if(NOT EXISTS "${FFTW3_ROOT_DIR}")
 		message(SEND_ERROR
-		"FFTW3 library not found. The following location does not exist: ${FFTW3_ROOT_DIR}")
+		"FFTW3 library not found. FFTW3_ROOT_DIR=${FFTW3_ROOT_DIR}")
 		return()
 	endif()
 

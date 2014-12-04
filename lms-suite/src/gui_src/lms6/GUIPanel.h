@@ -89,7 +89,7 @@ protected:
             {
                 if(m_checkboxIDToInvert.find(wnd->GetId()) != m_checkboxIDToInvert.end())
                 {
-                    if(value == true)
+                    if(value != 0)
                         value = 0;
                     else
                         value = 1;
@@ -169,7 +169,7 @@ protected:
         sprintf(ctemp, "%s", event.GetString().ToStdString().c_str());
         if(m_checkboxIDToInvert.find( ((wxWindow*)event.GetEventObject())->GetId()) != m_checkboxIDToInvert.end())
         {
-            if(value == true)
+            if(value != 0)
                 value = 0;
             else
                 value = 1;
@@ -190,11 +190,7 @@ protected:
             std::cout << "Control element(ID = " << event.GetId() << ") don't have assigned LMS parameter enumeration." << std::endl;
             return;
         }
-        switch(parameter)
-        {
-        default:
-            lmsControl->SetParam( parameter, value);
-        }
+        lmsControl->SetParam( parameter, value);
         UpdateGUI(this);
     }
 
