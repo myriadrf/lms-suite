@@ -23,6 +23,7 @@
 #include <linux/types.h>
 #include <linux/spi/spidev.h>
 #include <linux/i2c-dev.h>
+#include <linux/i2c.h>
 #endif
 
 /** @brief Tries to read EEPROM for Novena board signature
@@ -31,13 +32,13 @@
 bool IsNovenaBoard()
 {
 #ifdef __unix__
-    char data[8];
+    unsigned char data[8];
     int count = 6;
     memset(data, 0, 8);
     int addr = 0;
     struct i2c_rdwr_ioctl_data session;
     struct i2c_msg messages[2];
-    char set_addr_buf[2];
+    unsigned char set_addr_buf[2];
     memset(set_addr_buf, 0, sizeof(set_addr_buf));
     memset(data, 0, count);
     set_addr_buf[0] = addr>>8;
@@ -63,7 +64,7 @@ bool IsNovenaBoard()
             perror("Unable to communicate with i2c device");
             isNovena = false;
         }
-        if(strcmp("Novena", data) == 0)
+        if(strcmp("Novena", (const char *)data) == 0)
             isNovena = true;
     }
     close(fd);
