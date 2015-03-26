@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxPanel" name="pnlCDS">
+		<object class="wxFlexGridSizer" variable="FlexGridSizer1" member="no">
+			<cols>2</cols>
+			<hgap>5</hgap>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="ClockinversionSizer" member="no">
+					<label>Clock inversion</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="Clockinversion1Sizer" member="no">
+							<cols>1</cols>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_TXBTSP" variable="chkCDSN_TXBTSP" member="yes">
+									<label>TX TSPB</label>
+									<size>90,13</size>
+									<tooltip>TX TSPB clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_TXATSP" variable="chkCDSN_TXATSP" member="yes">
+									<label>TX TSPA</label>
+									<tooltip>TX TSPA clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_RXBTSP" variable="chkCDSN_RXBTSP" member="yes">
+									<label>RX TSPB</label>
+									<tooltip>RX TSPB clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_RXATSP" variable="chkCDSN_RXATSP" member="yes">
+									<label>RX TSPA</label>
+									<tooltip>RX TSPA clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_TXBLML" variable="chkCDSN_TXBLML" member="yes">
+									<label>TX LMLB</label>
+									<tooltip>TX LMLB clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_TXALML" variable="chkCDSN_TXALML" member="yes">
+									<label>TX LMLA</label>
+									<tooltip>TX LMLA clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_RXBLML" variable="chkCDSN_RXBLML" member="yes">
+									<label>RX LMLB</label>
+									<tooltip>RX LMLB clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_RXALML " variable="chkCDSN_RXALML " member="yes">
+									<label>RX LMLA</label>
+									<tooltip>RX LMLA clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_MCLK2" variable="chkCDSN_MCLK2" member="yes">
+									<label>MCLK2</label>
+									<tooltip>MCLK2 clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_CDSN_MCLK1" variable="chkCDSN_MCLK1" member="yes">
+									<label>MCLK1</label>
+									<tooltip>MCLK1 clock inversion control</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="ClockdelaySizer" member="no">
+					<label>Clock delay</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="Clockdelay2Sizer" member="no">
+							<cols>5</cols>
+							<hgap>5</hgap>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_MCLK2" variable="rgrCDS_MCLK2" member="yes">
+									<label>MCLK2</label>
+									<content>
+										<item>400ps</item>
+										<item>500ps</item>
+										<item>600ps</item>
+										<item>700ps</item>
+									</content>
+									<tooltip>MCLK2 clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_MCLK1" variable="rgrCDS_MCLK1" member="yes">
+									<label>MCLK1</label>
+									<content>
+										<item>400ps</item>
+										<item>500ps</item>
+										<item>600ps</item>
+										<item>700ps</item>
+									</content>
+									<tooltip>MCLK1 clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_TXBTSP" variable="rgrCDS_TXBTSP" member="yes">
+									<label>TX TSP B</label>
+									<content>
+										<item>400ps</item>
+										<item>500ps</item>
+										<item>600ps</item>
+										<item>700ps</item>
+									</content>
+									<tooltip>TX TSP B clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_TXATSP" variable="rgrCDS_TXATSP" member="yes">
+									<label>TX TSP A</label>
+									<content>
+										<item>400ps</item>
+										<item>500ps</item>
+										<item>600ps</item>
+										<item>700ps</item>
+									</content>
+									<tooltip>TX TSP A clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_RXBTSP" variable="rgrCDS_RXBTSP" member="yes">
+									<label>RX TSP B</label>
+									<content>
+										<item>200ps</item>
+										<item>500ps</item>
+										<item>800ps</item>
+										<item>1100ps</item>
+									</content>
+									<tooltip>RX TSP B clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_RXATSP" variable="rgrCDS_RXATSP" member="yes">
+									<label>RX TSP A</label>
+									<content>
+										<item>200ps</item>
+										<item>500ps</item>
+										<item>800ps</item>
+										<item>1100ps</item>
+									</content>
+									<tooltip>RX TSP A clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_TXBLML" variable="rgrCDS_TXBLML" member="yes">
+									<label>TX LML B</label>
+									<content>
+										<item>400ps</item>
+										<item>500ps</item>
+										<item>600ps</item>
+										<item>700ps</item>
+									</content>
+									<tooltip>TX LML B clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_TXALML" variable="rgrCDS_TXALML" member="yes">
+									<label>TX LML A</label>
+									<content>
+										<item>400ps</item>
+										<item>500ps</item>
+										<item>600ps</item>
+										<item>700ps</item>
+									</content>
+									<tooltip>TX LML A clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_RXBLML" variable="rgrCDS_RXBLML" member="yes">
+									<label>RX LML B</label>
+									<content>
+										<item>200ps</item>
+										<item>500ps</item>
+										<item>800ps</item>
+										<item>1100ps</item>
+									</content>
+									<tooltip>RX LML B clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_CDS_RXALML" variable="rgrCDS_RXALML" member="yes">
+									<label>RX LML A</label>
+									<content>
+										<item>200ps</item>
+										<item>500ps</item>
+										<item>800ps</item>
+										<item>1100ps</item>
+									</content>
+									<tooltip>RX LML A clock delay</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+			</object>
+		</object>
+	</object>
+</wxsmith>

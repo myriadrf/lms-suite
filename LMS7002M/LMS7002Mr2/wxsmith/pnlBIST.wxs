@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxPanel" name="pnlBIST">
+		<object class="wxFlexGridSizer" variable="FlexGridSizer1" member="no">
+			<cols>2</cols>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="BISTSizer" member="no">
+					<label>BIST</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="BIST1Sizer" member="no">
+							<cols>2</cols>
+							<vgap>2</vgap>
+							<hgap>10</hgap>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_BENC" variable="chkBENC" member="yes">
+									<label>Enable CGEN BIST</label>
+									<tooltip>enables CGEN BIST</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_BENT" variable="chkBENT" member="yes">
+									<label>Enable transmitter BIST</label>
+									<tooltip>enables transmitter  BIST</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_BENR" variable="chkBENR" member="yes">
+									<label>Enable receiver BIST</label>
+									<tooltip>enables receiver BIST</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_BSTART" variable="chkBSTART" member="yes">
+									<label>Start delta sigma BIST</label>
+									<tooltip>Starts delta sigma built in self test. Keep it at 1 one at least three clock cycles</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT2" variable="StaticText1" member="yes">
+									<label>BIST state</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_BSTATE" variable="lblBSTATE" member="yes">
+									<label>???</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText0" member="yes">
+									<label>BIST signature (Transmitter)</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_BSIGT" variable="lblBSIGT" member="yes">
+									<label>???</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT3" variable="StaticText2" member="yes">
+									<label>BIST signature (Receiver)</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_BSIGR" variable="lblBSIGR" member="yes">
+									<label>???</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT4" variable="StaticText3" member="yes">
+									<label>BIST signature (CGEN)</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_BSIGC" variable="lblBSIGC" member="yes">
+									<label>???</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxButton" name="ID_BUTTON1" variable="btnUpdateValues" member="yes">
+									<label>Read BIST</label>
+									<handler function="OnbtnUpdateValuesClick" entry="EVT_BUTTON" />
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+			</object>
+		</object>
+	</object>
+</wxsmith>

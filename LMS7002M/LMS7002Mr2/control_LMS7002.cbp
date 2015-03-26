@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="control_LMS7002" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Win_Debug">
+				<Option output="bin/control_LMS7002_dbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DwxDEBUG_LEVEL=0" />
+					<Add option="-D__GNUWIN32__" />
+					<Add option="-D__WXMSW__" />
+				</Compiler>
+				<Linker>
+					<Add option="-static" />
+					<Add library="libwxmsw30u_richtext.a" />
+					<Add library="libwxmsw30u_gl.a" />
+					<Add library="libwxbase30u_xml.a" />
+					<Add library="libwxmsw30u_adv.a" />
+					<Add library="libwxmsw30u_html.a" />
+					<Add library="libwxmsw30u_core.a" />
+					<Add library="libwxbase30u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxjpeg.a" />
+					<Add library="libwxtiff.a" />
+					<Add library="libwxzlib.a" />
+					<Add library="libwxexpat.a" />
+					<Add library="libkernel32.a" />
+					<Add library="libuser32.a" />
+					<Add library="libgdi32.a" />
+					<Add library="libwinspool.a" />
+					<Add library="libcomdlg32.a" />
+					<Add library="libadvapi32.a" />
+					<Add library="libshell32.a" />
+					<Add library="libole32.a" />
+					<Add library="liboleaut32.a" />
+					<Add library="libuuid.a" />
+					<Add library="libcomctl32.a" />
+					<Add library="libwsock32.a" />
+					<Add library="libodbc32.a" />
+				</Linker>
+			</Target>
+			<Target title="Win_Release">
+				<Option output="bin/control_LMS7002" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O1" />
+					<Add option="-Wno-switch" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DwxDEBUG_LEVEL=0" />
+					<Add option="-D__GNUWIN32__" />
+					<Add option="-D__WXMSW__" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-static" />
+					<Add library="libwxmsw30u_richtext.a" />
+					<Add library="libwxmsw30u_gl.a" />
+					<Add library="libwxbase30u_xml.a" />
+					<Add library="libwxmsw30u_adv.a" />
+					<Add library="libwxmsw30u_html.a" />
+					<Add library="libwxmsw30u_core.a" />
+					<Add library="libwxbase30u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxjpeg.a" />
+					<Add library="libwxtiff.a" />
+					<Add library="libwxzlib.a" />
+					<Add library="libwxexpat.a" />
+					<Add library="libkernel32.a" />
+					<Add library="libuser32.a" />
+					<Add library="libgdi32.a" />
+					<Add library="libwinspool.a" />
+					<Add library="libcomdlg32.a" />
+					<Add library="libadvapi32.a" />
+					<Add library="libshell32.a" />
+					<Add library="libole32.a" />
+					<Add library="liboleaut32.a" />
+					<Add library="libuuid.a" />
+					<Add library="libcomctl32.a" />
+					<Add library="libwsock32.a" />
+					<Add library="libodbc32.a" />
+				</Linker>
+			</Target>
+			<Target title="Linux_Debug">
+				<Option output="bin/control_LMS7002_dbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="`wx-config --cppflags`" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DwxDEBUG_LEVEL=0" />
+					<Add option="-DLMS_DEBUG" />
+					<Add option="-DLINUX" />
+				</Compiler>
+				<Linker>
+					<Add option="`wx-config --libs` `wx-config --optional-libs richtext`" />
+				</Linker>
+			</Target>
+			<Target title="Linux_Release">
+				<Option output="bin/control_LMS7002" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-O1" />
+					<Add option="`wx-config --cppflags`" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DwxDEBUG_LEVEL=0" />
+					<Add option="-DLINUX" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="`wx-config --libs` `wx-config --optional-libs richtext`" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="D:/Libraries/wxWidgets-3.0.0/include" />
+			<Add directory="D:/Libraries/wxWidgets-3.0.0/contrib/include" />
+			<Add directory="D:/Libraries/wxWidgets-3.0.0/lib/gcc_lib/mswu" />
+			<Add directory="controlPanelGUI" />
+			<Add directory="controlLogic" />
+		</Compiler>
+		<ResourceCompiler>
+			<Add directory="D:/Libraries/wxWidgets-3.0.0/include" />
+		</ResourceCompiler>
+		<Linker>
+			<Add directory="D:/Libraries/wxWidgets-3.0.0/lib/gcc_lib" />
+		</Linker>
+		<Unit filename="CommonUtilities.cpp" />
+		<Unit filename="CommonUtilities.h" />
+		<Unit filename="controlLogic/ADF_module.cpp" />
+		<Unit filename="controlLogic/ADF_module.h" />
+		<Unit filename="controlLogic/Algorithms.cpp" />
+		<Unit filename="controlLogic/Algorithms.h" />
+		<Unit filename="controlLogic/CoefficientFileParser.cpp" />
+		<Unit filename="controlLogic/CoefficientFileParser.h" />
+		<Unit filename="controlLogic/ConnectionCOM.cpp" />
+		<Unit filename="controlLogic/ConnectionCOM.h" />
+		<Unit filename="controlLogic/ConnectionManager.cpp" />
+		<Unit filename="controlLogic/ConnectionManager.h" />
+		<Unit filename="controlLogic/ControlParameters.h" />
+		<Unit filename="controlLogic/File_.h" />
+		<Unit filename="controlLogic/IConnection.h" />
+		<Unit filename="controlLogic/LMS7002M_Commands.h" />
+		<Unit filename="controlLogic/LMS7002_MainControl.cpp" />
+		<Unit filename="controlLogic/LMS7002_MainControl.h" />
+		<Unit filename="controlLogic/MCU_BD.cpp" />
+		<Unit filename="controlLogic/MCU_BD.h" />
+		<Unit filename="controlLogic/MessageLog.cpp" />
+		<Unit filename="controlLogic/MessageLog.h" />
+		<Unit filename="controlLogic/PLL_CGEN.cpp" />
+		<Unit filename="controlLogic/PLL_CGEN.h" />
+		<Unit filename="controlLogic/PLL_SX.cpp" />
+		<Unit filename="controlLogic/PLL_SX.h" />
+		<Unit filename="controlLogic/RegistersMap.cpp" />
+		<Unit filename="controlLogic/RegistersMap.h" />
+		<Unit filename="controlLogic/Si5351C.cpp" />
+		<Unit filename="controlLogic/Si5351C.h" />
+		<Unit filename="controlLogic/SignalHandler.cpp" />
+		<Unit filename="controlLogic/SignalHandler.h" />
+		<Unit filename="controlLogic/iniParser.h" />
+		<Unit filename="controlPanelGUI/GUIPanel.h" />
+		<Unit filename="controlPanelGUI/ResourceImagesLoader.cpp" />
+		<Unit filename="controlPanelGUI/ResourceImagesLoader.h" />
+		<Unit filename="controlPanelGUI/StdCombobox.cpp" />
+		<Unit filename="controlPanelGUI/StdCombobox.h" />
+		<Unit filename="controlPanelGUI/controlPanel_LMS7002.cpp" />
+		<Unit filename="controlPanelGUI/controlPanel_LMS7002.h" />
+		<Unit filename="controlPanelGUI/dlgAbout.cpp" />
+		<Unit filename="controlPanelGUI/dlgAbout.h" />
+		<Unit filename="controlPanelGUI/dlgConnectionManager.cpp" />
+		<Unit filename="controlPanelGUI/dlgConnectionManager.h" />
+		<Unit filename="controlPanelGUI/dlgFloatInput.cpp" />
+		<Unit filename="controlPanelGUI/dlgFloatInput.h" />
+		<Unit filename="controlPanelGUI/dlgGFIR_Coefficients.cpp" />
+		<Unit filename="controlPanelGUI/dlgGFIR_Coefficients.h" />
+		<Unit filename="controlPanelGUI/dlgMessageLog.cpp" />
+		<Unit filename="controlPanelGUI/dlgMessageLog.h" />
+		<Unit filename="controlPanelGUI/dlgRegisterMap.cpp" />
+		<Unit filename="controlPanelGUI/dlgRegisterMap.h" />
+		<Unit filename="controlPanelGUI/dlgRegisterTest.cpp" />
+		<Unit filename="controlPanelGUI/dlgRegisterTest.h" />
+		<Unit filename="controlPanelGUI/dlgVCO_CGEN.cpp" />
+		<Unit filename="controlPanelGUI/dlgVCO_CGEN.h" />
+		<Unit filename="controlPanelGUI/dlgVCO_SX.cpp" />
+		<Unit filename="controlPanelGUI/dlgVCO_SX.h" />
+		<Unit filename="controlPanelGUI/dlgViewIRAM.cpp" />
+		<Unit filename="controlPanelGUI/dlgViewIRAM.h" />
+		<Unit filename="controlPanelGUI/dlgViewSFR.cpp" />
+		<Unit filename="controlPanelGUI/dlgViewSFR.h" />
+		<Unit filename="controlPanelGUI/pnlADF.cpp" />
+		<Unit filename="controlPanelGUI/pnlADF.h" />
+		<Unit filename="controlPanelGUI/pnlAFE.cpp" />
+		<Unit filename="controlPanelGUI/pnlAFE.h" />
+		<Unit filename="controlPanelGUI/pnlBIAS.cpp" />
+		<Unit filename="controlPanelGUI/pnlBIAS.h" />
+		<Unit filename="controlPanelGUI/pnlBIST.cpp" />
+		<Unit filename="controlPanelGUI/pnlBIST.h" />
+		<Unit filename="controlPanelGUI/pnlCDS.cpp" />
+		<Unit filename="controlPanelGUI/pnlCDS.h" />
+		<Unit filename="controlPanelGUI/pnlCLKGEN.cpp" />
+		<Unit filename="controlPanelGUI/pnlCLKGEN.h" />
+		<Unit filename="controlPanelGUI/pnlFreqTable.cpp" />
+		<Unit filename="controlPanelGUI/pnlFreqTable.h" />
+		<Unit filename="controlPanelGUI/pnlLDO.cpp" />
+		<Unit filename="controlPanelGUI/pnlLDO.h" />
+		<Unit filename="controlPanelGUI/pnlLimeLightPAD.cpp" />
+		<Unit filename="controlPanelGUI/pnlLimeLightPAD.h" />
+		<Unit filename="controlPanelGUI/pnlMCU_BD.cpp" />
+		<Unit filename="controlPanelGUI/pnlMCU_BD.h" />
+		<Unit filename="controlPanelGUI/pnlRBB.cpp" />
+		<Unit filename="controlPanelGUI/pnlRBB.h" />
+		<Unit filename="controlPanelGUI/pnlRFE.cpp" />
+		<Unit filename="controlPanelGUI/pnlRFE.h" />
+		<Unit filename="controlPanelGUI/pnlRxTSP.cpp" />
+		<Unit filename="controlPanelGUI/pnlRxTSP.h" />
+		<Unit filename="controlPanelGUI/pnlSPI.cpp" />
+		<Unit filename="controlPanelGUI/pnlSPI.h" />
+		<Unit filename="controlPanelGUI/pnlSXT.cpp" />
+		<Unit filename="controlPanelGUI/pnlSXT.h" />
+		<Unit filename="controlPanelGUI/pnlSi5351.cpp" />
+		<Unit filename="controlPanelGUI/pnlSi5351.h" />
+		<Unit filename="controlPanelGUI/pnlTBB.cpp" />
+		<Unit filename="controlPanelGUI/pnlTBB.h" />
+		<Unit filename="controlPanelGUI/pnlTRF.cpp" />
+		<Unit filename="controlPanelGUI/pnlTRF.h" />
+		<Unit filename="controlPanelGUI/pnlTxTSP.cpp" />
+		<Unit filename="controlPanelGUI/pnlTxTSP.h" />
+		<Unit filename="controlPanelGUI/pnlXBUF.cpp" />
+		<Unit filename="controlPanelGUI/pnlXBUF.h" />
+		<Unit filename="control_LMS7002App.cpp" />
+		<Unit filename="control_LMS7002App.h" />
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="version.h" />
+		<Unit filename="wxsmith/controlPanel_LMS7002.wxs" />
+		<Unit filename="wxsmith/dlgAbout.wxs" />
+		<Unit filename="wxsmith/dlgConnectionManager.wxs" />
+		<Unit filename="wxsmith/dlgFloatInput.wxs" />
+		<Unit filename="wxsmith/dlgGFIR_Coefficients.wxs" />
+		<Unit filename="wxsmith/dlgMessageLog.wxs" />
+		<Unit filename="wxsmith/dlgRegisterMap.wxs" />
+		<Unit filename="wxsmith/dlgRegisterTest.wxs" />
+		<Unit filename="wxsmith/dlgVCO_CGEN.wxs" />
+		<Unit filename="wxsmith/dlgVCO_SX.wxs" />
+		<Unit filename="wxsmith/dlgViewIRAM.wxs" />
+		<Unit filename="wxsmith/dlgViewSFR.wxs" />
+		<Unit filename="wxsmith/pnlADF.wxs" />
+		<Unit filename="wxsmith/pnlAFE.wxs" />
+		<Unit filename="wxsmith/pnlBIAS.wxs" />
+		<Unit filename="wxsmith/pnlBIST.wxs" />
+		<Unit filename="wxsmith/pnlCDS.wxs" />
+		<Unit filename="wxsmith/pnlCLKGEN.wxs" />
+		<Unit filename="wxsmith/pnlFreqTable.wxs" />
+		<Unit filename="wxsmith/pnlLDO.wxs" />
+		<Unit filename="wxsmith/pnlLimeLightPAD.wxs" />
+		<Unit filename="wxsmith/pnlMCU_BD.wxs" />
+		<Unit filename="wxsmith/pnlRBB.wxs" />
+		<Unit filename="wxsmith/pnlRFE.wxs" />
+		<Unit filename="wxsmith/pnlSPI.wxs" />
+		<Unit filename="wxsmith/pnlSXT.wxs" />
+		<Unit filename="wxsmith/pnlSi5351.wxs" />
+		<Unit filename="wxsmith/pnlTBB.wxs" />
+		<Unit filename="wxsmith/pnlTRF.wxs" />
+		<Unit filename="wxsmith/pnlTxTSP.wxs" />
+		<Unit filename="wxsmith/pnlXBUF.wxs" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="control_LMS7002App.cpp" main="controlPanel_LMS7002" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="wxsmith/controlPanel_LMS7002.wxs" src="controlPanelGUI/controlPanel_LMS7002.cpp" hdr="controlPanelGUI/controlPanel_LMS7002.h" fwddecl="1" i18n="1" name="controlPanel_LMS7002" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgConnectionManager.wxs" src="controlPanelGUI/dlgConnectionManager.cpp" hdr="controlPanelGUI/dlgConnectionManager.h" fwddecl="1" i18n="1" name="dlgConnectionManager" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlADF.wxs" src="controlPanelGUI/pnlADF.cpp" hdr="controlPanelGUI/pnlADF.h" fwddecl="1" i18n="1" name="pnlADF" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlRFE.wxs" src="controlPanelGUI/pnlRFE.cpp" hdr="controlPanelGUI/pnlRFE.h" fwddecl="1" i18n="1" name="pnlRFE" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlRBB.wxs" src="controlPanelGUI/pnlRBB.cpp" hdr="controlPanelGUI/pnlRBB.h" fwddecl="1" i18n="1" name="pnlRBB" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlTRF.wxs" src="controlPanelGUI/pnlTRF.cpp" hdr="controlPanelGUI/pnlTRF.h" fwddecl="1" i18n="1" name="pnlTRF" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlTBB.wxs" src="controlPanelGUI/pnlTBB.cpp" hdr="controlPanelGUI/pnlTBB.h" fwddecl="1" i18n="1" name="pnlTBB" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlLDO.wxs" src="controlPanelGUI/pnlLDO.cpp" hdr="controlPanelGUI/pnlLDO.h" fwddecl="1" i18n="1" name="pnlLDO" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlAFE.wxs" src="controlPanelGUI/pnlAFE.cpp" hdr="controlPanelGUI/pnlAFE.h" fwddecl="1" i18n="1" name="pnlAFE" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlBIAS.wxs" src="controlPanelGUI/pnlBIAS.cpp" hdr="controlPanelGUI/pnlBIAS.h" fwddecl="1" i18n="1" name="pnlBIAS" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlXBUF.wxs" src="controlPanelGUI/pnlXBUF.cpp" hdr="controlPanelGUI/pnlXBUF.h" fwddecl="1" i18n="1" name="pnlXBUF" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlCLKGEN.wxs" src="controlPanelGUI/pnlCLKGEN.cpp" hdr="controlPanelGUI/pnlCLKGEN.h" fwddecl="1" i18n="1" name="pnlCLKGEN" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlSXT.wxs" src="controlPanelGUI/pnlSXT.cpp" hdr="controlPanelGUI/pnlSXT.h" fwddecl="1" i18n="1" name="pnlSXT" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlLimeLightPAD.wxs" src="controlPanelGUI/pnlLimeLightPAD.cpp" hdr="controlPanelGUI/pnlLimeLightPAD.h" fwddecl="1" i18n="1" name="pnlLimeLightPAD" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlTxTSP.wxs" src="controlPanelGUI/pnlTxTSP.cpp" hdr="controlPanelGUI/pnlTxTSP.h" fwddecl="1" i18n="1" name="pnlTxTSP" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlBIST.wxs" src="controlPanelGUI/pnlBIST.cpp" hdr="controlPanelGUI/pnlBIST.h" fwddecl="1" i18n="1" name="pnlBIST" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlSi5351.wxs" src="controlPanelGUI/pnlSi5351.cpp" hdr="controlPanelGUI/pnlSi5351.h" fwddecl="0" i18n="1" name="pnlSi5351" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlRxTSP.wxs" src="controlPanelGUI/pnlRxTSP.cpp" hdr="controlPanelGUI/pnlRxTSP.h" fwddecl="1" i18n="1" name="pnlRxTSP" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlCDS.wxs" src="controlPanelGUI/pnlCDS.cpp" hdr="controlPanelGUI/pnlCDS.h" fwddecl="1" i18n="1" name="pnlCDS" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlMCU_BD.wxs" src="controlPanelGUI/pnlMCU_BD.cpp" hdr="controlPanelGUI/pnlMCU_BD.h" fwddecl="1" i18n="1" name="pnlMCU_BD" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgViewIRAM.wxs" src="controlPanelGUI/dlgViewIRAM.cpp" hdr="controlPanelGUI/dlgViewIRAM.h" fwddecl="1" i18n="1" name="dlgViewIRAM" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgViewSFR.wxs" src="controlPanelGUI/dlgViewSFR.cpp" hdr="controlPanelGUI/dlgViewSFR.h" fwddecl="1" i18n="1" name="dlgViewSFR" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgMessageLog.wxs" src="controlPanelGUI/dlgMessageLog.cpp" hdr="controlPanelGUI/dlgMessageLog.h" fwddecl="1" i18n="0" name="dlgMessageLog" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgAbout.wxs" src="controlPanelGUI/dlgAbout.cpp" hdr="controlPanelGUI/dlgAbout.h" fwddecl="1" i18n="0" name="dlgAbout" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgFloatInput.wxs" src="controlPanelGUI/dlgFloatInput.cpp" hdr="controlPanelGUI/dlgFloatInput.h" fwddecl="1" i18n="0" name="dlgFloatInput" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlSPI.wxs" src="controlPanelGUI/pnlSPI.cpp" hdr="controlPanelGUI/pnlSPI.h" fwddecl="1" i18n="1" name="pnlSPI" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgRegisterTest.wxs" src="controlPanelGUI/dlgRegisterTest.cpp" hdr="controlPanelGUI/dlgRegisterTest.h" fwddecl="1" i18n="0" name="dlgRegisterTest" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgRegisterMap.wxs" src="controlPanelGUI/dlgRegisterMap.cpp" hdr="controlPanelGUI/dlgRegisterMap.h" fwddecl="1" i18n="0" name="dlgRegisterMap" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgGFIR_Coefficients.wxs" src="controlPanelGUI/dlgGFIR_Coefficients.cpp" hdr="controlPanelGUI/dlgGFIR_Coefficients.h" fwddecl="1" i18n="0" name="dlgGFIR_Coefficients" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgVCO_SX.wxs" src="controlPanelGUI/dlgVCO_SX.cpp" hdr="controlPanelGUI/dlgVCO_SX.h" fwddecl="1" i18n="0" name="dlgVCO_SX" language="CPP" />
+					<wxPanel wxs="wxsmith/pnlFreqTable.wxs" src="controlPanelGUI/pnlFreqTable.cpp" hdr="controlPanelGUI/pnlFreqTable.h" fwddecl="1" i18n="0" name="pnlFreqTable" language="CPP" />
+					<wxDialog wxs="wxsmith/dlgVCO_CGEN.wxs" src="controlPanelGUI/dlgVCO_CGEN.cpp" hdr="controlPanelGUI/dlgVCO_CGEN.h" fwddecl="1" i18n="0" name="dlgVCO_CGEN" language="CPP" />
+				</resources>
+			</wxsmith>
+			<AutoVersioning>
+				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="3" build_times_to_increment_minor="100" />
+				<Settings autoincrement="1" date_declarations="1" use_define="0" update_manifest="0" do_auto_increment="1" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
+				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+				<Code header_guard="AUTO_VERSION_H" namespace="AutoVersion" prefix="" />
+			</AutoVersioning>
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

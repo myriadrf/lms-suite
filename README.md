@@ -1,6 +1,6 @@
 # LMS Suite
 
-Utilities for use with Myriad-RF hardware based upon FPRF transceivers from Lime Microsystems.
+Utilities for use with hardware based upon FPRF transceivers from Lime Microsystems.
 
 The utilities:
 
@@ -8,11 +8,17 @@ The utilities:
 * allow configuration of the transceiver plus support devices such as clock generators;
 * provide an FFT display.
 
-Please note that the strategic solution is a single binary called *lms-suite*. However, at the time of writing this software only supports the Novena-RF module.
+## LMS7002M
 
-Owners of Reference Development Kit (Myriad-RF 1 + DE0-Nano interface/Zipper) and RASDR (Myriad-RF 1 + DigiRED) hardware should use the board-specific legacy software for the present time.
+### LMS7002Mr2
 
-## Legacy
+This version of LMS Suite is for use with the [Stream board](https://myriadrf.org/projects/stream/) and LMS7002EVB (UNITE).
+
+## LMS6002D
+
+This version of LMS Suite is for use with the [Novena-RF](https://myriadrf.org/projects/novena-rf/).
+
+Owners of [Reference Development Kit](https://myriadrf.org/projects/rdk/) (Myriad-RF 1 + DE0-Nano interface/Zipper) and [RASDR](https://myriadrf.org/projects/rasdr/) (Myriad-RF 1 + DigiRED) hardware should use the board-specific legacy software for the present time.
 
 ### ctr_6002dr2_myriad
 
@@ -31,4 +37,4 @@ Licence
 
 This software is published under the Apache License Version 2.0.
 
-For further details please see the [COPYING](https://raw.github.com/myriadrf/myriadrf-utils/master/COPYING) file.
+For further details please see the [COPYING](https://raw.github.com/myriadrf/lms-suite/master/COPYING) file.

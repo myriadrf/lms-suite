@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxPanel" name="pnlLimeLightPAD">
+		<object class="wxFlexGridSizer" variable="FlexGridSizer1" member="no">
+			<cols>3</cols>
+			<object class="sizeritem">
+				<object class="wxNotebook" name="ID_NOTEBOOK1" variable="Notebook1" member="yes">
+					<object class="notebookpage">
+						<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">
+							<object class="wxFlexGridSizer" variable="FlexGridSizer2" member="no">
+								<cols>2</cols>
+								<object class="sizeritem">
+									<object class="wxStaticBoxSizer" variable="PullupcontrolSizer" member="no">
+										<label>Pull up control</label>
+										<object class="sizeritem">
+											<object class="wxFlexGridSizer" variable="Pullupcontrol3Sizer" member="no">
+												<cols>2</cols>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_TX_CLK_PE" variable="chkTX_CLK_PE" member="yes">
+														<label>Engage pull up of TX&amp;CLK pad</label>
+														<tooltip>Pull up control of TX&amp;CLK pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_RX_CLK_PE" variable="chkRX_CLK_PE" member="yes">
+														<label>Engage pull up of RX&amp;CLK pad</label>
+														<tooltip>Pull up control of RX&amp;CLK pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_SDA_PE" variable="chkSDA_PE" member="yes">
+														<label>Engage pull up of SDA pad</label>
+														<tooltip>Pull up control of SDA pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_SCL_PE" variable="chkSCL_PE" member="yes">
+														<label>Engage pull up of SCL pad</label>
+														<tooltip>Pull up control of SCL pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_SDIO_PE" variable="chkSDIO_PE" member="yes">
+														<label>Engage pull up of SDIO pad</label>
+														<tooltip>Pull up control of SDIO pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_SDO_PE" variable="chkSDO_PE" member="yes">
+														<label>Engage pull up of SDO pad</label>
+														<tooltip>Pull up control of SDO pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_SCLK_PE" variable="chkSCLK_PE" member="yes">
+														<label>Engage pull up of SCLK pad</label>
+														<tooltip>Pull up control of SCLK pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_SEN_PE" variable="chkSEN_PE" member="yes">
+														<label>Engage pull up of SEN</label>
+														<tooltip>Pull up control of SEN pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_DIQ2_PE" variable="chkDIQ2_PE" member="yes">
+														<label>Engage pull up of DIQ2 pad</label>
+														<tooltip>Pull up control of DIQ2 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_IQ_SEL_EN_2_PE" variable="chkIQ_SEL_EN_2_PE" member="yes">
+														<label>Engage pull up of IQ&amp;SEL&amp;EN&amp;2 pad</label>
+														<tooltip>Pull up control of IQ&amp;SEL&amp;EN&amp;2 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_TXNRX2_PE" variable="chkTXNRX2_PE" member="yes">
+														<label>Engage pull up of TXNRX2 pad</label>
+														<tooltip>Pull up control of TXNRX2 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_FCLK2_PE" variable="chkFCLK2_PE" member="yes">
+														<label>Engage pull up of FCLK2 pad</label>
+														<tooltip>Pull up control of FCLK2 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_MCLK2_PE" variable="chkMCLK2_PE" member="yes">
+														<label>Engage pull up of MCLK2 pad</label>
+														<tooltip>Pull up control of MCLK2 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_DIQ1_PE" variable="chkDIQ1_PE" member="yes">
+														<label>Engage pull up of DIQ1 pad</label>
+														<tooltip>Pull up control of DIQ1 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_IQ_SEL_EN_1_PE" variable="chkIQ_SEL_EN_1_PE" member="yes">
+														<label>Engage pull up of IQ&amp;SEL&amp;EN&amp;1 pad</label>
+														<tooltip>Pull up control of IQ&amp;SEL&amp;EN&amp;1 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_TXNRX1_PE" variable="chkTXNRX1_PE" member="yes">
+														<label>Engage pull up of TXNRX1 pad</label>
+														<tooltip>Pull up control of TXNRX1 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_FCLK1_PE" variable="chkFCLK1_PE" member="yes">
+														<label>Engage pull up of FCLK1 pad</label>
+														<tooltip>Pull up control of FCLK1 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_MCLK1_PE" variable="chkMCLK1_PE" member="yes">
+														<label>Engage pull up of MCLK1 pad</label>
+														<tooltip>Pull up control of MCLK1 pad</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+											</object>
+											<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+										</object>
+									</object>
+									<flag>wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP</flag>
+									<border>5</border>
+									<option>1</option>
+								</object>
+								<object class="sizeritem">
+									<object class="wxStaticBoxSizer" variable="LimeLightmodesSizer" member="no">
+										<label>LimeLight modes</label>
+										<object class="sizeritem">
+											<object class="wxFlexGridSizer" variable="LimeLightmodes12Sizer" member="no">
+												<cols>2</cols>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_MOD_EN" variable="chkMOD_EN" member="yes">
+														<label>Enable LimeLight interface</label>
+														<tooltip>LimeLight interface enable</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxStaticLine" name="ID_STATICLINE1" variable="StaticLine1" member="yes">
+														<size>10,-1</size>
+														<hidden>1</hidden>
+													</object>
+													<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+													<border>5</border>
+													<option>1</option>
+												</object>
+												<object class="sizeritem">
+													<object class="wxRadioBox" name="ID_LML_FIDM1" variable="rgrLML_FIDM1" member="yes">
+														<label>Frame start for Port 1</label>
+														<content>
+															<item>0</item>
+															<item>1</item>
+														</content>
+														<dimension>2</dimension>
+														<tooltip>Frame start ID selection for Port 1 when LML&amp;MODE1 = 0</tooltip>
+														<style>wxRA_SPECIFY_COLS</style>
+														<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxRadioBox" name="ID_LML_FIDM2" variable="rgrLML_FIDM2" member="yes">
+														<label>Frame start for Port 2</label>
+														<content>
+															<item>0</item>
+															<item>1</item>
+														</content>
+														<dimension>2</dimension>
+														<tooltip>Frame start ID selection for Port 2 when LML&amp;MODE2 = 0</tooltip>
+														<style>wxRA_SPECIFY_COLS</style>
+														<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxRadioBox" name="ID_LML_MODE1" variable="rgrLML_MODE1" member="yes">
+														<label>LimeLight port 1 mode</label>
+														<content>
+															<item>TRXIQ</item>
+															<item>JESD207</item>
+														</content>
+														<dimension>2</dimension>
+														<tooltip>Mode of LimeLight Port 1</tooltip>
+														<style>wxRA_SPECIFY_COLS</style>
+														<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxRadioBox" name="ID_LML_MODE2" variable="rgrLML_MODE2" member="yes">
+														<label>LimeLight port 2 mode</label>
+														<content>
+															<item>TRXIQ</item>
+															<item>JESD207</item>
+														</content>
+														<dimension>2</dimension>
+														<tooltip>Mode of LimeLight Port 2</tooltip>
+														<style>wxRA_SPECIFY_COLS</style>
+														<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxRadioBox" name="ID_LML_TXNRXIQ1" variable="rgrLML_TXNRXIQ1" member="yes">
+														<label>Port 1 mode selection</label>
+														<content>
+															<item>RXIQ</item>
+															<item>TXIQ</item>
+														</content>
+														<dimension>2</dimension>
+														<tooltip>TXIQ/RXIQ mode selection for Port 1 when LML&amp;MODE1 = 0</tooltip>
+														<style>wxRA_SPECIFY_COLS</style>
+														<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxRadioBox" name="ID_LML_TXNRXIQ2" variable="rgrLML_TXNRXIQ2" member="yes">
+														<label>Port 2 mode selection</label>
+														<content>
+															<item>RXIQ</item>
+															<item>TXIQ</item>
+														</content>
+														<dimension>2</dimension>
+														<tooltip>TXIQ/RXIQ mode selection for Port 2 when LML&amp;MODE2 = 0</tooltip>
+														<style>wxRA_SPECIFY_COLS</style>
+														<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+											</object>
+											<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+										</object>
+									</object>
+									<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+									<border>5</border>
+									<option>1</option>
+								</object>
+								<object class="sizeritem">
+									<object class="wxFlexGridSizer" variable="FlexGridSizer7" member="no">
+										<cols>1</cols>
+										<object class="sizeritem">
+											<object class="wxStaticBoxSizer" variable="ResetsignalsSizer" member="no">
+												<label>Reset signals</label>
+												<object class="sizeritem">
+													<object class="wxFlexGridSizer" variable="Resetsignals10Sizer" member="no">
+														<cols>2</cols>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_LRST_TX_B" variable="chkLRST_TX_B" member="yes">
+																<label>logic registers Tx MIMO ch. B</label>
+																<tooltip>Resets all the logic registers to the default state for Tx MIMO channel B</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_MRST_TX_B" variable="chkMRST_TX_B" member="yes">
+																<label>configuration memory Tx MIMO ch. B</label>
+																<tooltip>Resets all the configuration memory to the default state for Tx MIMO channel B</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_LRST_TX_A" variable="chkLRST_TX_A" member="yes">
+																<label>logic registers Tx MIMO ch. A</label>
+																<tooltip>Resets all the logic registers to the default state for Tx MIMO channel A</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_MRST_TX_A" variable="chkMRST_TX_A" member="yes">
+																<label>configuration memory Tx MIMO ch. A</label>
+																<tooltip>Resets all the configuration memory to the default state for Tx MIMO channel A</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_LRST_RX_B" variable="chkLRST_RX_B" member="yes">
+																<label>logic registers Rx MIMO ch. B</label>
+																<tooltip>Resets all the logic registers to the default state for Rx MIMO channel B</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_MRST_RX_B" variable="chkMRST_RX_B" member="yes">
+																<label>configuration memory Rx MIMO ch. B</label>
+																<tooltip>Resets all the configuration memory to the default state for Rx MIMO channel B</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_LRST_RX_A" variable="chkLRST_RX_A" member="yes">
+																<label>logic registers Rx MIMO ch. A</label>
+																<tooltip>Resets all the logic registers to the default state for Rx MIMO channel A</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_MRST_RX_A" variable="chkMRST_RX_A" member="yes">
+																<label>configuration memory Rx MIMO ch. A</label>
+																<tooltip>Resets all the configuration memory to the default state for Rx MIMO channel A</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_SRST_RXFIFO" variable="chkSRST_RXFIFO" member="yes">
+																<label>Rx FIFO soft reset</label>
+																<tooltip>RX FIFO soft reset (LimeLight Interface)</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_SRST_TXFIFO" variable="chkSRST_TXFIFO" member="yes">
+																<label>Tx FIFO soft reset</label>
+																<tooltip>TX FIFO soft reset (LimeLight Interface)</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+											</object>
+											<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+											<border>5</border>
+											<option>1</option>
+										</object>
+										<object class="sizeritem">
+											<object class="wxStaticBoxSizer" variable="DriverstrengthSizer" member="no">
+												<label>Driver strength</label>
+												<object class="sizeritem">
+													<object class="wxFlexGridSizer" variable="Driverstrength2Sizer" member="no">
+														<cols>5</cols>
+														<object class="sizeritem">
+															<object class="wxRadioBox" name="ID_SDA_DS" variable="rgrSDA_DS" member="yes">
+																<label>SDA pad</label>
+																<content>
+																	<item>4 mA</item>
+																	<item>8 mA</item>
+																</content>
+																<tooltip>Driver strength of SDA pad</tooltip>
+																<style>wxRA_SPECIFY_COLS</style>
+																<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxRadioBox" name="ID_SCL_DS" variable="rgrSCL_DS" member="yes">
+																<label>SCL pad</label>
+																<content>
+																	<item>4 mA</item>
+																	<item>8 mA</item>
+																</content>
+																<tooltip>Driver strength of SCL pad</tooltip>
+																<style>wxRA_SPECIFY_COLS</style>
+																<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxRadioBox" name="ID_SDIO_DS" variable="rgrSDIO_DS" member="yes">
+																<label>SDIO pad</label>
+																<content>
+																	<item>4 mA</item>
+																	<item>8 mA</item>
+																</content>
+																<tooltip>Driver strength of SDIO pad</tooltip>
+																<style>wxRA_SPECIFY_COLS</style>
+																<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxRadioBox" name="ID_DIQ2_DS" variable="rgrDIQ2_DS" member="yes">
+																<label>DIQ2 pad</label>
+																<content>
+																	<item>4 mA</item>
+																	<item>8 mA</item>
+																</content>
+																<tooltip>Driver strength of DIQ2 pad</tooltip>
+																<style>wxRA_SPECIFY_COLS</style>
+																<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxRadioBox" name="ID_DIQ1_DS" variable="rgrDIQ1_DS" member="yes">
+																<label>DIQ1 pad</label>
+																<content>
+																	<item>4 mA</item>
+																	<item>8 mA</item>
+																</content>
+																<tooltip>Pull up control of MCLK2 pad</tooltip>
+																<style>wxRA_SPECIFY_COLS</style>
+																<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+											</object>
+											<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+											<border>5</border>
+											<option>1</option>
+										</object>
+									</object>
+									<flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+									<border>5</border>
+									<option>1</option>
+								</object>
+								<object class="sizeritem">
+									<object class="wxStaticBoxSizer" variable="UNGROUPEDSizer" member="no">
+										<label>UNGROUPED</label>
+										<object class="sizeritem">
+											<object class="wxFlexGridSizer" variable="UNGROUPED13Sizer" member="no">
+												<cols>2</cols>
+												<object class="sizeritem">
+													<object class="wxStaticText" name="ID_STATICTEXT33" variable="StaticText33" member="yes">
+														<label>Digital loopback</label>
+													</object>
+													<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxComboBox" name="ID_DLB_MUX" subclass="StdCombobox" variable="cmbDLB_MUX" member="yes">
+														<size>196,21</size>
+														<tooltip>Digital loop back selection</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+													</object>
+													<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+													<border>5</border>
+												</object>
+												<object class="sizeritem">
+													<object class="wxStaticText" name="ID_STATICTEXT34" variable="StaticText34" member="yes">
+														<label>Data transmit port to TSP</label>
+													</object>
+													<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxComboBox" name="ID_TX_MUX" subclass="StdCombobox" variable="cmbTX_MUX" member="yes">
+														<tooltip>Port selection for data transmit to TSP</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+													</object>
+													<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+													<border>5</border>
+												</object>
+												<object class="sizeritem">
+													<object class="wxStaticText" name="ID_STATICTEXT35" variable="StaticText35" member="yes">
+														<label>Disable MIMO channel B</label>
+													</object>
+													<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxComboBox" name="ID_MIMO_SISO" subclass="StdCombobox" variable="cmbMIMO_SISO" member="yes">
+														<tooltip>MIMO channel B enable control</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+													</object>
+													<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+													<border>5</border>
+												</object>
+												<object class="sizeritem">
+													<object class="wxRadioBox" name="ID_SPIMODE" variable="rgrSPIMODE" member="yes">
+														<label>SPI mode</label>
+														<content>
+															<item>3 wire mode</item>
+															<item>4 wire mode</item>
+														</content>
+														<tooltip>SPI communication mode</tooltip>
+														<style>wxRA_SPECIFY_COLS</style>
+														<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxRadioBox" name="ID_MAC" variable="rgrMAC" member="yes">
+														<label>MIMO access control</label>
+														<content>
+															<item>None</item>
+															<item>Channel A</item>
+															<item>Channel B</item>
+															<item>Channels A and B</item>
+														</content>
+														<tooltip>Selects MIMO channel for communication</tooltip>
+														<style>wxRA_SPECIFY_COLS</style>
+														<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+													</object>
+													<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+													<border>5</border>
+												</object>
+											</object>
+											<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+										</object>
+									</object>
+									<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+									<border>5</border>
+									<option>1</option>
+								</object>
+								<object class="sizeritem">
+									<object class="wxStaticBoxSizer" variable="PowerControlSizer" member="no">
+										<label>Power Control</label>
+										<object class="sizeritem">
+											<object class="wxFlexGridSizer" variable="PowerControl1Sizer" member="no">
+												<cols>2</cols>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_RXEN_B" variable="chkRXEN_B" member="yes">
+														<label>Enable Rx MIMO ch. B</label>
+														<tooltip>Power control for Rx MIMO channel B</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_RXEN_A" variable="chkRXEN_A" member="yes">
+														<label>Enable Rx MIMO ch. A</label>
+														<tooltip>Power control for Rx MIMO channel A</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_TXEN_B" variable="chkTXEN_B" member="yes">
+														<label>Enable Tx MIMO ch. B</label>
+														<tooltip>Power control for Tx MIMO channel B</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+												<object class="sizeritem">
+													<object class="wxCheckBox" name="ID_TXEN_A" variable="chkTXEN_A" member="yes">
+														<label>Enable Tx MIMO ch. A</label>
+														<tooltip>Power control for Tx MIMO channel A</tooltip>
+														<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+											</object>
+											<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+										</object>
+									</object>
+									<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+									<border>5</border>
+									<option>1</option>
+								</object>
+							</object>
+						</object>
+						<label>Modes</label>
+					</object>
+					<object class="notebookpage">
+						<object class="wxPanel" name="ID_PANEL2" variable="Panel2" member="yes">
+							<object class="wxFlexGridSizer" variable="FlexGridSizer3" member="no">
+								<cols>1</cols>
+								<object class="sizeritem">
+									<object class="wxFlexGridSizer" variable="FlexGridSizer4" member="no">
+										<cols>2</cols>
+										<object class="sizeritem">
+											<object class="wxFlexGridSizer" variable="FlexGridSizer5" member="no">
+												<cols>2</cols>
+												<object class="sizeritem">
+													<object class="wxStaticBoxSizer" variable="SamplesourcewhenPort1isTxSizer" member="no">
+														<label>Sample source when Port 1 is Tx</label>
+														<object class="sizeritem">
+															<object class="wxFlexGridSizer" variable="SamplesourcewhenPort1isTx4Sizer" member="no">
+																<cols>2</cols>
+																<hgap>5</hgap>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText1" member="yes">
+																		<label>Position 3</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML1_S3S" subclass="StdCombobox" variable="cmbLML1_S3S" member="yes">
+																		<tooltip>Sample source in position 3, when Port 1 is TX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT2" variable="StaticText2" member="yes">
+																		<label>Position 2</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML1_S2S" subclass="StdCombobox" variable="cmbLML1_S2S" member="yes">
+																		<tooltip>Sample source in position 2, when Port 1 is TX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT3" variable="StaticText3" member="yes">
+																		<label>Position 1</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML1_S1S" subclass="StdCombobox" variable="cmbLML1_S1S" member="yes">
+																		<tooltip>Sample source in position 1, when Port 1 is TX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT4" variable="StaticText4" member="yes">
+																		<label>Position 0</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML1_S0S" subclass="StdCombobox" variable="cmbLML1_S0S" member="yes">
+																		<tooltip>Sample source in position 0, when Port 1 is TX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP</flag>
+													<border>5</border>
+													<option>1</option>
+												</object>
+												<object class="sizeritem">
+													<object class="wxStaticBoxSizer" variable="SamplepositionswhenPort1isRxSizer" member="no">
+														<label>Sample positions when Port 1 is Rx</label>
+														<object class="sizeritem">
+															<object class="wxFlexGridSizer" variable="SamplepositionswhenPort1isRx5Sizer" member="no">
+																<cols>2</cols>
+																<hgap>5</hgap>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT5" variable="StaticText5" member="yes">
+																		<label>BQ sample position</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML1_BQP" subclass="StdCombobox" variable="cmbLML1_BQP" member="yes">
+																		<tooltip>BQ sample position in frame, when Port 1 is RX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT6" variable="StaticText6" member="yes">
+																		<label>BI sample position</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML1_BIP" subclass="StdCombobox" variable="cmbLML1_BIP" member="yes">
+																		<tooltip>BI sample position in frame, when Port 1 is RX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT7" variable="StaticText7" member="yes">
+																		<label>AQ sample position</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML1_AQP" subclass="StdCombobox" variable="cmbLML1_AQP" member="yes">
+																		<tooltip>AQ sample position in frame, when Port 1 is RX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT8" variable="StaticText8" member="yes">
+																		<label>AI sample position</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML1_AIP" subclass="StdCombobox" variable="cmbLML1_AIP" member="yes">
+																		<tooltip>AI sample position in frame, when Port 1 is RX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+													<border>5</border>
+													<option>1</option>
+												</object>
+												<object class="sizeritem">
+													<object class="wxStaticBoxSizer" variable="SamplesourcewhenPort2isTxSizer" member="no">
+														<label>Sample source when Port 2 is Tx</label>
+														<object class="sizeritem">
+															<object class="wxFlexGridSizer" variable="SamplesourcewhenPort2isTx6Sizer" member="no">
+																<cols>2</cols>
+																<hgap>5</hgap>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT9" variable="StaticText9" member="yes">
+																		<label>Position 3</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML2_S3S" subclass="StdCombobox" variable="cmbLML2_S3S" member="yes">
+																		<tooltip>Sample source in position 3, when Port 2 is TX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT10" variable="StaticText10" member="yes">
+																		<label>Position 2</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML2_S2S" subclass="StdCombobox" variable="cmbLML2_S2S" member="yes">
+																		<tooltip>Sample source in position 2, when Port 2 is TX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT11" variable="StaticText11" member="yes">
+																		<label>Position 1</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML2_S1S" subclass="StdCombobox" variable="cmbLML2_S1S" member="yes">
+																		<tooltip>Sample source in position 1, when Port 2 is TX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT12" variable="StaticText12" member="yes">
+																		<label>Position 0</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML2_S0S" subclass="StdCombobox" variable="cmbLML2_S0S" member="yes">
+																		<tooltip>Sample source in position 0, when Port 2 is TX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP</flag>
+													<border>5</border>
+													<option>1</option>
+												</object>
+												<object class="sizeritem">
+													<object class="wxStaticBoxSizer" variable="SamplepositionswhenPort2isRxSizer" member="no">
+														<label>Sample positions when Port 2 is Rx</label>
+														<object class="sizeritem">
+															<object class="wxFlexGridSizer" variable="SamplepositionswhenPort2isRx7Sizer" member="no">
+																<cols>2</cols>
+																<hgap>5</hgap>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT13" variable="StaticText13" member="yes">
+																		<label>BQ sample position</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML2_BQP" subclass="StdCombobox" variable="cmbLML2_BQP" member="yes">
+																		<tooltip>BQ sample position in frame, when Port 2 is RX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT14" variable="StaticText14" member="yes">
+																		<label>BI sample position</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML2_BIP" subclass="StdCombobox" variable="cmbLML2_BIP" member="yes">
+																		<tooltip>BI sample position in frame, when Port 2is RX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT15" variable="StaticText15" member="yes">
+																		<label>AQ sample position</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML2_AQP" subclass="StdCombobox" variable="cmbLML2_AQP" member="yes">
+																		<tooltip>AQ sample position in frame, when Port 2 is RX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxStaticText" name="ID_STATICTEXT16" variable="StaticText16" member="yes">
+																		<label>AI sample position</label>
+																	</object>
+																	<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+																<object class="sizeritem">
+																	<object class="wxComboBox" name="ID_LML2_AIP" subclass="StdCombobox" variable="cmbLML2_AIP" member="yes">
+																		<tooltip>AI sample position in frame, when Port 2 is RX</tooltip>
+																		<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+																	</object>
+																	<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+																</object>
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+													<border>5</border>
+													<option>1</option>
+												</object>
+											</object>
+											<flag>wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+											<border>5</border>
+											<option>1</option>
+										</object>
+										<object class="sizeritem">
+											<object class="wxStaticBoxSizer" variable="ClockcontrolsSizer" member="no">
+												<label>Clock controls</label>
+												<object class="sizeritem">
+													<object class="wxFlexGridSizer" variable="Clockcontrols11Sizer" member="no">
+														<cols>2</cols>
+														<hgap>5</hgap>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT25" variable="StaticText25" member="yes">
+																<label>TX FIFO read clock source</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_TXRDCLK_MUX" subclass="StdCombobox" variable="cmbTXRDCLK_MUX" member="yes">
+																<tooltip>TX FIFO read clock selection</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT26" variable="StaticText26" member="yes">
+																<label>Tx FIFO write clock source</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_TXWRCLK_MUX" subclass="StdCombobox" variable="cmbTXWRCLK_MUX" member="yes">
+																<tooltip>TX FIFO write clock selection</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT27" variable="StaticText27" member="yes">
+																<label>Rx FIFO read clock source</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_RXRDCLK_MUX" subclass="StdCombobox" variable="cmbRXRDCLK_MUX" member="yes">
+																<tooltip>RX FIFO read clock selection</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT28" variable="StaticText28" member="yes">
+																<label>Rx FIFO write clock source</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_RXWRCLK_MUX" subclass="StdCombobox" variable="cmbRXWRCLK_MUX" member="yes">
+																<tooltip>RX FIFO write clock selection</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT29" variable="StaticText29" member="yes">
+																<label>MCLK2 clock source</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_MCLK2SRC" subclass="StdCombobox" variable="cmbMCLK2SRC" member="yes">
+																<size>159,21</size>
+																<tooltip>MCLK2 clock source</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT30" variable="StaticText30" member="yes">
+																<label>MCLK1 clock source</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_MCLK1SRC" subclass="StdCombobox" variable="cmbMCLK1SRC" member="yes">
+																<tooltip>MCLK1 clock source</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT31" variable="StaticText31" member="yes">
+																<label>TxTSPCLKA clock divider</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_TXTSPCLKA_DIV" subclass="StdCombobox" variable="cmbTXTSPCLKA_DIV" member="yes">
+																<tooltip>TxTSP clock divider, used to produce MCLK(1/2) clocks</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT32" variable="StaticText32" member="yes">
+																<label>RxTSPCLKA clock divider</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_RXTSPCLKA_DIV" subclass="StdCombobox" variable="cmbRXTSPCLKA_DIV" member="yes">
+																<tooltip>RxTSP clock divider, used to produce MCLK(1/2) clocks</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_TXDIVEN" variable="chkTXDIVEN" member="yes">
+																<label>Enable Tx clock divider</label>
+																<tooltip>TX clock divider enable</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxCheckBox" name="ID_RXDIVEN" variable="chkRXDIVEN" member="yes">
+																<label>Enable Rx clock divider</label>
+																<tooltip>RX clock divider enable</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+											</object>
+											<flag>wxLEFT|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+											<border>5</border>
+											<option>1</option>
+										</object>
+									</object>
+									<flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+									<border>5</border>
+									<option>1</option>
+								</object>
+								<object class="sizeritem">
+									<object class="wxFlexGridSizer" variable="FlexGridSizer6" member="no">
+										<cols>3</cols>
+										<object class="sizeritem">
+											<object class="wxStaticBoxSizer" variable="LML1Sizer" member="no">
+												<label>LML1</label>
+												<object class="sizeritem">
+													<object class="wxFlexGridSizer" variable="LML18Sizer" member="no">
+														<cols>2</cols>
+														<hgap>5</hgap>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT17" variable="StaticText17" member="yes">
+																<label>Clock cycles to wait before data drive stop</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_LML1_TX_PST" subclass="StdCombobox" variable="cmbLML1_TX_PST" member="yes">
+																<tooltip>Number of clock cycles to wait before data drive stop after burst stop is detected in JESD207 mode on Port 1 and Port 1 is transmitter.</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT18" variable="StaticText18" member="yes">
+																<label>Clock cycles to wait before data drive start</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_LML1_TX_PRE" subclass="StdCombobox" variable="cmbLML1_TX_PRE" member="yes">
+																<tooltip>Number of clock cycles to wait before data drive start after burst start is detected in JESD207 mode on Port 1 and Port 1 is transmitter.</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT19" variable="StaticText19" member="yes">
+																<label>Clock cycles to wait before data capture stop</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_LML1_RX_PST" subclass="StdCombobox" variable="cmbLML1_RX_PST" member="yes">
+																<tooltip>Number of clock cycles to wait before data capture stop after burst stop is detected in JESD207 mode on Port 1 and Port 1 is receiver.</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT20" variable="StaticText20" member="yes">
+																<label>Clock cycles to wait before data capture start</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_LML1_RX_PRE" subclass="StdCombobox" variable="cmbLML1_RX_PRE" member="yes">
+																<tooltip>Number of clock cycles to wait before data capture start after burst start is detected in JESD207 mode on Port 1 and Port 1 is receiver.</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+											</object>
+											<flag>wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+											<border>5</border>
+											<option>1</option>
+										</object>
+										<object class="sizeritem">
+											<object class="wxStaticBoxSizer" variable="LML2Sizer" member="no">
+												<label>LML2</label>
+												<object class="sizeritem">
+													<object class="wxFlexGridSizer" variable="LML29Sizer" member="no">
+														<cols>2</cols>
+														<hgap>5</hgap>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT21" variable="StaticText21" member="yes">
+																<label>Clock cycles to wait before data drive stop</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_LML2_TX_PST" subclass="StdCombobox" variable="cmbLML2_TX_PST" member="yes">
+																<tooltip>Number of clock cycles to wait before data drive stop after burst stop is detected in JESD207 mode on Port 2 and Port 2 is transmitter.</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT22" variable="StaticText22" member="yes">
+																<label>Clock cycles to wait before data drive start</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_LML2_TX_PRE" subclass="StdCombobox" variable="cmbLML2_TX_PRE" member="yes">
+																<tooltip>Number of clock cycles to wait before data drive start after burst start is detected in JESD207 mode on Port 2 and Port 2 is transmitter.</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT23" variable="StaticText23" member="yes">
+																<label>Clock cycles to wait before data capture stop</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_LML2_RX_PST" subclass="StdCombobox" variable="cmbLML2_RX_PST" member="yes">
+																<tooltip>Number of clock cycles to wait before data capture stop after burst stop is detected in JESD207 mode on Port 2 and Port 2 is receiver.</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxStaticText" name="ID_STATICTEXT24" variable="StaticText24" member="yes">
+																<label>Clock cycles to wait before data capture start</label>
+															</object>
+															<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+														<object class="sizeritem">
+															<object class="wxComboBox" name="ID_LML2_RX_PRE" subclass="StdCombobox" variable="cmbLML2_RX_PRE" member="yes">
+																<tooltip>Number of clock cycles to wait before data capture start after burst start is detected in JESD207 mode on Port 2 and Port 2 is receiver.</tooltip>
+																<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+															</object>
+															<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+														</object>
+													</object>
+													<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												</object>
+											</object>
+											<flag>wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+											<border>5</border>
+											<option>1</option>
+										</object>
+									</object>
+									<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+									<border>5</border>
+									<option>1</option>
+								</object>
+							</object>
+						</object>
+						<label>Sample position &amp;&amp; Clock</label>
+					</object>
+				</object>
+				<flag>wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+				<border>5</border>
+				<option>1</option>
+			</object>
+		</object>
+	</object>
+</wxsmith>

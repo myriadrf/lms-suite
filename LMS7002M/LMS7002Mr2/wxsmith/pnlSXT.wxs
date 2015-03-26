@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxPanel" name="pnlSXT">
+		<object class="wxFlexGridSizer" variable="FlexGridSizer1" member="no">
+			<cols>2</cols>
+			<object class="sizeritem">
+				<object class="wxFlexGridSizer" variable="FlexGridSizer2" member="no">
+					<cols>1</cols>
+					<object class="sizeritem">
+						<object class="wxStaticBoxSizer" variable="DivisionratioSizer" member="no">
+							<label>Division ratio</label>
+							<object class="sizeritem">
+								<object class="wxFlexGridSizer" variable="Divisionratio2Sizer" member="no">
+									<cols>2</cols>
+									<hgap>5</hgap>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT4" variable="StaticText3" member="yes">
+											<label>Trim duty cycle of DIV2 LOCH</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_PW_DIV2_LOCH" subclass="StdCombobox" variable="cmbPW_DIV2_LOCH" member="yes">
+											<tooltip>trims the duty cycle of DIV2 LOCH. Only works when forward divider is dividing by at least 2 (excluding quadrature block division). If in bypass mode, this does not work</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT5" variable="StaticText4" member="yes">
+											<label>Trim duty cycle of DIV4 LOCH</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_PW_DIV4_LOCH" subclass="StdCombobox" variable="cmbPW_DIV4_LOCH" member="yes">
+											<tooltip>trims the duty cycle of DIV4 LOCH. Only works when forward divider is dividing by at least 4 (excluding quadrature block division). If in bypass mode, this does not work</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT6" variable="StaticText5" member="yes">
+											<label>LOCH__DIV division ratio</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_DIV_LOCH" subclass="StdCombobox" variable="cmbDIV_LOCH" member="yes">
+											<tooltip>Controls the division ratio in the LOCH&amp;DIV</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP</flag>
+						<border>5</border>
+						<option>1</option>
+					</object>
+					<object class="sizeritem">
+						<object class="wxStaticBoxSizer" variable="PowerdowncontrolsSizer" member="no">
+							<label>Power down controls</label>
+							<object class="sizeritem">
+								<object class="wxFlexGridSizer" variable="Powerdowncontrols3Sizer" member="no">
+									<cols>1</cols>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_PD_LOCH_T2RBUF" variable="chkPD_LOCH_T2RBUF" member="yes">
+											<label>LO buffer from SXT to SXR</label>
+											<tooltip>Power down for LO buffer from SXT to SXR. To be active only in the TDD mode</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_PD_CP" variable="chkPD_CP" member="yes">
+											<label>Charge pump</label>
+											<tooltip>Power down for Charge Pump</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_PD_FDIV" variable="chkPD_FDIV" member="yes">
+											<label>Feedback frequency and forward dividers</label>
+											<tooltip>Power down for feedback frequency and forward dividers</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_PD_SDM" variable="chkPD_SDM" member="yes">
+											<label>SDM</label>
+											<tooltip>Power down for SDM</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_PD_VCO_COMP" variable="chkPD_VCO_COMP" member="yes">
+											<label>VCO comparator</label>
+											<tooltip>Power down for VCO comparator</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_PD_VCO" variable="chkPD_VCO" member="yes">
+											<label>VCO</label>
+											<tooltip>Power down for VCO</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_EN_G" variable="chkEN_G" member="yes">
+											<label>Enable individual power downs</label>
+											<tooltip>Enable control for all the SXT power downs</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP</flag>
+						<border>5</border>
+						<option>1</option>
+					</object>
+					<object class="sizeritem">
+						<object class="wxStaticBoxSizer" variable="VCOSizer" member="no">
+							<label>VCO</label>
+							<object class="sizeritem">
+								<object class="wxFlexGridSizer" variable="VCO1Sizer" member="no">
+									<cols>1</cols>
+									<object class="sizeritem">
+										<object class="wxRadioBox" name="ID_SEL_VCO" variable="rgrSEL_VCO" member="yes">
+											<label>Active VCO</label>
+											<content>
+												<item>VCOL</item>
+												<item>VCOM</item>
+												<item>VCOH</item>
+											</content>
+											<tooltip>Selects the active VCO. It is set by SX&amp;SWC&amp;calibration</tooltip>
+											<style>wxRA_SPECIFY_COLS</style>
+											<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxButton" name="ID_BUTTON4" variable="btnShowVCO" member="yes">
+											<label>VCO params</label>
+											<handler function="OnbtnShowVCOClick" entry="EVT_BUTTON" />
+										</object>
+										<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticBoxSizer" variable="StaticBoxSizer2" member="no">
+									<label>VCO Comparators</label>
+									<orient>wxVERTICAL</orient>
+									<object class="sizeritem">
+										<object class="wxFlexGridSizer" variable="FlexGridSizer3" member="no">
+											<cols>4</cols>
+											<growablerows>0</growablerows>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT16" variable="StaticText15" member="yes">
+													<label>High:</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_VCO_CMPHO" variable="lblVCO_CMPHO" member="yes">
+													<label>???</label>
+												</object>
+												<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT17" variable="StaticText16" member="yes">
+													<label>Low:</label>
+												</object>
+												<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>10</border>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_VCO_CMPLO" variable="lblVCO_CMPLO" member="yes">
+													<label>???</label>
+												</object>
+												<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+											</object>
+										</object>
+										<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+									<object class="sizeritem">
+										<object class="wxButton" name="ID_BUTTON1" variable="btnUpdateValues" member="yes">
+											<label>Read</label>
+											<handler function="OnbtnUpdateValuesClick" entry="EVT_BUTTON" />
+										</object>
+										<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+								</object>
+								<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+							<object class="sizeritem">
+								<object class="wxFlexGridSizer" variable="FlexGridSizer5" member="no">
+									<cols>1</cols>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT9" variable="StaticText8" member="yes">
+											<label>VCO LDO output voltage</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_VDIV_VCO" subclass="StdCombobox" variable="cmbVDIV_VCO" member="yes">
+											<tooltip>Controls VCO LDO output voltage</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT10" variable="StaticText9" member="yes">
+											<label>Scales VCO bias current</label>
+										</object>
+										<flag>wxTOP|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_ICT_VCO" subclass="StdCombobox" variable="cmbICT_VCO" member="yes">
+											<tooltip>Scales the VCO bias current from 0 to 2.5xInom</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+								</object>
+								<flag>wxALL|wxALIGN_LEFT|wxALIGN_TOP</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+						</object>
+						<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+						<border>5</border>
+						<option>1</option>
+					</object>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="FlexGridSizer8" member="no">
+							<cols>3</cols>
+							<object class="sizeritem">
+								<object class="wxButton" name="ID_BUTTON5" variable="btnChangeRefClk" member="yes">
+									<label>Change Reference Clock</label>
+									<handler function="OnbtnChangeRefClkClick" entry="EVT_BUTTON" />
+								</object>
+								<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT29" variable="StaticText14" member="yes">
+									<label>Reference Clock(MHz):</label>
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT30" variable="lblRefClk_MHz" member="yes">
+									<label>30.72</label>
+									<size>64,13</size>
+								</object>
+								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+						</object>
+						<flag>wxALL|wxALIGN_LEFT|wxALIGN_TOP</flag>
+						<border>5</border>
+						<option>1</option>
+					</object>
+				</object>
+				<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+				<border>5</border>
+				<option>1</option>
+			</object>
+			<object class="sizeritem">
+				<object class="wxFlexGridSizer" variable="FlexGridSizer7" member="no">
+					<cols>1</cols>
+					<object class="sizeritem">
+						<object class="wxStaticBoxSizer" variable="SXTcontrolsSizer" member="no">
+							<label>SXT/SXR controls</label>
+							<object class="sizeritem">
+								<object class="wxFlexGridSizer" variable="SXTcontrols4Sizer" member="no">
+									<cols>2</cols>
+									<growablecols>0</growablecols>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_RESET_N" variable="chkRESET_N" member="yes">
+											<label>Reset SX</label>
+											<tooltip>Resets SX. A pulse should be used in the start-up to reset</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_SPDUP_VCO" variable="chkSPDUP_VCO" member="yes">
+											<label>Bypass noise filter resistor</label>
+											<tooltip>Bypasses the noise filter resistor for fast settling time. It should be connected to a 1uS pulse</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_BYPLDO_VCO" variable="chkBYPLDO_VCO" member="yes">
+											<label>Bypass SX LDO</label>
+											<tooltip>Controls the bypass signal for the SX LDO</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_EN_COARSEPLL" variable="chkEN_COARSEPLL" member="yes">
+											<label>Enable coarse tuning</label>
+											<tooltip>Enable signal for coarse tuning block</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_CURLIM_VCO" variable="chkCURLIM_VCO" member="yes">
+											<label>Enable current limit</label>
+											<tooltip>Enables the output current limitation in the VCO regulator</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_EN_DIV2_DIVPROG" variable="chkEN_DIV2_DIVPROG" member="yes">
+											<label>Enable additional DIV2 prescaler</label>
+											<tooltip>Enables additional DIV2 prescaler at the input of the Programable divider. The core of programmble divider in the SX feeback divider works up to 5.5GHz. For FVCO&gt;5.5GHz, the prescaler is needed to lower the input frequency to DIVPROG&amp;SX</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_EN_INTONLY_SDM" variable="chkEN_INTONLY_SDM" member="yes">
+											<label>Enable INTEGER__N mode</label>
+											<tooltip>Enables INTEGER-N mode of the SX </tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_EN_SDM_CLK" variable="chkEN_SDM_CLK" member="yes">
+											<label>Enable SDM clock</label>
+											<tooltip>Enables/Disables SDM clock. In INT-N mode or for noise testing, SDM clock can be disabled</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_EN_SDM_TSTO" variable="chkEN_SDM_TSTO" member="yes">
+											<label>Enambe SDM__TSTO outputs</label>
+											<tooltip>Enables the SDM&amp;TSTO</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_REV_SDMCLK" variable="chkREV_SDMCLK" member="yes">
+											<label>Reverse SDM clock</label>
+											<tooltip>Reverses the SDM clock</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_SX_DITHER_EN" variable="chkSX_DITHER_EN" member="yes">
+											<label>Enable dithering in SDM</label>
+											<tooltip>Enabled dithering in SDM</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxCheckBox" name="ID_REVPH_PFD" variable="chkREVPH_PFD" member="yes">
+											<label>Reverse pulses of PFD</label>
+											<tooltip>Reverse the pulses of PFD. It can be used to reverse the polarity of the PLL loop (positive feedback to negative feedback)</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT7" variable="StaticText6" member="yes">
+											<label>Test mode of SX</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_TST_SX" subclass="StdCombobox" variable="cmbTST_SX" member="yes">
+											<size>237,21</size>
+											<tooltip>Controls the test mode of the SX</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT8" variable="StaticText7" member="yes">
+											<label>Feedback divider for SDM</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_SEL_SDMCLK" subclass="StdCombobox" variable="cmbSEL_SDMCLK" member="yes">
+											<tooltip>Selects between the feedback divider output and Fref for SDM</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT11" variable="StaticText10" member="yes">
+											<label>Reference voltage</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_RSEL_LDO_VCO" subclass="StdCombobox" variable="cmbRSEL_LDO_VCO" member="yes">
+											<tooltip>Set the reference voltage that supplies bias voltage of switch-cap array and varactor</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT12" variable="StaticText11" member="yes">
+											<label>Scales offset of charge pump</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_IOFFSET_CP" subclass="StdCombobox" variable="cmbIOFFSET_CP" member="yes">
+											<tooltip>Scales the offset current of the charge pump, 0--&gt;63. This current is used in Fran-N mode to create an offset in the CP response and avoid the non-linear section</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT13" variable="StaticText12" member="yes">
+											<label>Scales pulse current of charge pump</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_IPULSE_CP" subclass="StdCombobox" variable="cmbIPULSE_CP" member="yes">
+											<tooltip>Scales the pulse current of the charge pump</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT18" variable="StaticText17" member="yes">
+											<label>CP2</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_CP2_PLL" subclass="StdCombobox" variable="cmbCP2_PLL" member="yes">
+											<tooltip>Controls the value of CP2 (cap from CP output to GND) in the PLL filter</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT19" variable="StaticText18" member="yes">
+											<label>CP3</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_CP3_PLL" subclass="StdCombobox" variable="cmbCP3_PLL" member="yes">
+											<tooltip>Controls the value of CP3 (cap from VCO Vtune input to GND) in the PLL filter</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT20" variable="StaticText19" member="yes">
+											<label>CZ</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_CZ" subclass="StdCombobox" variable="cmbCZ" member="yes">
+											<tooltip>Controls the value of CZ (Zero capacitor) in the PLL filter</tooltip>
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+									</object>
+									<object class="sizeritem">
+										<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText2" member="yes">
+											<label>CSW__VCO</label>
+										</object>
+										<flag>wxALIGN_LEFT|wxALIGN_BOTTOM</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+									<object class="sizeritem">
+										<object class="wxComboBox" name="ID_CSW_VCO" subclass="StdCombobox" variable="cmbCSW_VCO" member="yes">
+											<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+										</object>
+										<flag>wxEXPAND|wxALIGN_LEFT|wxALIGN_BOTTOM</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+						<border>5</border>
+						<option>1</option>
+					</object>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="FlexGridSizer6" member="no">
+							<cols>3</cols>
+							<object class="sizeritem">
+								<object class="wxStaticBoxSizer" variable="StaticBoxSizer1" member="no">
+									<label>Frequency, GHz</label>
+									<orient>wxVERTICAL</orient>
+									<object class="sizeritem">
+										<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="txtFrequency" member="yes">
+											<value>2.14</value>
+										</object>
+										<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+									<object class="sizeritem">
+										<object class="wxButton" name="ID_BUTTON2" variable="btnCalculate" member="yes">
+											<label>Calculate</label>
+											<handler function="OnbtnCalculateClick" entry="EVT_BUTTON" />
+										</object>
+										<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+									<object class="sizeritem">
+										<object class="wxButton" name="ID_BUTTON3" variable="btnTune" member="yes">
+											<label>Tune</label>
+											<handler function="OnbtnTuneClick" entry="EVT_BUTTON" />
+										</object>
+										<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_RADIOBOX1" variable="rgrENDIV2_usage" member="yes">
+									<label>EN__DIV2 usage</label>
+									<content>
+										<item>Normal</item>
+										<item>Always ON</item>
+										<item>Always OFF</item>
+									</content>
+									<style>wxRA_SPECIFY_COLS</style>
+								</object>
+								<flag>wxLEFT|wxALIGN_LEFT|wxALIGN_TOP</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticBoxSizer" variable="StaticBoxSizer3" member="no">
+									<label>Calculated Values for Fractional Mode</label>
+									<object class="sizeritem">
+										<object class="wxFlexGridSizer" variable="FlexGridSizer4" member="no">
+											<cols>2</cols>
+											<rows>6</rows>
+											<vgap>5</vgap>
+											<hgap>10</hgap>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT2" variable="StaticText1" member="yes">
+													<label>N Integer:</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT3" variable="lblINT_SDM" member="yes">
+													<label>???</label>
+													<size>91,13</size>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT21" variable="StaticText20" member="yes">
+													<label>N Fractional:</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT22" variable="lblFRAC_SDM" member="yes">
+													<label>???</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT23" variable="StaticText22" member="yes">
+													<label>Divider:</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT24" variable="lblDivider" member="yes">
+													<label>Label</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT25" variable="StaticText24" member="yes">
+													<label>Output Freq, GHz:</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT26" variable="lblRealOutFrequency" member="yes">
+													<label>???</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT27" variable="StaticText26" member="yes">
+													<label>VCO Freq, GHz:</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT28" variable="lblVCOfreq" member="yes">
+													<label>Label</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT14" variable="StaticText13" member="yes">
+													<label>EN__DIV2__DIVPROG:</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+											<object class="sizeritem">
+												<object class="wxStaticText" name="ID_STATICTEXT15" variable="lblEN_DIV2_DIVPROG" member="yes">
+													<label>???</label>
+												</object>
+												<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+												<border>5</border>
+												<option>1</option>
+											</object>
+										</object>
+										<flag>wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+										<border>5</border>
+										<option>1</option>
+									</object>
+								</object>
+								<flag>wxLEFT|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+								<border>5</border>
+								<option>1</option>
+							</object>
+						</object>
+						<flag>wxALL|wxALIGN_LEFT|wxALIGN_TOP</flag>
+						<border>5</border>
+						<option>1</option>
+					</object>
+				</object>
+				<flag>wxALIGN_LEFT|wxALIGN_TOP</flag>
+				<border>5</border>
+				<option>1</option>
+			</object>
+		</object>
+	</object>
+</wxsmith>

@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxPanel" name="pnlRFE">
+		<id_arg>0</id_arg>
+		<object class="wxFlexGridSizer" variable="FlexGridSizer1" member="no">
+			<cols>2</cols>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="PowerdowncontrolsSizer" member="no">
+					<label>Power down controls</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="Powerdowncontrols1Sizer" member="no">
+							<cols>1</cols>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_PD_LNA_RFE" variable="chkPD_LNA_RFE" member="yes">
+									<label>LNA&amp;RFE</label>
+									<tooltip>Power control signal for LNA&amp;RFE</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_PD_RLOOPB_1_RFE" variable="chkPD_RLOOPB_1_RFE" member="yes">
+									<label>RXFE loopback 1</label>
+									<tooltip>Power control signal for RXFE loopback 1</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_PD_RLOOPB_2_RFE" variable="chkPD_RLOOPB_2_RFE" member="yes">
+									<label>RXFE loopback 2</label>
+									<tooltip>Power control signal for RXFE loopback 2</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_PD_MXLOBUF_RFE" variable="chkPD_MXLOBUF_RFE" member="yes">
+									<label>RXFE mixer lo buffer</label>
+									<tooltip>Power control signal for RXFE mixer lo buffer</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_PD_QGEN_RFE" variable="chkPD_QGEN_RFE" member="yes">
+									<label>RXFE Quadrature LO generator</label>
+									<tooltip>Power control signal for RXFE Quadrature LO generator</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_PD_RSSI_RFE" variable="chkPD_RSSI_RFE" member="yes">
+									<label>RXFE RSSI</label>
+									<tooltip>Power control signal for RXFE RSSI</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_PD_TIA_RFE" variable="chkPD_TIA_RFE" member="yes">
+									<label>RXFE TIA</label>
+									<tooltip>Power control signal for RXFE TIA</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_EN_G_RFE" variable="chkEN_G_RFE" member="yes">
+									<label>Enable individual power downs</label>
+									<tooltip>Enable control for all the RFE&amp;1 power downs</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="UNGROUPEDSizer" member="no">
+					<label>UNGROUPED</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="UNGROUPED2Sizer" member="no">
+							<cols>2</cols>
+							<hgap>5</hgap>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT1" variable="StaticText0" member="yes">
+									<label>Active path to RXFE</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_SEL_PATH_RFE" subclass="StdCombobox" variable="cmbSEL_PATH_RFE" member="yes">
+									<tooltip>Selects the active path of the RXFE</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT2" variable="StaticText1" member="yes">
+									<label>Decoupling cap at output of RX mixer</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_CAP_RXMXO_RFE" subclass="StdCombobox" variable="cmbCAP_RXMXO_RFE" member="yes">
+									<tooltip>Control the decoupling cap at the output of the RX Mixer</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT3" variable="StaticText2" member="yes">
+									<label>Controls cap parallel with the LNA input</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_CGSIN_LNA_RFE" subclass="StdCombobox" variable="cmbCGSIN_LNA_RFE" member="yes">
+									<tooltip>Controls the cap parallel with the LNA input input NMOS CGS to control the Q of the maching circuit and provides trade off between gain/NF and IIP. The higher the frequency, the lower CGSIN&amp;LNA&amp;RFE should be. Also, the higher CGSIN, the lower the Q, The lower the gain, the higher the NF, and the higher the IIP3</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT4" variable="StaticText3" member="yes">
+									<label>Compensation resistor of TIA opamp</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_RCOMP_TIA_RFE" subclass="StdCombobox" variable="cmbRCOMP_TIA_RFE" member="yes">
+									<tooltip>Controls the compensation resistors of the TIA opamp</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT5" variable="StaticText4" member="yes">
+									<label>Sets feedback resisotor to nominal value</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_RFB_TIA_RFE" subclass="StdCombobox" variable="cmbRFB_TIA_RFE" member="yes">
+									<tooltip>Sets the feedback resistor to the nominal value</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxRadioBox" name="ID_EN_NEXTRX_RFE" variable="rgrEN_NEXTRX_RFE" member="yes">
+									<label>Enable daisy chain LO buffer</label>
+									<content>
+										<item>SISO</item>
+										<item>MIMO</item>
+									</content>
+									<dimension>2</dimension>
+									<tooltip>Enables the daisy chain LO buffer going from RXFE1  to RXFE2</tooltip>
+									<style>wxRA_SPECIFY_COLS</style>
+									<handler function="ParameterChangeHandler" entry="EVT_RADIOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+				<border>5</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="InputshortingswitchesSizer" member="no">
+					<label>Input shorting switches</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="Inputshortingswitches4Sizer" member="no">
+							<cols>1</cols>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_EN_INSHSW_H_RFE" variable="chkEN_INSHSW_H_RFE" member="yes">
+									<label>input of LNAH</label>
+									<tooltip>Enables the input shorting switch at the input  of the LNAH</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_EN_INSHSW_LB1_RFE" variable="chkEN_INSHSW_LB1_RFE" member="yes">
+									<label>input of loopback 1</label>
+									<tooltip>Enables the input shorting switch at the input  of the loopback 1 (in parallel with LNAL mixer)</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_EN_INSHSW_LB2_RFE" variable="chkEN_INSHSW_LB2_RFE" member="yes">
+									<label>input of loopback 2</label>
+									<tooltip>Enables the input shorting switch at the input  of the loopback 2 (in parallel with LNAW mixer)</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_EN_INSHSW_L_RFE" variable="chkEN_INSHSW_L_RFE" member="yes">
+									<label>input of LNAL</label>
+									<tooltip>Enables the input shorting switch at the input  of the LNAL</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_EN_INSHSW_W_RFE" variable="chkEN_INSHSW_W_RFE" member="yes">
+									<label>input of LNAW</label>
+									<tooltip>Enables the input shorting switch at the input  of the LNAW</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP</flag>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="DCSizer" member="no">
+					<label>DC</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="DC3Sizer" member="no">
+							<cols>2</cols>
+							<hgap>5</hgap>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT6" variable="StaticText5" member="yes">
+									<label>Offset I side</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_DCOFFI_RFE" subclass="StdCombobox" variable="cmbDCOFFI_RFE" member="yes">
+									<tooltip>Controls DC offset at the output of the TIA by injecting current to the input of the TIA (I side)</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT7" variable="StaticText6" member="yes">
+									<label>Offset Q side</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_DCOFFQ_RFE" subclass="StdCombobox" variable="cmbDCOFFQ_RFE" member="yes">
+									<tooltip>Controls DC offset at the output of the TIA by injecting current to the input of the TIA (Q side)</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT8" variable="StaticText7" member="yes">
+									<label>Mixer LO signal</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_ICT_LODC_RFE" subclass="StdCombobox" variable="cmbICT_LODC_RFE" member="yes">
+									<tooltip>Controls the DC of the mixer LO signal at the gate of the mixer switches</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxCheckBox" name="ID_EN_DCOFF_RXFE_RFE" variable="chkEN_DCOFF_RXFE_RFE" member="yes">
+									<label>Enable DCOFFSET block</label>
+									<tooltip>Enables the DCOFFSET block for the RXFE</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_CHECKBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxLEFT|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+				<border>5</border>
+				<option>1</option>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="ReferencecurrentSizer" member="no">
+					<label>Reference current</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="Referencecurrent5Sizer" member="no">
+							<cols>2</cols>
+							<hgap>5</hgap>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT9" variable="StaticText8" member="yes">
+									<label>Loopback amplifier</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_ICT_LOOPB_RFE" subclass="StdCombobox" variable="cmbICT_LOOPB_RFE" member="yes">
+									<tooltip>Controls the reference current of the RXFE loopback amplifier</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT10" variable="StaticText9" member="yes">
+									<label>TIA 1st stage</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_ICT_TIAMAIN_RFE" subclass="StdCombobox" variable="cmbICT_TIAMAIN_RFE" member="yes">
+									<tooltip>Controls the reference current of the RXFE TIA first stage</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT11" variable="StaticText10" member="yes">
+									<label>TIA 2nd stage</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_ICT_TIAOUT_RFE" subclass="StdCombobox" variable="cmbICT_TIAOUT_RFE" member="yes">
+									<tooltip>Controls the reference current of the RXFE TIA 2nd stage</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="CurrentcontrolSizer" member="no">
+					<label>Current control</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="Currentcontrol6Sizer" member="no">
+							<cols>2</cols>
+							<hgap>5</hgap>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT12" variable="StaticText11" member="yes">
+									<label>LNA output commond mode voltage</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_ICT_LNACMO_RFE" subclass="StdCombobox" variable="cmbICT_LNACMO_RFE" member="yes">
+									<tooltip>Controls the current generating LNA output commond mode voltage</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT13" variable="StaticText12" member="yes">
+									<label>LNA core</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_ICT_LNA_RFE" subclass="StdCombobox" variable="cmbICT_LNA_RFE" member="yes">
+									<tooltip>Controls the current of the LNA core</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+				<border>5</border>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="CapacitorcontrolsSizer" member="no">
+					<label>Capacitor controls</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="Capacitorcontrols7Sizer" member="no">
+							<cols>2</cols>
+							<hgap>5</hgap>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT14" variable="StaticText13" member="yes">
+									<label>Compensation TIA</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_CCOMP_TIA_RFE" subclass="StdCombobox" variable="cmbCCOMP_TIA_RFE" member="yes">
+									<tooltip>Compensation capacitor for TIA</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT15" variable="StaticText14" member="yes">
+									<label>Feedback TIA</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_CFB_TIA_RFE" subclass="StdCombobox" variable="cmbCFB_TIA_RFE" member="yes">
+									<tooltip>Feeback capacitor for TIA. Controls the 3dB BW of the TIA. Should be set with calibration through digital baseband</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+			</object>
+			<object class="sizeritem">
+				<object class="wxStaticBoxSizer" variable="GaincontrolsSizer" member="no">
+					<label>Gain controls</label>
+					<object class="sizeritem">
+						<object class="wxFlexGridSizer" variable="Gaincontrols8Sizer" member="no">
+							<cols>2</cols>
+							<hgap>5</hgap>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT16" variable="StaticText15" member="yes">
+									<label>LNA</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_G_LNA_RFE" subclass="StdCombobox" variable="cmbG_LNA_RFE" member="yes">
+									<tooltip>Controls the gain of the LNA</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT17" variable="StaticText16" member="yes">
+									<label>Loopback</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_G_RXLOOPB_RFE" subclass="StdCombobox" variable="cmbG_RXLOOPB_RFE" member="yes">
+									<tooltip>Controls RXFE loopback gain</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxStaticText" name="ID_STATICTEXT18" variable="StaticText17" member="yes">
+									<label>TIA</label>
+								</object>
+								<flag>wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+							<object class="sizeritem">
+								<object class="wxComboBox" name="ID_G_TIA_RFE" subclass="StdCombobox" variable="cmbG_TIA_RFE" member="yes">
+									<tooltip>Controls the Gain of the TIA</tooltip>
+									<handler function="ParameterChangeHandler" entry="EVT_COMBOBOX" />
+								</object>
+								<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+							</object>
+						</object>
+						<flag>wxALL|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+					</object>
+				</object>
+				<flag>wxLEFT|wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL</flag>
+				<border>5</border>
+			</object>
+		</object>
+	</object>
+</wxsmith>

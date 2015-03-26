@@ -1,3 +1,0 @@
-MainWinICO ICON "mrf_icon.ico"
-splashImage	RCDATA "myriadIMGn.png"
-#include "wx/msw/wx.rc"
