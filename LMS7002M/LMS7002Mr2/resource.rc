@@ -1,5 +1,0 @@
-aaaa ICON "resources/LMS_ICO.ico"
-ControlPanel_icon ICON "resources/LMS_ICO.ico"
-splashImage	RCDATA "resources/splash.png"
-
-#include "wx/msw/wx.rc"
