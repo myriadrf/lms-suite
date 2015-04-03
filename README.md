@@ -10,9 +10,9 @@ The utilities:
 
 ## LMS7002M
 
-### LMS7002Mr2
+### LMS7Suite
 
-This version of LMS Suite is for use with the [Stream board](https://myriadrf.org/projects/stream/) and LMS7002EVB (UNITE).
+This version of LMS7Suite is for use with the [Stream board](https://myriadrf.org/projects/stream/) and LMS7002EVB (UNITE).
 
 ## LMS6002D
 
