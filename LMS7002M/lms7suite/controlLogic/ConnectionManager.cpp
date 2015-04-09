@@ -98,6 +98,7 @@ void ConnectionManager::Close()
 		activeControlPort->Close();
 		Notify(LMS_Message(MSG_BOARD_DISCONNECTED, "", 0, 0));
 	}
+	m_currentDeviceType = LMS_DEV_UNKNOWN;
 	mOpenedDevice = -1;        
 }
 
@@ -469,8 +470,18 @@ int ConnectionManager::Open(unsigned i)
     if( i < mDevices.size() )
     {
         if( activeControlPort->Open(mDevices[i].portIndex) )
-        {
-            mOpenedDevice = i;
+        {			
+            mOpenedDevice = i;			
+			unsigned char outbuffer[56];
+			unsigned char inbuffer[56];
+			memset(outbuffer, 0, 56);
+			memset(inbuffer, 0, 56);
+			unsigned long readLen = 4;
+			SendReadData(CMD_GET_INFO, outbuffer, 4, inbuffer, readLen);
+			if (inbuffer[1] < LMS_DEV_COUNT)
+				m_currentDeviceType = (eLMS_DEV)inbuffer[1];
+			else
+				m_currentDeviceType = LMS_DEV_UNKNOWN;
 			Notify(LMS_Message(MSG_BOARD_CONNECTED, mDevices[i].name, 0, 0));
             return 1;
         }
