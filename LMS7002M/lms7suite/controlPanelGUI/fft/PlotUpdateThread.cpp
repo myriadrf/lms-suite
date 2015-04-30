@@ -79,11 +79,10 @@ void* PlotUpdateThread::Entry()
         m_mainframe->m_glFFTplot->series[i]->AssignValues(&freqVector[0], results->amplitudes, results->amplitudesCount-1);
         m_mainframe->m_glFFTplot->Refresh();
         m_mainframe->m_gltimePlot->Refresh();
-        m_mainframe->m_glconstellationPlot->Refresh();
-        wxThreadEvent tevt(wxEVT_THREAD, wxEVT_COMMAND_THREAD_UPDATE);
-        m_mainframe->GetEventHandler()->AddPendingEvent(tevt); //post event for gui thread to update
+        m_mainframe->m_glconstellationPlot->Refresh();        
     }
 
+    CalculationResults measurements;
     while(m_running)
     {
         t2 = getMilis();
@@ -133,33 +132,30 @@ void* PlotUpdateThread::Entry()
                         float meanQ = sumQ/m_FFTsize;
 
 						float tempMag = 0;
-						float averageMag = 0;                        
-						float peakMag = sqrt((ftempI[0] - meanI)*(ftempI[0] - meanI) + (ftempQ[0] - meanQ)*(ftempQ[0] - meanQ));                                                
+						float averageMag = 0;
+						float peakMag = sqrt((ftempI[0] - meanI)*(ftempI[0] - meanI) + (ftempQ[0] - meanQ)*(ftempQ[0] - meanQ));
                         for(int i=0; i<m_FFTsize; ++i)
-                        {                            
+                        {
 							tempMag = sqrt((ftempI[i] - meanI)*(ftempI[i] - meanI) + (ftempQ[i] - meanQ)*(ftempQ[i] - meanQ));
 							averageMag += tempMag*tempMag;
 							if (tempMag  > peakMag)
-								peakMag = tempMag;                            
+								peakMag = tempMag;
                         }
-                        averageMag = sqrt(averageMag/m_FFTsize);                        
+                        averageMag = sqrt(averageMag/m_FFTsize);
 						if (averageMag != 0)
-						{
-							float peakToAvg = 20 * log10(peakMag / averageMag);
-							m_mainframe->lblIratio->SetLabelText(wxString::Format("%3.2f", peakToAvg));
+						{							
+							measurements.iqPeakToAvgRatio = 20 * log10(peakMag / averageMag);
 						}
 						else
-							m_mainframe->lblIratio->SetLabelText("Infinity");
+                            measurements.iqPeakToAvgRatio = 0;
                     }
 
                     m_mainframe->m_gltimePlot->series[2*ch+0]->AssignValues(&timeVector[0], ftempI, m_FFTsize);
                     m_mainframe->m_gltimePlot->series[2*ch+1]->AssignValues(&timeVector[0], ftempQ, m_FFTsize);
-                    m_mainframe->m_gltimePlot->Refresh();
                 }
                 if(m_mainframe->chkFreezeIversusQ->IsChecked() == false)
                 {
-                    m_mainframe->m_glconstellationPlot->series[ch]->AssignValues(results->iqsamples, results->samplesCount);
-                    m_mainframe->m_glconstellationPlot->Refresh();
+                    m_mainframe->m_glconstellationPlot->series[ch]->AssignValues(results->iqsamples, results->samplesCount);                    
                 }
                 if(m_mainframe->chkFreezeDrawing->IsChecked() == false)
                 {
@@ -189,22 +185,23 @@ void* PlotUpdateThread::Entry()
                                     sum += pow(10, results->amplitudes_dbFS[i]/10);
                                     ++bins;
                                 }
-                            chPwr[c] = sum;                            
+                            chPwr[c] = sum;
                         }
-                        m_mainframe->lblPwrCh1->SetLabelText(wxString::Format("%3.2f", 10*log10(chPwr[0])));
-                        m_mainframe->lblPwrCh2->SetLabelText(wxString::Format("%3.2f", 10*log10(chPwr[1])));
-                        m_mainframe->lbldBc->SetLabelText(wxString::Format("%3.2f", 10*log10(chPwr[1]/chPwr[0])));
+                        measurements.pwrCh1 = 10*log10(chPwr[0]);
+                        measurements.pwrCh2 = 10*log10(chPwr[1]);
+                        measurements.dbc = 10*log10(chPwr[1]/chPwr[0]);
                     }
-                    m_mainframe->m_glFFTplot->series[ch]->AssignValues(&freqVector[0], results->amplitudes_dbFS, results->amplitudesCount);
-                    m_mainframe->m_glFFTplot->Refresh();
+                    m_mainframe->m_glFFTplot->series[ch]->AssignValues(&freqVector[0], results->amplitudes_dbFS, results->amplitudesCount);                    
                 }
                 m_mainframe->m_redrawsDone++;
                 wxThreadEvent tevt(wxEVT_THREAD, wxEVT_COMMAND_THREAD_UPDATE);
+                tevt.SetPayload<CalculationResults>(measurements);
                 m_mainframe->GetEventHandler()->AddPendingEvent(tevt); //post event for gui thread to update
             }
             else
             {
                 wxThreadEvent tevt(wxEVT_THREAD, wxEVT_COMMAND_THREAD_UPDATE);
+                tevt.SetPayload<CalculationResults>(measurements);
                 m_mainframe->GetEventHandler()->AddPendingEvent(tevt); //post event for gui thread to update
             }
         }

@@ -252,23 +252,16 @@ pnlMCU_BD::pnlMCU_BD(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxS
     StaticBoxSizer9->Add(Button4, 0, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer7->Add(StaticBoxSizer9, 1, wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     StaticBoxSizer4 = new wxStaticBoxSizer(wxHORIZONTAL, this, _("Algorithms"));
-    FlexGridSizer14 = new wxFlexGridSizer(0, 2, 0, 0);
-    btnRxDC = new wxButton(this, ID_BUTTON4, _("Rx DC"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON4"));
-    btnRxDC->Disable();
-    FlexGridSizer14->Add(btnRxDC, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    FlexGridSizer14 = new wxFlexGridSizer(0, 2, 0, 0);    
     FlexGridSizer15 = new wxFlexGridSizer(0, 3, 0, 0);
     StaticText7 = new wxStaticText(this, ID_STATICTEXT14, _("Status:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT14"));
     FlexGridSizer15->Add(StaticText7, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     lblAlgorithmStatus = new wxStaticText(this, ID_STATICTEXT15, _("0x00"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT15"));
     FlexGridSizer15->Add(lblAlgorithmStatus, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    FlexGridSizer14->Add(FlexGridSizer15, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    btnTxDC = new wxButton(this, ID_BUTTON5, _("Tx DC"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON5"));
-    btnTxDC->Disable();
-    FlexGridSizer14->Add(btnTxDC, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    FlexGridSizer14->Add(FlexGridSizer15, 1, wxALL|wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);        
     FlexGridSizer14->Add(-1,-1,1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    btnTxIQ = new wxButton(this, ID_BUTTON6, _("Tx IQ"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON6"));
-    btnTxIQ->Disable();
-    FlexGridSizer14->Add(btnTxIQ, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    btnCalibrateAll = new wxButton(this, ID_BUTTON6, _("Calibrate All"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON6"));    
+	FlexGridSizer14->Add(btnCalibrateAll, 1, wxALL | wxALIGN_CENTER_HORIZONTAL | wxALIGN_CENTER_VERTICAL, 5);
     StaticBoxSizer4->Add(FlexGridSizer14, 1, wxALIGN_LEFT|wxALIGN_TOP, 5);
     FlexGridSizer7->Add(StaticBoxSizer4, 1, wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP, 5);
     FlexGridSizer2->Add(FlexGridSizer7, 1, wxALIGN_TOP|wxALIGN_CENTER_HORIZONTAL, 5);
@@ -310,10 +303,8 @@ pnlMCU_BD::pnlMCU_BD(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxS
     Connect(ID_RADIOBUTTON7,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&pnlMCU_BD::OnRadioButton7Select);
     Connect(ID_TEXTCTRL1,wxEVT_COMMAND_TEXT_UPDATED,(wxObjectEventFunction)&pnlMCU_BD::OnTextCtrl1Text);
     Connect(ID_RADIOBUTTON6,wxEVT_COMMAND_RADIOBUTTON_SELECTED,(wxObjectEventFunction)&pnlMCU_BD::OnRadioButton6Select);
-    Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlMCU_BD::OnButton4Click1);
-    Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlMCU_BD::OnbtnRxDCClick);
-    Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlMCU_BD::OnbtnTxDCClick);
-    Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlMCU_BD::OnbtnTxIQClick);
+    Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlMCU_BD::OnButton4Click1);    
+    Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlMCU_BD::OnbtnCalibrateAllClick);
     Connect(wxEVT_PAINT,(wxObjectEventFunction)&pnlMCU_BD::OnPaint);
     //*)
 
@@ -693,26 +684,7 @@ void pnlMCU_BD::SetProgressBar(int i)
     gaugeProgress->SetValue(i);
 }
 
-
-void pnlMCU_BD::OnbtnRxDCClick(wxCommandEvent& event)
-{
-    lblAlgorithmStatus->SetLabel("------");
-    lmsControl->algorithms->CallMCU(1);
-    int status = lmsControl->algorithms->WaitForMCU();
-    lblAlgorithmStatus->SetLabel(wxString::Format("0x%04X", status));
-    lmsControl->algorithms->CallMCU(0);
-}
-
-void pnlMCU_BD::OnbtnTxDCClick(wxCommandEvent& event)
-{
-    lblAlgorithmStatus->SetLabel("------");
-    lmsControl->algorithms->CallMCU(2);
-    int status = lmsControl->algorithms->WaitForMCU();
-    lblAlgorithmStatus->SetLabel(wxString::Format("0x%04X", status));
-    lmsControl->algorithms->CallMCU(0);
-}
-
-void pnlMCU_BD::OnbtnTxIQClick(wxCommandEvent& event)
+void pnlMCU_BD::OnbtnCalibrateAllClick(wxCommandEvent& event)
 {
     lblAlgorithmStatus->SetLabel("------");
     lmsControl->algorithms->CallMCU(3);

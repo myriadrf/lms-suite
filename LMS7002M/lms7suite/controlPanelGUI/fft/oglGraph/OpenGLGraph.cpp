@@ -50,11 +50,10 @@ OpenGLGraph::OpenGLGraph(wxPanel* parent,  wxWindowID id = -1,
                     const wxSize& size = wxDefaultSize,
                     long style=0, const wxString& name="GLCanvas",
                     int* args = 0)
-: wxGLCanvas(parent, id, args, pos, size, wxFULL_REPAINT_ON_RESIZE),
+    : wxGLCanvas(parent, id, args, pos, size, wxNO_FULL_REPAINT_ON_RESIZE),
 initialDisplayArea(-100, 100, -100, 100), m_MouseCoord(0, 0, 0, 0)
 {
-    m_font = NULL;
-    lmCreateSemaphore(mutex_canDraw, 1, 1);
+    m_font = NULL;    
     m_glContext = new wxGLContext(this);
     SetBackgroundStyle(wxBG_STYLE_CUSTOM);
     int w, h;
@@ -103,8 +102,7 @@ initialDisplayArea(-100, 100, -100, 100), m_MouseCoord(0, 0, 0, 0)
 OpenGLGraph::~OpenGLGraph()
 {
     if(m_timer->IsRunning())
-        m_timer->Stop();
-    lmDestroySemaphore(mutex_canDraw);
+        m_timer->Stop();    
 	if(m_font)
         delete m_font;
 }
@@ -205,7 +203,7 @@ void OpenGLGraph::SetDisplayArea(float minx, float maxx, float miny, float maxy)
 	settings.visibleArea.set(minx, maxx, miny, maxy);
 	SettingsChanged();
 #ifdef OGL_REDRAW_ENABLED
-	Draw();
+    Refresh();
 #endif
 }
 
@@ -218,7 +216,7 @@ void OpenGLGraph::ZoomY( float centerY, float spanY)
 {
 	SetDisplayArea( settings.visibleArea.x1, settings.visibleArea.x2, centerY - spanY/2, centerY + spanY/2);
 #ifdef OGL_REDRAW_ENABLED
-	Draw();
+    Refresh();
 #endif
 }
 
@@ -231,7 +229,7 @@ void OpenGLGraph::ZoomX( float centerX, float spanX)
 {
 	SetDisplayArea(centerX - spanX/2, centerX + spanX/2, settings.visibleArea.y1, settings.visibleArea.y2);
 #ifdef OGL_REDRAW_ENABLED
-	Draw();
+    Refresh();
 #endif
 }
 
@@ -256,7 +254,7 @@ void OpenGLGraph::Zoom( float centerX, float centerY, float spanX, float spanY)
         SetDisplayArea(centerX - spanX/2, centerX + spanX/2, centerY - spanY/2, centerY + spanY/2);
     }
 #ifdef OGL_REDRAW_ENABLED
-	Draw();
+    Refresh();
 #endif
 }
 
@@ -293,7 +291,7 @@ void OpenGLGraph::ZoomRect( int x1, int x2, int y1, int y2)
     }
 
 #ifdef OGL_REDRAW_ENABLED
-	Draw();
+    Refresh();
 #endif
 }
 
@@ -312,7 +310,7 @@ void OpenGLGraph::Pan( float dx, float dy)
 	settings.visibleArea.y2 += dy * deltaY;
 	SettingsChanged();
 #ifdef OGL_REDRAW_ENABLED
-	Draw();
+    Refresh();
 #endif
 }
 
@@ -609,126 +607,121 @@ void OpenGLGraph::CalculateGrid()
 */
 void OpenGLGraph::Draw()
 {
-    if(!lmSem_wait(mutex_canDraw, 100))
-	{
-	    if(!IsShownOnScreen())
-        {
-            lmSem_post(mutex_canDraw);
-            return;
-        }
-        SetCurrent();
-        if(!initialized)
-        {
-            int w, h;
-            this->GetSize(&w, &h);
-            Initialize(w, h);
-        }
+	if(!IsShownOnScreen())
+    {
+        return;
+    }
+    SetCurrent();
+    if(!initialized)
+    {
         int w, h;
-        GetSize(&w, &h);
-        setupViewport(w, h);
-        glLoadIdentity();
+        this->GetSize(&w, &h);
+        Initialize(w, h);
+    }
+    int w, h;
+    GetSize(&w, &h);
+    setupViewport(w, h);
+    glLoadIdentity();
 
-		switchToWindowView();
-		glLoadIdentity();
-		glClearColor(settings.backgroundColor.red, settings.backgroundColor.green,
-					settings.backgroundColor.blue, settings.backgroundColor.alpha);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	switchToWindowView();
+	glLoadIdentity();
+	glClearColor(settings.backgroundColor.red, settings.backgroundColor.green,
+				settings.backgroundColor.blue, settings.backgroundColor.alpha);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//draw static view elements
-		DrawStaticElements();
-		switchToWindowView();
-		//while zomming in draw selection rectangle
-		if(m_actionState == OGLG_ZOOMIN)
-		{
-			glColor3f(1.0, 0, 0);
-			glBegin(GL_LINE_STRIP);
-				glVertex2d(m_MouseCoord.x1, m_MouseCoord.y1);
-				glVertex2d(m_MouseCoord.x2, m_MouseCoord.y1);
-				glVertex2d(m_MouseCoord.x2, m_MouseCoord.y2);
-				glVertex2d(m_MouseCoord.x1, m_MouseCoord.y2);
-				glVertex2d(m_MouseCoord.x1, m_MouseCoord.y1);
-			glEnd();
-			glFlush();
-		}
-		//draw series data
-
-		switchToDataView();
-		if(settings.useVBO && GLEW_VERSION_1_5)
-		{
-			for(unsigned int i=0; i<series.size(); i++)
-			{
-				glColor3f(series[i]->color.red, series[i]->color.green, series[i]->color.blue);
-				if(series[i]->size > 0 && series[i]->visible)
-				{
-					if( series[i]->vboIndex == 0) //check if data series buffer is initialized
-					{
-						glGenBuffersARB(1, &series[i]->vboIndex);
-					}
-					//bind buffer for filling
-					glBindBufferARB(GL_ARRAY_BUFFER_ARB, series[i]->vboIndex);
-					if(series[i]->modified) //check if buffer needs to be modified
-					{
-						glBufferDataARB(GL_ARRAY_BUFFER_ARB, sizeof(float)*series[i]->size*2, NULL, GL_DYNAMIC_DRAW_ARB);
-						glBufferDataARB(GL_ARRAY_BUFFER_ARB, sizeof(float)*series[i]->size*2, series[i]->values, GL_DYNAMIC_DRAW_ARB);
-						series[i]->modified = false;
-					}
-					glEnableClientState(GL_VERTEX_ARRAY);
-					glEnableClientState(GL_COLOR);
-					glVertexPointer(2, GL_FLOAT, 0, 0);
-					if(settings.graphType == GLG_POINTS)
-					{
-						glPointSize(settings.pointsSize);
-						glDrawArrays(GL_POINTS, 0, series[i]->size);
-					}
-					else
-					{
-						glPointSize(1);
-						glDrawArrays(GL_LINE_STRIP, 0, series[i]->size);
-					}
-					glDisableClientState(GL_VERTEX_ARRAY);
-					glDisableClientState(GL_COLOR);
-					glBindBufferARB(GL_ARRAY_BUFFER, 0);
-				}
-			}
-		}
-		else  //backup case if VBO is not supported
-		{
-			for(unsigned int i=0; i<series.size(); i++)
-			{
-				glColor3f(series[i]->color.red, series[i]->color.green, series[i]->color.blue);
-				if(series[i]->size > 0 && series[i]->visible)
-				{
-					if(settings.graphType == GLG_POINTS)
-					{
-						glPointSize(settings.pointsSize);
-						glBegin(GL_POINTS);
-					}
-					else
-					{
-						glPointSize(1);
-						glBegin(GL_LINE_STRIP);
-					}
-					for(unsigned int j=0; j<series[i]->size; j++)
-					{
-						glVertex3f( series[i]->values[2*j], series[i]->values[2*j+1], 1.0);
-					}
-					glEnd();
-				}
-			}
-			glFlush();
-		}
-		//draw measuring markers
-		DrawMarkers();
-		switchToWindowView();
-		int fontSz = 16;
-		unsigned int clrs[] {0xFF000000, 0x0000FF00, 0x00FF0000};
-		for(int i=0; i<info_msg_toDisplay.size(); ++i)
-        {
-            glRenderText(settings.marginLeft, settings.marginBottom+i*20+fontSz, 0, fontSz, clrs[i], "%s", info_msg_toDisplay[i].c_str());
-        }
-        SwapBuffers();
-        lmSem_post(mutex_canDraw);
+	//draw static view elements
+	DrawStaticElements();
+	switchToWindowView();
+	//while zomming in draw selection rectangle
+	if(m_actionState == OGLG_ZOOMIN)
+	{
+		glColor3f(1.0, 0, 0);
+		glBegin(GL_LINE_STRIP);
+			glVertex2d(m_MouseCoord.x1, m_MouseCoord.y1);
+			glVertex2d(m_MouseCoord.x2, m_MouseCoord.y1);
+			glVertex2d(m_MouseCoord.x2, m_MouseCoord.y2);
+			glVertex2d(m_MouseCoord.x1, m_MouseCoord.y2);
+			glVertex2d(m_MouseCoord.x1, m_MouseCoord.y1);
+		glEnd();
+		glFlush();
 	}
+	//draw series data
+
+	switchToDataView();
+	if(settings.useVBO && GLEW_VERSION_1_5)
+	{
+		for(unsigned int i=0; i<series.size(); i++)
+		{
+			glColor3f(series[i]->color.red, series[i]->color.green, series[i]->color.blue);
+			if(series[i]->size > 0 && series[i]->visible)
+			{
+				if( series[i]->vboIndex == 0) //check if data series buffer is initialized
+				{
+					glGenBuffersARB(1, &series[i]->vboIndex);
+				}
+				//bind buffer for filling
+				glBindBufferARB(GL_ARRAY_BUFFER_ARB, series[i]->vboIndex);
+				if(series[i]->modified) //check if buffer needs to be modified
+				{
+					glBufferDataARB(GL_ARRAY_BUFFER_ARB, sizeof(float)*series[i]->size*2, NULL, GL_DYNAMIC_DRAW_ARB);
+					glBufferDataARB(GL_ARRAY_BUFFER_ARB, sizeof(float)*series[i]->size*2, series[i]->values, GL_DYNAMIC_DRAW_ARB);
+					series[i]->modified = false;
+				}
+				glEnableClientState(GL_VERTEX_ARRAY);
+				glEnableClientState(GL_COLOR);
+				glVertexPointer(2, GL_FLOAT, 0, 0);
+				if(settings.graphType == GLG_POINTS)
+				{
+					glPointSize(settings.pointsSize);
+					glDrawArrays(GL_POINTS, 0, series[i]->size);
+				}
+				else
+				{
+					glPointSize(1);
+					glDrawArrays(GL_LINE_STRIP, 0, series[i]->size);
+				}
+				glDisableClientState(GL_VERTEX_ARRAY);
+				glDisableClientState(GL_COLOR);
+				glBindBufferARB(GL_ARRAY_BUFFER, 0);
+			}
+		}
+	}
+	else  //backup case if VBO is not supported
+	{
+		for(unsigned int i=0; i<series.size(); i++)
+		{
+			glColor3f(series[i]->color.red, series[i]->color.green, series[i]->color.blue);
+			if(series[i]->size > 0 && series[i]->visible)
+			{
+				if(settings.graphType == GLG_POINTS)
+				{
+					glPointSize(settings.pointsSize);
+					glBegin(GL_POINTS);
+				}
+				else
+				{
+					glPointSize(1);
+					glBegin(GL_LINE_STRIP);
+				}
+				for(unsigned int j=0; j<series[i]->size; j++)
+				{
+					glVertex3f( series[i]->values[2*j], series[i]->values[2*j+1], 1.0);
+				}
+				glEnd();
+			}
+		}
+		glFlush();
+	}
+	//draw measuring markers
+	DrawMarkers();
+	switchToWindowView();
+	int fontSz = 16;
+	unsigned int clrs[] {0xFF000000, 0x0000FF00, 0x00FF0000};
+	for(int i=0; i<info_msg_toDisplay.size(); ++i)
+    {
+        glRenderText(settings.marginLeft, settings.marginBottom+i*20+fontSz, 0, fontSz, clrs[i], "%s", info_msg_toDisplay[i].c_str());
+    }
+    SwapBuffers();
 }
 
 bool OpenGLGraph::SaveConfig(char *file)
@@ -816,7 +809,7 @@ void OpenGLGraph::ResetView()
 {
 	SetDisplayArea(initialDisplayArea.x1, initialDisplayArea.x2, initialDisplayArea.y1, initialDisplayArea.y2);
 #ifdef OGL_REDRAW_ENABLED
-	Draw();
+    Refresh();
 #endif
 }
 
@@ -921,14 +914,14 @@ void OpenGLGraph::OnMouseUp(int mouseButton, int X, int Y)
 			{
 				ZoomRect(m_MouseCoord.x1, m_MouseCoord.x2, m_MouseCoord.y1, m_MouseCoord.y2);
 				#ifdef OGL_REDRAW_ENABLED
-				Draw();
+                Refresh();
 				#endif
 			}
             else // if zoomed outside data view border, then reset to initial view
             {
                 ResetView();
                 #ifdef OGL_REDRAW_ENABLED
-				Draw();
+                Refresh();
 				#endif
             }
         }
@@ -985,7 +978,7 @@ void OpenGLGraph::OnMouseMove(int X, int Y)
 		m_MouseCoord.x2 = X;
 		m_MouseCoord.y2 = Y;
 #ifdef OGL_REDRAW_ENABLED
-		Draw();
+        Refresh();
 #endif
 		break;
 	case OGLG_SCALE:
@@ -1375,7 +1368,7 @@ void OpenGLGraph::MoveMarker(int markerID, int posX)
 		markers[markerID].iposY = posY;
 	}
 	#ifdef OGL_REDRAW_ENABLED
-		Draw();
+        Refresh();
 	#endif
 }
 
@@ -1425,7 +1418,7 @@ void OpenGLGraph::ChangeMarker(int markerID, float xValue)
 	}
 	Refresh();
 	#ifdef OGL_REDRAW_ENABLED
-		Draw();
+        Refresh();
 	#endif
 }
 

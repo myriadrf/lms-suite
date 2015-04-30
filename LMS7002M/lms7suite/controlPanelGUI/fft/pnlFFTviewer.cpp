@@ -109,8 +109,7 @@ BEGIN_EVENT_TABLE(pnlFFTviewer,wxFrame)
     EVT_CLOSE(pnlFFTviewer::OnClose)
 END_EVENT_TABLE()
 
-pnlFFTviewer::pnlFFTviewer(ConnectionManager* pControlPort, ConnectionManager* pDataPort, wxWindow* parent,wxWindowID id)//:
-    //PluginPanel(this)
+pnlFFTviewer::pnlFFTviewer(ConnectionManager* pControlPort, ConnectionManager* pDataPort, wxWindow* parent,wxWindowID id)
 {
     lmsControl = NULL;
     t2 = t1 = getMilis();
@@ -126,8 +125,7 @@ pnlFFTviewer::pnlFFTviewer(ConnectionManager* pControlPort, ConnectionManager* p
     m_dataReading = false;
     m_plotThread = NULL;
 
-    m_extraControls = new dlgExtraControls(this, m_controlPort);
-    //Create(parent, id, "FFTviewer", wxDefaultPosition, wxDefaultSize, wxCAPTION|wxDEFAULT_FRAME_STYLE|wxSYSTEM_MENU|wxCLOSE_BOX|wxMINIMIZE_BOX|wxCLIP_CHILDREN, _T("id"));
+    m_extraControls = new dlgExtraControls(this, m_controlPort);   
     //(*Initialize(pnlFFTviewer)
     wxStaticBoxSizer* StaticBoxSizer2;
     wxFlexGridSizer* FlexGridSizer4;
@@ -159,7 +157,7 @@ pnlFFTviewer::pnlFFTviewer(ConnectionManager* pControlPort, ConnectionManager* p
     wxStaticBoxSizer* StaticBoxSizer5;
     wxFlexGridSizer* m_FFTsizer;
 
-    Create(parent, id, "FFTviewer", wxDefaultPosition, wxDefaultSize, wxCAPTION|wxDEFAULT_FRAME_STYLE|wxSYSTEM_MENU|wxCLOSE_BOX|wxMINIMIZE_BOX|wxCLIP_CHILDREN, _T("id"));
+    Create(parent, id, "FFTviewer", wxDefaultPosition, wxDefaultSize, wxCAPTION | wxDEFAULT_FRAME_STYLE | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX | wxCLIP_CHILDREN | wxNO_FULL_REPAINT_ON_RESIZE, _T("id"));
     SetMinSize(wxSize(800,400));
     FlexGridSizer1 = new wxFlexGridSizer(0, 1, 0, 0);
     FlexGridSizer1->AddGrowableCol(0);
@@ -372,11 +370,11 @@ pnlFFTviewer::pnlFFTviewer(ConnectionManager* pControlPort, ConnectionManager* p
     FlexGridSizer13 = new wxFlexGridSizer(0, 1, 0, 0);
     FlexGridSizer13->AddGrowableCol(0);
     FlexGridSizer18 = new wxFlexGridSizer(0, 2, 0, 15);
-    FlexGridSizer18->AddGrowableCol(1);    
+    FlexGridSizer18->AddGrowableCol(1);
     StaticText20 = new wxStaticText(m_tabSpectrum, ID_STATICTEXT28, _T("Peak to avg ratio(dB):"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT28"));
     FlexGridSizer18->Add(StaticText20, 1, wxEXPAND|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 5);
 	lblIratio = new wxStaticText(m_tabSpectrum, ID_STATICTEXT24, _T("0"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT24"));
-    FlexGridSizer18->Add(lblIratio, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);    
+    FlexGridSizer18->Add(lblIratio, 1, wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer13->Add(FlexGridSizer18, 1, wxBOTTOM|wxEXPAND|wxALIGN_LEFT|wxALIGN_TOP, 5);
     sizerPowerMeasure = new wxFlexGridSizer(0, 2, 0, 5);
     sizerPowerMeasure->AddGrowableCol(1);
@@ -695,8 +693,18 @@ void pnlFFTviewer::OnThreadUpdatePlots(wxThreadEvent &evt)
         return;
 
     t2 = getMilis();
+
+
     if(t2 - t1 >= 1000)
     {
+        PlotUpdateThread::CalculationResults measurements = evt.GetPayload<PlotUpdateThread::CalculationResults>();
+
+        lblPwrCh1->SetLabelText(wxString::Format("%3.2f", measurements.pwrCh1));
+        lblPwrCh2->SetLabelText(wxString::Format("%3.2f", measurements.pwrCh2));
+        lbldBc->SetLabelText(wxString::Format("%3.2f", measurements.dbc));
+        lblIratio->SetLabelText(wxString::Format("%3.2f", measurements.iqPeakToAvgRatio));
+
+
         float fps = 0;
         fps = (1000.0*m_redrawsDone)/(t2-t1);
         m_redrawsDone = 0;
@@ -716,6 +724,10 @@ void pnlFFTviewer::OnThreadUpdatePlots(wxThreadEvent &evt)
 //        if(cmbChannelSelection->GetSelection() == 1)
 //            m_collector->frameStart = lmsControl->GetParam(LML_FIDM2, false);
     }
+    //wxCriticalSectionLocker lock(m_dataCS);
+    m_glFFTplot->Refresh();
+    m_glconstellationPlot->Refresh();
+    m_gltimePlot->Refresh();
 
     //wxCriticalSectionLocker lock(m_dataCS);
 //    m_glFFTplot->Refresh();

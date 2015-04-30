@@ -13,15 +13,16 @@ const int LMS_RST_PULSE = 2;
 
 enum eLMS_DEV{LMS_DEV_UNKNOWN, LMS_DEV_EVB6, LMS_DEV_DIGIGREEN, LMS_DEV_DIGIRED,
             LMS_DEV_EVB7, LMS_DEV_ZIPPER, LMS_DEV_SOCKETBOARD, LMS_DEV_EVB7V2,
-            LMS_DEV_STREAM, LMS_DEV_NOVENA, LMS_DEV_DATASPARK, LMS_DEV_COUNT};
+            LMS_DEV_STREAM, LMS_DEV_NOVENA, LMS_DEV_DATASPARK, LMS_DEV_RFSPARK,
+			LMS_DEV_COUNT};
 const char LMS_DEV_NAMES[][80] = { "UNKNOWN", "EVB6", "DigiGreen", "DigiRed",
             "EVB7", "ZIPPER", "Socket Board", "EVB7_v2",
-            "Stream", "Novena", "DataSpark"};
+            "Stream", "Novena", "DataSpark", "RF-Spark"};
 enum eEXP_BOARD {EXP_BOARD_UNKNOWN, EXP_BOARD_UNSUPPORTED, EXP_BOARD_NO,
             EXP_BOARD_MYRIAD1, EXP_BOARD_MYRIAD2, EXP_BOARD_MYRIAD_NOVENA,
-            EXP_BOARD_HPM1000, EXP_BOARD_COUNT};
+            EXP_BOARD_HPM1000, EXP_BOARD_MYRIAD7, EXP_BOARD_HPM7, EXP_BOARD_COUNT};
 const char EXP_BOARD_NAMES[][80] = { "UNKNOWN", "UNSUPPORTED", "NOT AVAILABLE",
-            "Myriad1", "Myriad2", "Novena", "HPM1000"};
+            "Myriad1", "Myriad2", "Novena", "HPM1000", "Myriad7", "HMP7"};
 
 enum eCMD_LMS
 {
@@ -66,6 +67,14 @@ enum eCMD_LMS
 
 	CMD_BRDSPI_WR = 0x55,//16 bit spi for stream, dataspark control
     CMD_BRDSPI_RD = 0x56,//16 bit spi for stream, dataspark control
+	CMD_BRDSPI8_WR = 0x57, //8 + 8 bit spi for stream, dataspark control
+	CMD_BRDSPI8_RD = 0x58, //8 + 8 bit spi for stream, dataspark control
+	
+	CMD_BRDCONF_WR = 0x5D, //write config data to board
+	CMD_BRDCONF_RD = 0x5E, //read config data from board
+	
+	CMD_ANALOG_VAL_WR = 0x61, //write analog value
+	CMD_ANALOG_VAL_RD = 0x62, //read analog value
 
 	CMD_MYRIAD_RST = 0x80,
 	CMD_MYRIAD_WR = 0x81,
@@ -82,10 +91,11 @@ enum eCMD_STATUS
     STATUS_MANY_BLOCKS_CMD,
     STATUS_ERROR_CMD,
     STATUS_WRONG_ORDER_CMD,
+	STATUS_RESOURCE_DENIED_CMD,
     STATUS_COUNT
 };
 
-static const char  status_text[][32]= {"Undefined/Failure", "Completed", "Unknown command", "Busy", "Too many blocks", "Error", "Wrong order"};
+static const char  status_text[][32]= {"Undefined/Failure", "Completed", "Unknown command", "Busy", "Too many blocks", "Error", "Wrong order", "Resource denied"};
 
 static const char* status2string(const int status)
 {
@@ -94,6 +104,27 @@ static const char* status2string(const int status)
     else
         return "Unknown status";
 }
+
+enum eADC_UNITS
+{
+	RAW,
+	VOLTAGE,
+	CURRENT,
+	RESISTANCE,
+	POWER,
+	ADC_UNITS_COUNT
+};
+
+static const char  adc_units_text[][8] = {"", "V", "A", "Ohm", "W"};
+
+static const char* adcUnits2string(const unsigned units)
+{
+	if (units < ADC_UNITS_COUNT)
+		return adc_units_text[units];
+	else
+		return " unknown";
+}
+
 
 #endif // LMS7002M_COMMANDS_H
 

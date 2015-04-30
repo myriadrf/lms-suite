@@ -13,6 +13,7 @@ class wxBitmapButton;
 class wxFlexGridSizer;
 class wxButton;
 class wxStaticBoxSizer;
+class wxToggleButton;
 //*)
 
 #include "PluginPanel.h"
@@ -34,10 +35,10 @@ class pnlWFMLoader: public wxPanel, public PluginPanel
 		wxStaticText* lblProgressPercent;
 		wxGauge* progressBar;
 		wxBitmapButton* btnOpenWFM;
-		wxButton* btnLoadOnetone;
+		wxToggleButton* btnLoadOnetone;
 		wxStaticText* txtFilename;
-		wxButton* btnLoadCustom;
-		wxButton* btnLoadWCDMA;
+        wxToggleButton* btnLoadCustom;
+        wxToggleButton* btnLoadWCDMA;
 		//*)
 
 	protected:

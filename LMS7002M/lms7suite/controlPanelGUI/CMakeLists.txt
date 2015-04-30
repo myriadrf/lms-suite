@@ -44,6 +44,7 @@ set(controlPanelGUI_src_files
 	pnlXBUF.cpp
 	pnlAlgorithms.cpp
 	ResourceImagesLoader.cpp
+	pnlRFSpark.cpp
 )
 
 add_library(controlPanelGUI STATIC ${controlPanelGUI_src_files})

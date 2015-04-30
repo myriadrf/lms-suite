@@ -34,6 +34,7 @@ class pnlFPGAControls;
 class pnlProgramming;
 class pnlMyriad7;
 class pnlSi5351;
+class pnlRFSpark;
 
 class controlPanel_LMS7002: public wxFrame, public SignalHandler
 {
@@ -71,6 +72,7 @@ protected:
     pnlMinimalControls* minCtrl;
     pnlMyriad7* myriad7;
     pnlSi5351* si5351;
+	pnlRFSpark* rfSpark;
 
     ConnectionManager* m_controlPort;
     ConnectionManager* m_dataPort;

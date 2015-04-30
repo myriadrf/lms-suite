@@ -24,6 +24,7 @@ using namespace std;
 #include "dlgConnectionManager.h"
 #include "pnlSi5351.h"
 #include "streamFPGA.h"
+#include "pnlRFSpark.h"
 //(*InternalHeaders(controlPanel_LMS7002)
 #include <wx/sizer.h>
 #include <wx/stattext.h>
@@ -160,6 +161,11 @@ void controlPanel_LMS7002::BuildContent(wxWindow* parent,wxWindowID id,const wxP
     panelsManager->AddPane(si5351, wxAuiPaneInfo().Name("Si5351C").Caption("Si5351C").Left().Float().Hide());
     si5351->Initialize(lmsControl->getSi5351());
 
+	rfSpark = new pnlRFSpark(m_controlPort, Panel1, wxNewId());
+	rfSpark->AssignToConfigurations(PLUGINS_ALL);
+	plugins.push_back(rfSpark);
+	panelsManager->AddPane(rfSpark, wxAuiPaneInfo().Name("RF-Spark").Caption("RF-Spark").Bottom().Float().Hide());
+
     panelsManager->Update();
 
     //pnl_lms7ctrl->UpdateAllPages();
@@ -226,7 +232,56 @@ void controlPanel_LMS7002::HandleMessage(const LMS_Message &msg)
 		{
 			if (m_dataPort->IsOpen())
 			{
-				int status = ConfigurePLL(m_dataPort, lmsControl->GetReferenceFrequencyNCO(false), lmsControl->GetReferenceFrequencyNCO(true), 90);
+				float rxpll_MHz = lmsControl->GetReferenceFrequencyNCO(true);
+				short decimation = lmsControl->GetParam(HBD_OVR_RXTSP);
+				if (decimation == 7) //bypass
+				{
+					lmsControl->SetParam(RXTSPCLKA_DIV, 0);
+					lmsControl->SetParam(RXDIVEN, false);
+					lmsControl->SetParam(MCLK2SRC, 3);
+				}
+				else
+				{
+					int divider = pow(2.0, decimation);
+					if (divider > 1)
+						lmsControl->SetParam(RXTSPCLKA_DIV, (divider / 2) - 1);
+					else
+						lmsControl->SetParam(RXTSPCLKA_DIV, 0);
+					lmsControl->SetParam(RXDIVEN, true);
+					lmsControl->SetParam(MCLK2SRC, 1);
+					rxpll_MHz /= divider;
+				}
+
+				float txpll_MHz = lmsControl->GetReferenceFrequencyNCO(false);
+				short interpolation = lmsControl->GetParam(HBI_OVR_TXTSP);
+				if (interpolation == 7) //bypass
+				{
+					lmsControl->SetParam(TXTSPCLKA_DIV, 0);
+					lmsControl->SetParam(TXDIVEN, false);
+					lmsControl->SetParam(MCLK1SRC, 2);
+				}
+				else
+				{
+					int divider = pow(2.0, interpolation);
+					if (divider > 1)
+						lmsControl->SetParam(TXTSPCLKA_DIV, (divider / 2) - 1);
+					else
+						lmsControl->SetParam(TXTSPCLKA_DIV, 0);
+					lmsControl->SetParam(TXDIVEN, true);
+					lmsControl->SetParam(MCLK1SRC, 0);
+					txpll_MHz /= divider;
+				}
+				pnl_lms7ctrl->UpdateGUI();
+
+				float phaseAngle = 90;
+				if (msg.text.length() > 0)
+				{
+					stringstream ss;
+					ss << msg.text;
+					ss >> phaseAngle;
+				}
+
+				int status = ConfigurePLL(m_dataPort, lmsControl->GetReferenceFrequencyNCO(false), lmsControl->GetReferenceFrequencyNCO(true), phaseAngle);
 				stringstream ss;
 				ss << "Configured FPGA PLL: TxPLL " << lmsControl->GetReferenceFrequencyNCO(false) << " MHz , RxPLL " << lmsControl->GetReferenceFrequencyNCO(true) << " MHz ";
 				if (status != 0)

@@ -2567,7 +2567,8 @@ int Algorithms::WaitForMCU()
     long t1 = getMilis();
     long t2 = getMilis();
     unsigned short value = 0;
-    while((t2 - t1)<5000)
+	unsigned long timeout = 30000;
+    while((t2 - t1)<timeout)
     {
         value = lmsControl->getSerPort()->mSPI_read(0x0001);
         if(value == 0)
@@ -2579,7 +2580,8 @@ int Algorithms::WaitForMCU()
             break;
         }
 
-        milSleep(10);
+        //milSleep(16);
+		wxYield();
         t2 = getMilis();
     }
     lmsControl->getSerPort()->mSPI_write(0x0006, 0);
@@ -2944,6 +2946,10 @@ int Algorithms::DemoCalibration(int stage)
    Modify_SPI_Reg_bits(defSPI_RCC_CTL_LPFL_RBB, 4); //RCC_CTL_LPFL_RBB 4
    Modify_SPI_Reg_bits(defSPI_C_CTL_LPFL_RBB, 61); //C_CTL_LPFL_RBB 61
 
+   bool skip = false;
+   if (skip)
+	   return 0;
+
     iqcorr_rx = 0;
     minRSSI = ~0;
     miniqcorr = 0;
@@ -3014,7 +3020,7 @@ int Algorithms::DemoCalibration(int stage)
     if(stage == 10)
     {
 
-//#warning serious problem with 0x0200 register, values needs toggling to take effect
+//#warning problem with 0x0200 register, values needs toggling to take effect
 //    unsigned short regVal = Get_SPI_Reg_bits(0x0200, 3, 3);
 //    Modify_SPI_Reg_bits(0x0200, 3, 3, !regVal);
 //    Modify_SPI_Reg_bits(0x0200, 3, 3, regVal); //!!!

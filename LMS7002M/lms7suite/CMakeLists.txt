@@ -30,6 +30,8 @@ set(wxWidgets_USE_STATIC ON)
 # Add sub-directories
 add_subdirectory(controlLogic)
 add_subdirectory(controlPanelGUI)
+#add_subdirectory(cpp-feather-ini-parser)
+include_directories(cpp-feather-ini-parser)
 
 set(BINARY_OUTPUT_DIR "${CMAKE_BINARY_DIR}/bin")
 

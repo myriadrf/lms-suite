@@ -11,6 +11,14 @@ class pnlFFTviewer;
 class PlotUpdateThread : public wxThread
 {
 public:
+    struct CalculationResults
+    {
+        float iqPeakToAvgRatio;
+        float pwrCh1;
+        float pwrCh2;
+        float dbc;
+    };
+
     PlotUpdateThread(pnlFFTviewer *mainFrame);
     ~PlotUpdateThread();
     virtual void* Entry();

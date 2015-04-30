@@ -38,7 +38,7 @@ class LMS7002_MainControl : public SignalHandler
         bool CreateConfigurationInstructions(const std::string filename);
 
         bool LoadFromFile(const std::string filename);
-        bool SaveToFile(const std::string filename, bool binary);
+        bool SaveToFile(const std::string filename, unsigned format);
 
         bool LoadGFIRCoefficients(const std::string filename, int id, bool Rx);
         bool LoadGFIRCoefficients(short *coefficients, int coef_count, int id, bool Rx);

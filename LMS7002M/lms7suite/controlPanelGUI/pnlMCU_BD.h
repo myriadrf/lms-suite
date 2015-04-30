@@ -43,7 +43,7 @@ class pnlMCU_BD: public wxPanel
 		wxButton* RunInstr;
 		wxButton* btnLoadTestFile;
 		wxButton* Button4;
-		wxButton* btnTxIQ;
+		wxButton* btnCalibrateAll;
 		wxStaticText* ProgCodeFile;
 		wxButton* EraseIRAM;
 		wxButton* ViewIRAM;
@@ -68,9 +68,7 @@ class pnlMCU_BD: public wxPanel
 		wxStaticText* StaticText5;
 		wxStaticText* StaticText7;
 		wxTextCtrl* TextCtrl1;
-		wxGauge* gaugeProgress;
-		wxButton* btnRxDC;
-		wxButton* btnTxDC;
+		wxGauge* gaugeProgress;		
 		wxButton* btnRunTest;
 		wxButton* Button_LOADHEX;
 		wxStaticText* StaticText4;
@@ -161,10 +159,8 @@ class pnlMCU_BD: public wxPanel
 		void OnbtnStartProgrammingClick(wxCommandEvent& event);
 		void OnButton_LOADHEXClick(wxCommandEvent& event);
 		void OnbtnLoadTestFileClick(wxCommandEvent& event);
-		void OnbtnRunTestClick(wxCommandEvent& event);
-		void OnbtnRxDCClick(wxCommandEvent& event);
-		void OnbtnTxDCClick(wxCommandEvent& event);
-		void OnbtnTxIQClick(wxCommandEvent& event);
+		void OnbtnRunTestClick(wxCommandEvent& event);		
+		void OnbtnCalibrateAllClick(wxCommandEvent& event);
 		//*)
          int m_iTestNo;
          int m_iInstrNo;

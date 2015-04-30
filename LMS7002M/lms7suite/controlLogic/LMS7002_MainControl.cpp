@@ -18,6 +18,7 @@
 #include <fstream>
 #include <iomanip>
 #include "iniParser.h"
+//#include "cpp-feather-ini-parser/INI.h"
 using namespace std;
 
 /** @brief Handles incoming messages
@@ -261,10 +262,10 @@ bool LMS7002_MainControl::LoadFromFile(const string filename)
     @param binary binary or text file
     @return true if success
 */
-bool LMS7002_MainControl::SaveToFile(const string filename, bool binary)
+bool LMS7002_MainControl::SaveToFile(const string filename, unsigned format)
 {
     bool status = false;
-    if(binary)
+	if (format == 0)
     {
         status = m_registersMap->SaveToFile(filename);
         ofstream fout;
@@ -278,7 +279,7 @@ bool LMS7002_MainControl::SaveToFile(const string filename, bool binary)
 
         fout.close();
     }
-    else
+	else if (format == 1)
     {
         iniParser parser;
         parser.SelectSection("FILE INFO");
@@ -356,6 +357,78 @@ bool LMS7002_MainControl::SaveToFile(const string filename, bool binary)
         parser.Save(filename.c_str());
         status = true;
     }
+	/*else if (format == 2)
+	{
+		INI<string, string, string> parser(filename, false);
+		parser.create("file info");
+		parser.set("type", "lms7002 configuration");
+		parser.set("version", 2);
+
+		map<unsigned short, unsigned short>::iterator pairs;
+		parser.create("lms7002_regmap_A");
+		map<unsigned short, unsigned short> regValues = m_registersMap->GetRegistersValues(0);
+
+		char addr[80];
+		char value[80];
+
+		for (pairs = regValues.begin(); pairs != regValues.end(); ++pairs)
+		{
+			sprintf(addr, "0x%04X", pairs->first);
+			sprintf(value, "0x%04X", pairs->second);
+			parser.set(addr, value);
+		}
+
+		parser.create("lms7002_regmap_B");
+		regValues.clear();
+		regValues = m_registersMap->GetRegistersValues(1);
+
+		for (pairs = regValues.begin(); pairs != regValues.end(); ++pairs)
+		{
+			sprintf(addr, "0x%04X", pairs->first);
+			sprintf(value, "0x%04X", pairs->second);
+			parser.set(addr, value);
+		}
+
+		parser.create("reference clocks");
+		parser.set("sxt_ref_clk_mhz", m_RefFreqSXT_MHz);
+		parser.set("sxr_ref_clk_mhz", m_RefFreqSXR_MHz);
+		//parser.set("CGEN reference frequency MHz", m_RefFreqCGEN_MHz);		
+
+		char ctemp[80];
+		/*
+		char secNames[][80] = { "NCO Tx ch.A", "NCO Tx ch.B", "NCO Rx ch.A", "NCO Rx ch.B" };
+		for (int j = 0; j<4; ++j)
+		{
+			parser.SelectSection(secNames[j]);
+			for (int i = 0; i<16; ++i)
+			{
+				sprintf(ctemp, "FCW%02i", i);
+				parser.Set(ctemp, m_FCWfreq_MHz[i][j % 2][j / 2]);
+				sprintf(ctemp, "PHO%02i", i);
+				parser.Set(ctemp, m_PHO[i][j % 2][j / 2]);
+			}
+		}
+        
+		
+		parser.create("gpio_states");
+		for (int i = 0; i<56; ++i)
+		{
+			sprintf(ctemp, "gpio_states_%02i", i);
+			sprintf(value, "0x%02X", gpioStates[i]);
+			parser.set(ctemp, value);
+		}
+		parser.create("tsg_dc_reg");
+		parser.set("TSG_DC_REG_I_A_TXTSP", short2hex(mDC_REG[0][0][0]).c_str());
+		parser.set("TSG_DC_REG_Q_A_TXTSP", short2hex(mDC_REG[1][0][0]).c_str());
+		parser.set("TSG_DC_REG_I_B_TXTSP", short2hex(mDC_REG[0][1][0]).c_str());
+		parser.set("TSG_DC_REG_Q_B_TXTSP", short2hex(mDC_REG[1][1][0]).c_str());
+		parser.set("TSG_DC_REG_I_A_RXTSP", short2hex(mDC_REG[0][0][1]).c_str());
+		parser.set("TSG_DC_REG_Q_A_RXTSP", short2hex(mDC_REG[1][0][1]).c_str());
+		parser.set("TSG_DC_REG_I_B_RXTSP", short2hex(mDC_REG[0][1][1]).c_str());
+		parser.set("TSG_DC_REG_Q_B_RXTSP", short2hex(mDC_REG[1][1][1]).c_str());		
+		parser.save();
+		status = true;
+	}*/
     return status;
 }
 

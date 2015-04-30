@@ -103,9 +103,9 @@ public:
         }
         ofstream fout;
         if( strlen(filename) > 0)
-            fout.open(filename, ios::out);
+            fout.open(filename, ios::out | ios::binary);
         else
-            fout.open(m_currentFilename.c_str(), ios::out);
+            fout.open(m_currentFilename.c_str(), ios::out | ios::binary);
 
         map<string , map<string, string> >::iterator iterSections;
         for(iterSections = sections.begin(); iterSections != sections.end(); ++iterSections)
@@ -114,7 +114,7 @@ public:
             map<string , string >::iterator iterPairs;
             for(iterPairs = iterSections->second.begin(); iterPairs != iterSections->second.end(); ++iterPairs)
             {
-                fout << iterPairs->first << "=" << iterPairs->second << endl;
+                fout << iterPairs->first << "=" << iterPairs->second << "\n";
             }
         }
         fout.close();

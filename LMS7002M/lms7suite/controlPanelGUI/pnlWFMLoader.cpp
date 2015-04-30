@@ -15,6 +15,7 @@
 #include <wx/image.h>
 #include <wx/string.h>
 #include <wx/gauge.h>
+#include <wx/tglbtn.h>
 //*)
 
 #include <vector>
@@ -71,16 +72,16 @@ void pnlWFMLoader::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& po
 	FlexGridSizer6 = new wxFlexGridSizer(0, 1, 5, 0);
 	FlexGridSizer6->AddGrowableCol(0);
 	FlexGridSizer8 = new wxFlexGridSizer(0, 3, 0, 5);
-	btnLoadOnetone = new wxButton(this, ID_BUTTON6, _T("Onetone"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON6"));
+	btnLoadOnetone = new wxToggleButton(this, ID_BUTTON6, _T("Onetone"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON6"));
 	btnLoadOnetone->SetToolTip(_T("Loads file named onetone.wfm"));
 	FlexGridSizer8->Add(btnLoadOnetone, 1, wxALIGN_LEFT|wxALIGN_TOP, 5);
-	btnLoadWCDMA = new wxButton(this, ID_BUTTON7, _T("W-CDMA"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON7"));
+    btnLoadWCDMA = new wxToggleButton(this, ID_BUTTON7, _T("W-CDMA"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON7"));
 	btnLoadWCDMA->SetToolTip(_T("Loads file named wcdma.wfm"));
 	FlexGridSizer8->Add(btnLoadWCDMA, 1, wxALIGN_LEFT|wxALIGN_TOP, 5);
 	FlexGridSizer6->Add(FlexGridSizer8, 1, wxALIGN_LEFT|wxALIGN_TOP, 5);
 	FlexGridSizer10 = new wxFlexGridSizer(0, 3, 0, 5);
 	FlexGridSizer10->AddGrowableCol(2);
-	btnLoadCustom = new wxButton(this, ID_BUTTON8, _T("Custom"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON8"));
+    btnLoadCustom = new wxToggleButton(this, ID_BUTTON8, _T("Custom"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON8"));
 	btnLoadCustom->SetToolTip(_T("Loads user selected custom file"));
 	FlexGridSizer10->Add(btnLoadCustom, 1, wxALIGN_LEFT|wxALIGN_TOP, 5);
 	btnOpenWFM = new wxBitmapButton(this, ID_BITMAPBUTTON1, wxArtProvider::GetBitmap(wxART_MAKE_ART_ID_FROM_STR(_T("wxART_FILE_OPEN")),wxART_BUTTON), wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW, wxDefaultValidator, _T("ID_BITMAPBUTTON1"));
@@ -107,9 +108,9 @@ void pnlWFMLoader::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& po
 	FlexGridSizer1->Fit(this);
 	FlexGridSizer1->SetSizeHints(this);
 
-	Connect(ID_BUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlWFMLoader::OnbtnLoadOnetoneClick);
-	Connect(ID_BUTTON7,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlWFMLoader::OnbtnLoadWCDMAClick);
-	Connect(ID_BUTTON8,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlWFMLoader::OnbtnLoadCustomClick);
+    Connect(ID_BUTTON6, wxEVT_TOGGLEBUTTON, (wxObjectEventFunction)&pnlWFMLoader::OnbtnLoadOnetoneClick);
+    Connect(ID_BUTTON7, wxEVT_TOGGLEBUTTON, (wxObjectEventFunction)&pnlWFMLoader::OnbtnLoadWCDMAClick);
+    Connect(ID_BUTTON8, wxEVT_TOGGLEBUTTON, (wxObjectEventFunction)&pnlWFMLoader::OnbtnLoadCustomClick);
 	Connect(ID_BITMAPBUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlWFMLoader::OnbtnOpenFileClick);
 	Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlWFMLoader::OnbtnPlayWFMClick);
 	Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&pnlWFMLoader::OnbtnStopWFMClick);
@@ -337,7 +338,7 @@ int pnlWFMLoader::UploadFile(const char* filename)
         }
         if( ReadWFM(filename, "output.txt", iq_pairs) < 0)
         {
-            wxMessageBox("File not found", "Error");
+            wxMessageBox(wxString::Format("File not found %s", filename), "Error");
             return -1;
         }
         int bufferSize = iq_pairs.size()*2;
@@ -447,18 +448,39 @@ int pnlWFMLoader::UploadFile(const char* filename)
 }
 
 void pnlWFMLoader::OnbtnLoadOnetoneClick(wxCommandEvent& event)
-{
-    if( UploadFile("lms7suite_wfm/onetone.wfm") == -1)
-        wxMessageBox("File not found onetone.wfm", "Error");
+{   
+    if (UploadFile("lms7suite_wfm/onetone.wfm") < 0)
+        btnLoadOnetone->SetValue(0);
+    else
+    {
+        btnLoadOnetone->SetValue(1);
+        btnLoadWCDMA->SetValue(0);
+        btnLoadCustom->SetValue(0);
+    }
 }
 
 void pnlWFMLoader::OnbtnLoadWCDMAClick(wxCommandEvent& event)
-{
-    if( UploadFile("lms7suite_wfm/wcdma.wfm") == -1)
-        wxMessageBox("File not found wcdma.wfm", "Error");
+{    
+    if (UploadFile("lms7suite_wfm/wcdma.wfm") < 0)    
+        btnLoadWCDMA->SetValue(0);
+    else
+    {
+        btnLoadOnetone->SetValue(0);
+        btnLoadWCDMA->SetValue(1);
+        btnLoadCustom->SetValue(0);
+    }
 }
 
 void pnlWFMLoader::OnbtnLoadCustomClick(wxCommandEvent& event)
 {
-    UploadFile(txtFilename->GetLabel());
+    if( UploadFile(txtFilename->GetLabel()) < 0)    
+    {         
+        btnLoadCustom->SetValue(0);
+    }
+    else
+    {
+        btnLoadOnetone->SetValue(0);
+        btnLoadWCDMA->SetValue(0);
+        btnLoadCustom->SetValue(1);
+    }
 }

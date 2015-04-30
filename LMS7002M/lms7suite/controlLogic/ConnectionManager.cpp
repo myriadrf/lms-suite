@@ -289,6 +289,12 @@ int ConnectionManager::MakeAndSendPacket( eCMD_LMS cmd, const unsigned char *dat
         case CMD_GPIO_RD:
             buffer[2] = 2;
             break;
+		case CMD_ANALOG_VAL_RD:
+			buffer[2] = sendLen; //data block pairs(address,value)
+			break;
+		case CMD_ANALOG_VAL_WR:
+			buffer[2] = sendLen/4; //data block pairs(address,value)
+			break;
         default:
             MessageLog::getInstance()->write("Sending packet with unrecognized command\n", LOG_WARNING);
         }
@@ -370,7 +376,7 @@ int ConnectionManager::SendReadData( eCMD_LMS cmd, const unsigned char *outData,
     for(unsigned int i=0; i<oLength; ++i)
     {
         outBuffer[outBufPos++] = outData[i];
-        if(outBufPos >= maxDataLen || (cmd == CMD_LMS7002_RD && outBufPos>=28) || outBufPos == oLength || i==oLength-1)
+		if (outBufPos >= maxDataLen || (cmd == CMD_LMS7002_RD && outBufPos >= 28) || outBufPos == oLength || i == oLength - 1 || (cmd == CMD_ANALOG_VAL_RD && outBufPos >= 14))
         {
             for(int i=0; i<readCount; ++i)
             {
@@ -421,14 +427,20 @@ int ConnectionManager::SendReadData( eCMD_LMS cmd, const unsigned char *outData,
                 }
             }
 
-            for(unsigned int b=0; b<outBufPos*2 && b<cMAX_CONTROL_PACKET_SIZE; ++b)
-            {
-                if(m_tripleCheckRead)
-                    bestByte = bestOfThree(inBuffer[0][b],inBuffer[1][b], inBuffer[2][b]);
-                else
-                    bestByte = inBuffer[0][b];
-                inData[inDataPos++] = bestByte;
-            }
+			if (cmd == CMD_ANALOG_VAL_RD)
+			{
+				for (unsigned int b = 0; b<outBufPos * 4 && b<cMAX_CONTROL_PACKET_SIZE; ++b)
+					inData[inDataPos++] = inBuffer[0][b];
+			}
+			else
+				for(unsigned int b=0; b<outBufPos*2 && b<cMAX_CONTROL_PACKET_SIZE; ++b)
+				{
+					if(m_tripleCheckRead)
+						bestByte = bestOfThree(inBuffer[0][b],inBuffer[1][b], inBuffer[2][b]);
+					else
+						bestByte = inBuffer[0][b];
+					inData[inDataPos++] = bestByte;
+				}
             if(inDataPos > iLength)
             {
                 return status;

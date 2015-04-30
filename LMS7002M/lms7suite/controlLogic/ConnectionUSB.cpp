@@ -120,8 +120,8 @@ bool ConnectionUSB::Open(unsigned index)
                 m_hardwareName = HW_STREAMER;
             else
 				m_hardwareName = HW_STREAMER;
-            
-            
+
+
 			if (InCtrlEndPt3)
 			{
 				delete InCtrlEndPt3;
@@ -425,6 +425,9 @@ int ConnectionUSB::RefreshDeviceList()
                     m_hardwareName = HW_DIGIRED;
                     m_deviceNames.push_back("DigiRed");
                     m_dev_pid_vid.push_back( pair<int,int>(pid,vid));
+                    int speed = 0;
+                    speed = libusb_get_device_speed(devs[i]);
+                    int a =10;
                 }
             }
         }
@@ -494,14 +497,13 @@ int ConnectionUSB::BeginDataReading(char *buffer, long length)
     #else
     unsigned int Timeout = 1000;
     libusb_transfer *tr = contexts[i].transfer;
-    //libusb_set_iso_packet_lengths(contexts[i].transfer, 512*64);
-	libusb_fill_bulk_transfer(tr, dev_handle, 0x86, (unsigned char*)buffer, length, callback_libusbtransfer, &contexts[i], Timeout);
+	libusb_fill_bulk_transfer(tr, dev_handle, 0x81, (unsigned char*)buffer, length, callback_libusbtransfer, &contexts[i], Timeout);
 	contexts[i].done = false;
 	contexts[i].bytesXfered = 0;
 	contexts[i].bytesExpected = length;
     int status = libusb_submit_transfer(tr);
-//    int actual = 0;
-//    int status = libusb_bulk_transfer(dev_handle, 0x86, (unsigned char*)buffer, length, &actual, USB_TIMEOUT);
+    int actual = 0;
+    //int status = libusb_bulk_transfer(dev_handle, 0x81, (unsigned char*)buffer, length, &actual, USB_TIMEOUT);
     if(status != 0)
         printf("ERROR BEGIN DATA TRANSFER %s\n", libusb_error_name(status));
     #endif
@@ -537,7 +539,7 @@ int ConnectionUSB::WaitForReading(int contextHandle, unsigned int timeout_ms)
 		t2 = getMilis();
 		milSleep(1);
 	}
-	if(lmSem_wait(contexts[contextHandle].m_lock, 1000) == 0)
+	if(lmSem_wait(contexts[contextHandle].m_lock, timeout_ms) == 0)
         return 1;
     else
         return 0;
@@ -591,6 +593,11 @@ void ConnectionUSB::AbortReading()
     {
         libusb_cancel_transfer( contexts[i].transfer );
     }
+    for(int i=0; i<USB_MAX_CONTEXTS; ++i)
+    {
+        contexts[i].used = false;
+        contexts[i].reset();
+    }
 #endif
 }
 
@@ -623,8 +630,8 @@ int ConnectionUSB::BeginDataSending(const char *buffer, long length)
     #else
     unsigned int Timeout = 1000;
     libusb_transfer *tr = contexts[i].transfer;
-    libusb_set_iso_packet_lengths(contexts[i].transfer, 512*64);
-	libusb_fill_bulk_transfer(tr, dev_handle, 0x86, (unsigned char*)buffer, length, callback_libusbtransfer, &contexts[i], Timeout);
+    //libusb_set_iso_packet_lengths(contexts[i].transfer, 512*64);
+	libusb_fill_bulk_transfer(tr, dev_handle, 0x1, (unsigned char*)buffer, length, callback_libusbtransfer, &contexts[i], Timeout);
 	contexts[i].done = false;
 	contexts[i].bytesXfered = 0;
 	contexts[i].bytesExpected = length;
@@ -699,6 +706,12 @@ void ConnectionUSB::AbortSending()
 {
 #ifndef __unix__
 	OutEndPt->Abort();
+#else
+    for(int i=0; i<USB_MAX_CONTEXTS; ++i)
+    {
+        contextsToSend[i].used = false;
+        contextsToSend[i].reset();
+    }
 #endif
 }
 

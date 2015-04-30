@@ -546,9 +546,9 @@ void pnlLMS7002::OnbtnSaveProjectClick(wxCommandEvent& event)
     if (dlg.ShowModal() == wxID_CANCEL)
         return;
     if(dlg.GetFilterIndex() == 0)
-        lmsControl->SaveToFile( dlg.GetPath().ToStdString(), false);
-    else
-        lmsControl->SaveToFile( dlg.GetPath().ToStdString(), true);
+        lmsControl->SaveToFile( dlg.GetPath().ToStdString(), 1);    
+//  else if (dlg.GetFilterIndex() == 1)
+//		lmsControl->SaveToFile(dlg.GetPath().ToStdString(), 2);
 }
 
 void pnlLMS7002::OnbtnUploadAllClick(wxCommandEvent& event)

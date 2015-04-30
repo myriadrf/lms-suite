@@ -394,8 +394,7 @@ private:
 	unsigned m_maxMarkers;
 	int clickedOnMarker(int X, int Y);
 
-	bool m_currentlyDrawing;
-	lmSemaphore mutex_canDraw;
+	bool m_currentlyDrawing;	
 	wxTimer* m_timer;
 
 };
