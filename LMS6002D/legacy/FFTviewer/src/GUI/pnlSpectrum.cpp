@@ -9,19 +9,19 @@
 #endif // WIN32
 
 //(*InternalHeaders(pnlSpectrum)
-#include <wx/sizer.h>
-#include <wx/stattext.h>
-#include <wx/radiobox.h>
-#include <wx/textctrl.h>
-#include <wx/checkbox.h>
-#include <wx/splitter.h>
 #include <wx/glcanvas.h>
 #include <wx/spinctrl.h>
-#include <wx/intl.h>
+#include <wx/combobox.h>
+#include <wx/checkbox.h>
+#include <wx/sizer.h>
+#include <wx/spinbutt.h>
 #include <wx/button.h>
 #include <wx/string.h>
-#include <wx/spinbutt.h>
-#include <wx/combobox.h>
+#include <wx/splitter.h>
+#include <wx/intl.h>
+#include <wx/stattext.h>
+#include <wx/textctrl.h>
+#include <wx/radiobox.h>
 //*)
 
 //(*IdInit(pnlSpectrum)
@@ -120,21 +120,21 @@ void pnlSpectrum::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& pos
     wxLongLong t1 = wxGetUTCTimeMillis();
 	//(*Initialize(pnlSpectrum)
 	wxStaticBoxSizer* StaticBoxSizer2;
-	wxFlexGridSizer* FlexGridSizer4;
-	wxFlexGridSizer* FlexGridSizer10;
-	wxFlexGridSizer* FlexGridSizer3;
-	wxFlexGridSizer* FlexGridSizer5;
-	wxFlexGridSizer* FlexGridSizer9;
-	wxFlexGridSizer* FlexGridSizer2;
-	wxBoxSizer* BoxSizer2;
-	wxFlexGridSizer* FlexGridSizer7;
-	wxStaticBoxSizer* StaticBoxSizer3;
 	wxFlexGridSizer* FlexGridSizer8;
-	wxBoxSizer* BoxSizer1;
-	wxFlexGridSizer* FlexGridSizer6;
-	wxStaticBoxSizer* StaticBoxSizer1;
 	wxFlexGridSizer* FlexGridSizer1;
+	wxFlexGridSizer* FlexGridSizer2;
 	wxFlexGridSizer* FlexGridSizer11;
+	wxFlexGridSizer* FlexGridSizer7;
+	wxBoxSizer* BoxSizer2;
+	wxFlexGridSizer* FlexGridSizer4;
+	wxFlexGridSizer* FlexGridSizer9;
+	wxStaticBoxSizer* StaticBoxSizer3;
+	wxFlexGridSizer* FlexGridSizer6;
+	wxFlexGridSizer* FlexGridSizer3;
+	wxFlexGridSizer* FlexGridSizer10;
+	wxBoxSizer* BoxSizer1;
+	wxFlexGridSizer* FlexGridSizer5;
+	wxStaticBoxSizer* StaticBoxSizer1;
 
 	Create(parent, wxID_ANY, wxDefaultPosition, wxSize(900,600), wxTAB_TRAVERSAL, _T("wxID_ANY"));
 	SetMinSize(wxSize(900,500));

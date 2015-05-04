@@ -2,15 +2,15 @@
 #include "ctr_6002dr2_LogicDLL.h"
 
 //(*InternalHeaders(pnlSamplesGenerator)
-#include <wx/sizer.h>
-#include <wx/stattext.h>
-#include <wx/radiobox.h>
-#include <wx/textctrl.h>
 #include <wx/glcanvas.h>
 #include <wx/spinctrl.h>
-#include <wx/intl.h>
+#include <wx/sizer.h>
 #include <wx/button.h>
 #include <wx/string.h>
+#include <wx/intl.h>
+#include <wx/stattext.h>
+#include <wx/textctrl.h>
+#include <wx/radiobox.h>
 //*)
 
 //(*IdInit(pnlSamplesGenerator)
@@ -46,8 +46,8 @@ pnlSamplesGenerator::pnlSamplesGenerator(wxWindow* parent,wxWindowID id,const wx
 void pnlSamplesGenerator::BuildContent(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize& size)
 {
 	//(*Initialize(pnlSamplesGenerator)
-	wxFlexGridSizer* FlexGridSizer2;
 	wxFlexGridSizer* FlexGridSizer1;
+	wxFlexGridSizer* FlexGridSizer2;
 
 	Create(parent, id, wxDefaultPosition, wxSize(775,417), wxTAB_TRAVERSAL, _T("id"));
 	wxString __wxRadioBoxChoices_1[4] =

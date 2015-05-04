@@ -7897,61 +7897,6 @@ CTR_6002DR2_API bool LMLL_Testing_SetSamplingRate(unsigned long samplingRateHz)
     //getMainModule()->getBoard2()->SetFrequency(3, 30.72, samplingRateHz*2);
 }
 
-/**
-	@ingroup Transmitter
-	@brief Starts transmitting samples
-*/
-CTR_6002DR2_API void LMLL_Transmitter_StartSendingSamples()
-{
-    getMainModule()->getTransmitter()->StartSendingSamples();
-}
-
-/**
-	@ingroup Transmitter
-	@brief Stops transmitting samples
-*/
-CTR_6002DR2_API void LMLL_Transmitter_StopSendingSamples()
-{
-    getMainModule()->getTransmitter()->StopSendingSamples();
-}
-
-/**
-	@ingroup Transmitter
-	@brief Generates sample data for transmitting
-	@param freq Sinus frequency Hz
-	@param amplitude Signal amplitude
-	@param samplingRate Sampling frequency Hz
-*/
-CTR_6002DR2_API void LMLL_Transmitter_GenerateSamples(double freqHz, double amplitude, double samplingRateHz)
-{
-    getMainModule()->getTransmitter()->GenerateSamples(freqHz, amplitude, samplingRateHz);
-}
-
-/**
-	@ingroup Transmitter
-	@brief Loads samples data for transmitting from text or binary file
-	@param filename filename or full path to file
-	@param binary specifies file format
-*/
-CTR_6002DR2_API void LMLL_Transmitter_LoadSamplesFromFile(char *filename, bool binary)
-{
-    getMainModule()->getTransmitter()->LoadSamplesFromFile(filename, binary);
-}
-
-/**
-	@ingroup Transmitter
-	@brief Returns samples that are prepared for transmitting
-	@param Ichannel pointer to array where to place I channel data
-	@param Qchannel pointer to array where to place Q channel data
-	@param samplesCount number of samples that will be returned.
-
-	Ichannel and Qchannel arrays must be big enough to store all samples. If NULL pointers are given, no data will be copied only samples count will be returned.
-*/
-CTR_6002DR2_API void LMLL_Transmitter_GetSamples(float *Ichannel, float *Qchannel, int &samplesCount)
-{
-    getMainModule()->getTransmitter()->GetSamples(Ichannel, Qchannel, samplesCount);
-}
-
 CTR_6002DR2_API void LMLL_ADF_SetFrefFvco(float Fref, float Fvco, int &rcount, int &ncount)
 {
     getMainModule()->getADF()->txtFref = Fref;

@@ -3,14 +3,14 @@
 
 //(*Headers(pnlSamplesGenerator)
 #include <wx/panel.h>
-class wxSpinEvent;
 class wxTextCtrl;
-class wxRadioBox;
+class wxFlexGridSizer;
+class wxSpinEvent;
+class wxButton;
+class wxSpinCtrl;
 class wxGLCanvas;
 class wxStaticText;
-class wxFlexGridSizer;
-class wxSpinCtrl;
-class wxButton;
+class wxRadioBox;
 //*)
 #include "OpenGLGraph.h"
 
@@ -22,20 +22,20 @@ class pnlSamplesGenerator: public wxPanel
 		virtual ~pnlSamplesGenerator();
 
 		//(*Declarations(pnlSamplesGenerator)
-		wxStaticText* StaticText2;
-		wxSpinCtrl* spinSamplingRate;
-		wxTextCtrl* txtFreq;
 		wxPanel* Panel1;
-		wxButton* btnStopGenerating;
-		wxStaticText* StaticText1;
-		wxStaticText* StaticText3;
+		wxSpinCtrl* spinSamplingRate;
 		wxButton* btnStartGenerating;
-		wxRadioBox* rgrDataSource;
-		wxSpinCtrl* spinAmplitude;
-		OpenGLGraph* glSignalGraph;
+		wxStaticText* StaticText1;
 		wxPanel* Panel2;
+		wxStaticText* StaticText3;
+		wxRadioBox* rgrDataSource;
+		wxTextCtrl* txtFreq;
 		wxStaticText* StaticText4;
+		wxSpinCtrl* spinAmplitude;
+		wxStaticText* StaticText2;
+		wxButton* btnStopGenerating;
 		wxButton* btnOpenFile;
+		OpenGLGraph* glSignalGraph;
 		//*)
 
 	protected:

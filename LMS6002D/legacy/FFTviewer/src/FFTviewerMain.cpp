@@ -16,13 +16,12 @@
 #include "version.h"
 
 //(*InternalHeaders(FFTviewerFrame)
-#include <wx/intl.h>
 #include <wx/string.h>
+#include <wx/intl.h>
 //*)
 
 //(*IdInit(FFTviewerFrame)
 const long FFTviewerFrame::ID_PANEL1 = wxNewId();
-const long FFTviewerFrame::ID_PANEL2 = wxNewId();
 const long FFTviewerFrame::ID_NOTEBOOK1 = wxNewId();
 const long FFTviewerFrame::ID_MENUITEM1 = wxNewId();
 const long FFTviewerFrame::ID_MENUITEM2 = wxNewId();
@@ -50,9 +49,9 @@ FFTviewerFrame::FFTviewerFrame(wxWindow* parent,wxWindowID id)
     //(*Initialize(FFTviewerFrame)
     wxMenuItem* MenuItem2;
     wxMenuItem* MenuItem1;
+    wxFlexGridSizer* FlexGridSizer1;
     wxMenu* Menu1;
     wxMenuBar* MenuBar1;
-    wxFlexGridSizer* FlexGridSizer1;
     wxMenu* Menu2;
 
     Create(parent, wxID_ANY, _("FFT viewer"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
@@ -64,9 +63,7 @@ FFTviewerFrame::FFTviewerFrame(wxWindow* parent,wxWindowID id)
     Notebook1 = new wxNotebook(this, ID_NOTEBOOK1, wxDefaultPosition, wxSize(800,600), 0, _T("ID_NOTEBOOK1"));
     Notebook1->SetMinSize(wxSize(900,500));
     mSpectrum = new pnlSpectrum(Notebook1, ID_PANEL1, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
-    mTransmitter = new pnlSamplesGenerator(Notebook1, ID_PANEL2, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL2"));
     Notebook1->AddPage(mSpectrum, _("Spectrum"), false);
-    Notebook1->AddPage(mTransmitter, _("Transmitter"), false);
     FlexGridSizer1->Add(Notebook1, 1, wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     SetSizer(FlexGridSizer1);
     MenuBar1 = new wxMenuBar();

@@ -35,7 +35,6 @@
 #include "RegisterTest.h"
 #include "Board2_Module.h"
 #include "TestingModule.h"
-#include "Transmitter.h"
 #include "ADF_Module.h"
 
 class ConnectionManager;
@@ -50,7 +49,6 @@ class ADDC_Module;
 class Board2_Module;
 class ADF_Module;
 class TestingModule;
-class Transmitter;
 
 enum eMessageLogCodes
 {
@@ -194,7 +192,6 @@ public:
 	ADF_Module *getADF() { return m_ADFModule;};
 
 	TestingModule *getTesting() { return m_testModule;};
-	Transmitter *getTransmitter() { return m_transmitter;};
 
 	RegisterTest *dRegTest;
 	TextLog messagesLog;
@@ -203,7 +200,6 @@ public:
 
 private:
     TestingModule* m_testModule;
-    Transmitter* m_transmitter;
 
 	ConnectionManager *m_serPort;
 	Top_Module *m_TopModule;

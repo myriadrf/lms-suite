@@ -11,12 +11,12 @@
 #define FFTVIEWERMAIN_H
 
 //(*Headers(FFTviewerFrame)
-#include <wx/notebook.h>
 #include <wx/sizer.h>
+#include <wx/notebook.h>
 #include <wx/menu.h>
 #include <wx/panel.h>
-#include <wx/frame.h>
 #include <wx/statusbr.h>
+#include <wx/frame.h>
 //*)
 
 #include "GUI/frControlPanel.h"
@@ -54,7 +54,6 @@ class FFTviewerFrame: public wxFrame
 
         //(*Identifiers(FFTviewerFrame)
         static const long ID_PANEL1;
-        static const long ID_PANEL2;
         static const long ID_NOTEBOOK1;
         static const long ID_MENUITEM1;
         static const long ID_MENUITEM2;
@@ -67,16 +66,15 @@ class FFTviewerFrame: public wxFrame
         //*)
 
         //(*Declarations(FFTviewerFrame)
-        wxMenuItem* MenuItem7;
-        wxNotebook* Notebook1;
-        wxMenuItem* MenuItem5;
-        wxStatusBar* mStatusBar;
-        pnlSpectrum* mSpectrum;
         wxMenu* Menu3;
-        wxMenuItem* MenuItem4;
-        pnlSamplesGenerator* mTransmitter;
+        pnlSpectrum* mSpectrum;
         wxMenuItem* MenuItem3;
+        wxStatusBar* mStatusBar;
+        wxMenuItem* MenuItem5;
+        wxNotebook* Notebook1;
+        wxMenuItem* MenuItem7;
         wxMenuItem* MenuItem6;
+        wxMenuItem* MenuItem4;
         //*)
 
         DECLARE_EVENT_TABLE()

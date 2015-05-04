@@ -459,7 +459,6 @@ void Main_Module::initialize()
 {
 	dRegTest = new RegisterTest();
 	m_testModule = new TestingModule(this);
-	m_transmitter = new Transmitter(this);
 	StartMessagePump();
 	autoDownload = true;
 	// Clear Messages log
