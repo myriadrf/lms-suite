@@ -26,7 +26,7 @@
 				<Linker>
 					<Add option="-static" />
 					<Add library="libCyAPI_fx3_GCC.a" />
-					<Add library="Logic\dependencies\fftw-3.3.3\libfftw3f-3.lib" />
+					<Add library="Logic/dependencies/fftw-3.3.3/libfftw3f-3.lib" />
 					<Add directory="Logic/dependencies/CyAPI" />
 					<Add directory="Logic/dependencies/fftw-3.3.3" />
 				</Linker>
@@ -86,9 +86,9 @@
 					<Add library="libodbc32.a" />
 					<Add library="glu32" />
 					<Add library="openGL32" />
-					<Add library="Logic\dependencies\pthreads-w32-2-9-1-release\Pre-built.2\lib\x86\libpthreadGCE2.a" />
+					<Add library="Logic/dependencies/pthreads-w32-2-9-1-release/Pre-built.2/lib/x86/libpthreadGCE2.a" />
 					<Add library="libwxexpat.a" />
-					<Add library="Logic\dependencies\fftw-3.3.3\libfftw3f-3.lib" />
+					<Add library="Logic/dependencies/fftw-3.3.3/libfftw3f-3.lib" />
 					<Add library="libCyAPI_fx3_GCC.a" />
 					<Add library="Setupapi" />
 					<Add directory="D:/Libraries/wxWidgets-2.9.4/lib/gcc_lib" />
@@ -172,11 +172,11 @@
 					<Add library="libodbc32.a" />
 					<Add library="glu32" />
 					<Add library="openGL32" />
-					<Add library="Logic\dependencies\pthreads-w32-2-9-1-release\Pre-built.2\lib\x86\libpthreadGCE2.a" />
+					<Add library="Logic/dependencies/pthreads-w32-2-9-1-release/Pre-built.2/lib/x86/libpthreadGCE2.a" />
 					<Add library="libwxexpat.a" />
-					<Add library="Logic\dependencies\CyAPI\libCyAPI_fx3_GCC.a" />
+					<Add library="Logic/dependencies/CyAPI/libCyAPI_fx3_GCC.a" />
 					<Add library="Setupapi" />
-					<Add library="Logic\dependencies\fftw-3.3.3\libfftw3f-3.lib" />
+					<Add library="Logic/dependencies/fftw-3.3.3/libfftw3f-3.lib" />
 					<Add directory="../../Libraries/wxWidgets-2.9.4/lib/gcc_libstaticmswu" />
 					<Add directory="Logic/lib" />
 					<Add directory="Logic/dependencies/CyAPI" />
@@ -493,16 +493,6 @@
 			<Option target="GUIRelease WIN32" />
 			<Option target="GUIRelease Linux" />
 		</Unit>
-		<Unit filename="GUI/pnlSamplesGenerator.cpp">
-			<Option target="GUIDebug WIN32" />
-			<Option target="GUIRelease WIN32" />
-			<Option target="GUIRelease Linux" />
-		</Unit>
-		<Unit filename="GUI/pnlSamplesGenerator.h">
-			<Option target="GUIDebug WIN32" />
-			<Option target="GUIRelease WIN32" />
-			<Option target="GUIRelease Linux" />
-		</Unit>
 		<Unit filename="GUI/pnlSpectrum.cpp">
 			<Option target="GUIDebug WIN32" />
 			<Option target="GUIRelease WIN32" />
@@ -777,11 +767,6 @@
 			<Option target="LogicRelease WIN32" />
 			<Option target="LogicRelease Linux" />
 		</Unit>
-		<Unit filename="Logic/src/Transmitter.cpp">
-			<Option target="LogicDebug WIN32" />
-			<Option target="LogicRelease WIN32" />
-			<Option target="LogicRelease Linux" />
-		</Unit>
 		<Unit filename="Logic/src/TxLPF_Module.cpp">
 			<Option target="LogicDebug WIN32" />
 			<Option target="LogicRelease WIN32" />
@@ -961,7 +946,7 @@
 			</DoxyBlocks>
 			<AutoVersioning>
 				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
-				<Settings autoincrement="1" date_declarations="1" update_manifest="0" do_auto_increment="1" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
+				<Settings autoincrement="1" date_declarations="1" use_define="0" update_manifest="0" do_auto_increment="1" ask_to_increment="0" language="C++" svn="0" svn_directory="" header_path="version.h" />
 				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
 				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix="" />
 			</AutoVersioning>
