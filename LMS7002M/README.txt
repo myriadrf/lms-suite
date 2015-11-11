@@ -43,3 +43,8 @@ Outside of this directory structure:
   example/demonstration project to show how the LMS7 driver
   can be integrated into a simple control + stream wrapper
   to be used with a vast ecosystem of SDR software.
+
+Some finishing touches to remember:
+
+* Install package config file
+* Install cmake config file

@@ -1,6 +1,15 @@
 ########################################################################
 # LMS7 driver library component
 ########################################################################
+list(APPEND LMS7_SOURCES
+    lib/CommonUtilities.cpp
+)
+
+#support threaded client code
+#notice that -pthread is not the same as -lpthread
+if(CMAKE_COMPILER_IS_GNUCXX)
+    list(APPEND LMS7_LIBRARIES -pthread)
+endif()
 
 ########################################################################
 ## Feature registration
@@ -13,3 +22,30 @@ if (NOT ENABLE_LMS7LIB)
     return()
 endif()
 
+########################################################################
+# build library
+########################################################################
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) #private headers
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include) #public headers
+add_library(lms7 STATIC ${LMS7_SOURCES})
+if(LMS7_LIBRARIES)
+    target_link_libraries(lms7 ${LMS7_LIBRARIES})
+endif(LMS7_LIBRARIES)
+set_target_properties(lms7 PROPERTIES SOVERSION ${LIME_SUITE_SOVER})
+set_target_properties(lms7 PROPERTIES VERSION ${LIME_SUITE_LIBVER})
+set_target_properties(lms7 PROPERTIES DEFINE_SYMBOL "LMS7_DLL_EXPORTS")
+set_property(TARGET lms7 PROPERTY POSITION_INDEPENDENT_CODE TRUE)
+
+########################################################################
+# install library
+########################################################################
+install(TARGETS lms7
+    LIBRARY DESTINATION lib${LIB_SUFFIX} # .so file
+    ARCHIVE DESTINATION lib${LIB_SUFFIX} # .lib file
+    RUNTIME DESTINATION bin              # .dll file
+)
+
+########################################################################
+# install headers
+########################################################################
+install(DIRECTORY include/lms7 DESTINATION include)
