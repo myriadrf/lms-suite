@@ -7,7 +7,6 @@
 #ifndef MCU_BD_H
 #define MCU_BD_H
 
-using namespace std;
 #include <string>
 #include "ConnectionManager.h"
 
@@ -36,7 +35,7 @@ class MCU_BD
         unsigned short mSPI_read(unsigned short addr_reg);
         int Three_byte_command(unsigned char data1,unsigned char data2,unsigned char data3,
                    unsigned char * rdata1,unsigned char * rdata2,unsigned char * rdata3);
-        void GetProgramCode(string inFileName, bool bin = false);
+        void GetProgramCode(std::string inFileName, bool bin = false);
         int Change_MCUFrequency(unsigned char data);
         int Read_IRAM();
         int Erase_IRAM();

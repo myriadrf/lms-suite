@@ -8,7 +8,6 @@
 #define PLL_SX_H
 
 #include <vector>
-using namespace std;
 
 //---------------------------------------------------------------------------
 class PLL_SX
@@ -37,9 +36,9 @@ public:
     bool SaveToFile(const char* filename);
     bool LoadFromFile(const char* filename);
 
-    vector<double> GetVCOHFrequencies() const;
-    vector<double> GetVCOMFrequencies() const;
-    vector<double> GetVCOLFrequencies() const;
+    std::vector<double> GetVCOHFrequencies() const;
+    std::vector<double> GetVCOMFrequencies() const;
+    std::vector<double> GetVCOLFrequencies() const;
     void SetVCOHFrequencies(double *frequencies, unsigned int f_count);
     void SetVCOMFrequencies(double *frequencies, unsigned int f_count);
     void SetVCOLFrequencies(double *frequencies, unsigned int f_count);

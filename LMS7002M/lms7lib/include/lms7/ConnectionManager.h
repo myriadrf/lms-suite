@@ -57,7 +57,7 @@ public:
 	void EnableTestWrittenData(bool enabled);
 
 	eLMS_DEV GetConnectedDeviceType();
-	string GetConnectedDeviceName();
+	std::string GetConnectedDeviceName();
 
 	void AssignRegistersMap(const RegistersMap* regMap);
 

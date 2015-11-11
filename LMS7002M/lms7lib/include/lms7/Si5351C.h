@@ -9,7 +9,7 @@
 
 #include <stdio.h>
 #include <string>
-using namespace std;
+
 //---------------------------------------------------------------------------
 
 enum eSi_CLOCK_INPUT
@@ -68,7 +68,7 @@ public:
 	Si5351C();
 	~Si5351C();
 	void Initialize(ConnectionManager *mng);
-	bool LoadRegValuesFromFile(string FName);
+	bool LoadRegValuesFromFile(std::string FName);
 
     void SetPLL(unsigned char id, unsigned long CLKIN_Hz);
     void SetClock(unsigned char id, unsigned long fOut_Hz, bool enabled = true, bool inverted = false);

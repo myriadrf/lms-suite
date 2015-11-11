@@ -9,7 +9,7 @@
 
 #include <string>
 #include <vector>
-using namespace std;
+
 #include "ControlParameters.h"
 #include "PLL_SX.h"
 #include "PLL_CGEN.h"
@@ -56,8 +56,8 @@ class LMS7002_MainControl : public SignalHandler
         bool SetParam(LMS7002_Parameter param, long value);
         long GetParam(LMS7002_Parameter param, bool fromChip = false, bool updateLocal = true) const;
 
-        bool SetNCOconfiguration(const vector<double> &FCW, const vector<int> &PHO, const bool Rx);
-        void GetNCOconfiguration(vector<double> &FCW, vector<int> &PHO, const bool Rx);
+        bool SetNCOconfiguration(const std::vector<double> &FCW, const std::vector<int> &PHO, const bool Rx);
+        void GetNCOconfiguration(std::vector<double> &FCW, std::vector<int> &PHO, const bool Rx);
         bool ReconfigureNCO(int channel, bool Rx);
 
         bool SetReferenceFrequencyNCO(const double freq_MHz, const bool Rx);
@@ -80,7 +80,7 @@ class LMS7002_MainControl : public SignalHandler
         void SetAutoUpload(bool enabled);
         bool GetAutoUpload() const;
 
-        vector<short> GetGFIRcoefficients(int gfirIndex, bool Rx);
+        std::vector<short> GetGFIRcoefficients(int gfirIndex, bool Rx);
 
         ADF_module *getADF() const;
         Si5351C *getSi5351() const;
@@ -92,16 +92,16 @@ class LMS7002_MainControl : public SignalHandler
         PLL_SX *getPLL_SX();
         PLL_CGEN *getPLL_CGEN();
 
-        int SetGPIOStates(const vector<unsigned char> &states);
-        void GetGPIOStates(vector<unsigned char> &states);
+        int SetGPIOStates(const std::vector<unsigned char> &states);
+        void GetGPIOStates(std::vector<unsigned char> &states);
         bool UploadGPIOStates();
         bool DownloadGPIOStates();
 
         unsigned short mDC_REG[2][2][2]; //IQ/channel/TxRx
     protected:
         bool m_firstConnect;
-        vector<short> m_GFIRcoefficients_TX[3];
-        vector<short> m_GFIRcoefficients_RX[3];
+        std::vector<short> m_GFIRcoefficients_TX[3];
+        std::vector<short> m_GFIRcoefficients_RX[3];
 
         void Initialize();
         unsigned int CalculateNCO_FCW_Code(float desiredFreq_MHz, float Fref_MHz);
@@ -130,7 +130,7 @@ class LMS7002_MainControl : public SignalHandler
         double m_FCWfreq_MHz[16][2][2]; // FCW index/channel/TxRx
         int m_PHO[16][2][2]; // PHO index/channel/TxRx
 
-        vector<unsigned char> gpioStates;
+        std::vector<unsigned char> gpioStates;
 
     private:
 

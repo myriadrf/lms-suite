@@ -8,7 +8,6 @@
 #define PLL_CGEN_H_INCLUDED
 
 #include <vector>
-using namespace std;
 
 //---------------------------------------------------------------------------
 class PLL_CGEN
@@ -29,7 +28,7 @@ public:
 
     int FreqParams(double refClk_MHz, double dDFH, double &rdRF, unsigned &Nint, unsigned &Nfrac, double &Fvco, unsigned &iHDiv);
 
-    vector<double> GetVCOFrequencies() const;
+    std::vector<double> GetVCOFrequencies() const;
     void SetVCOFrequencies(double *frequencies, unsigned int f_count);
     bool SaveToFile(const char* filename);
     bool LoadFromFile(const char* filename);

@@ -9,6 +9,8 @@
 #include <fstream>
 #include <string.h>
 
+using namespace std;
+
 /** @brief Class constructor.
     Initialization of VCO frequencies, Min, Max
     PLL frequencies, threshold frequency is done there.

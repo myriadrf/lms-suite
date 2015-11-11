@@ -13,6 +13,24 @@ set(LIME_SUITE_LIBVER "2015.11.0")
 set(LIME_SUITE_SOVER "0")
 
 ########################################################################
+# global library config - shared vs static
+# shared libraries are on by default for UNIX,
+# but off by default (static) for MSVC to
+# make locating runtime dependencies easier.
+########################################################################
+if (MSVC)
+    option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+else()
+    option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+endif()
+
+if(BUILD_SHARED_LIBS)
+    message(STATUS "Building shared libraries")
+else()
+    message(STATUS "Building static libraries")
+endif()
+
+########################################################################
 # select the release build type by default to get optimization flags
 ########################################################################
 if(NOT CMAKE_BUILD_TYPE)

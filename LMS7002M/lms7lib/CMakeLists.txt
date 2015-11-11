@@ -21,7 +21,11 @@ file(GLOB LMS7_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) #private headers
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/lms7) #public headers
 
-add_library(lms7 STATIC ${LMS7_SOURCES})
+if(BUILD_SHARED_LIBS)
+    add_definitions(-DLMS7_DLL)
+endif(BUILD_SHARED_LIBS)
+
+add_library(lms7 ${LMS7_SOURCES})
 if(LMS7_LIBRARIES)
     target_link_libraries(lms7 ${LMS7_LIBRARIES})
 endif(LMS7_LIBRARIES)

@@ -10,7 +10,6 @@
 #include <string>
 #include <list>
 #include <vector>
-using namespace std;
 
 /// @brief Message types used for logging
 enum eMessageType
@@ -36,10 +35,10 @@ public:
     void SetConsoleFilter(unsigned int messageTypes, bool printToConsole = true);
     unsigned int GetConsoleFilter() const;
 
-    void write(const string msg, const eMessageType type = LOG_INFO);
-    void saveToFile(const string filename);
+    void write(const std::string msg, const eMessageType type = LOG_INFO);
+    void saveToFile(const std::string filename);
     void clear();
-    list<string> getLogMessages() const;
+    std::list<std::string> getLogMessages() const;
 
     void enableLogging(bool enabled);
     void registerForNotifications( void (*callback)(const int signal, const char *msg, const int param));
@@ -50,9 +49,9 @@ protected:
     MessageLog();
     MessageLog(MessageLog const&);     // Don't Implement
     void operator=(MessageLog const&); // Don't implement
-    list<string> m_messages; ///log saved messages
+    std::list<std::string> m_messages; ///log saved messages
 
-    vector< void (*)(const int, const char*, const int) > m_callbacks; ///callback functions that will be notified upon message receive
+    std::vector< void (*)(const int, const char*, const int) > m_callbacks; ///callback functions that will be notified upon message receive
 
     unsigned int m_logFilter; ///filter which type messages to save
     unsigned int m_consoleFilter; ///filter which type messages to print to console
