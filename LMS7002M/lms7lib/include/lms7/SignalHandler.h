@@ -1,11 +1,12 @@
 /**
-@file   SignalHandler.h
+@file   lms7/SignalHandler.h
 @author Lime Microsystems (www.limemicro.com)
 @brief  Class for handling message passing between modules
 */
 
 #ifndef LMS_SIGNAL_HANDLER
 #define LMS_SIGNAL_HANDLER
+#include <lms7/Config.h>
 
 #include <vector>
 #include <string>
@@ -46,7 +47,7 @@ struct LMS_Message
 	int param2;
 };
 
-class SignalHandler
+class LMS7_API SignalHandler
 {
 public:
 	SignalHandler();

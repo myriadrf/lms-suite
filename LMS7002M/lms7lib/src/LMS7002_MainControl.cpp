@@ -4,13 +4,13 @@
 @brief	main class for controlling LMS7002 chip
 */
 
-#include "LMS7002_MainControl.h"
-#include "ConnectionManager.h"
-#include "RegistersMap.h"
-#include "Si5351C.h"
-#include "ADF_module.h"
-#include "MCU_BD.h"
-#include "MessageLog.h"
+#include <lms7/LMS7002_MainControl.h>
+#include <lms7/ConnectionManager.h>
+#include <lms7/RegistersMap.h>
+#include <lms7/Si5351C.h>
+#include <lms7/ADF_module.h>
+#include <lms7/MCU_BD.h>
+#include <lms7/MessageLog.h>
 #include "CoefficientFileParser.h"
 #include "CommonUtilities.h"
 #include <math.h>

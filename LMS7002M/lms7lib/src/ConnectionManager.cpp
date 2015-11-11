@@ -4,16 +4,16 @@
 @author	Lime Microsystems
 */
 
-#include "ConnectionManager.h"
+#include <lms7/ConnectionManager.h>
 #include <iostream>
 #include <stdio.h>
 
 #include "CommonUtilities.h"
 //#include "ConnectionCOM.h"
 //#include "ConnectionUSB.h"
-#include "MessageLog.h"
+#include <lms7/MessageLog.h>
 #include <sstream>
-#include "RegistersMap.h"
+#include <lms7/RegistersMap.h>
 #include <string.h>
 
 using namespace std;

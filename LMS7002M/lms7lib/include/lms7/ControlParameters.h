@@ -1,11 +1,12 @@
 /**
-@file	ControlParameters.h
+@file	lms7/ControlParameters.h
 @author Lime Microsystems
 @brief	Enumeration list of all LMS7002 parameters
 */
 
 #ifndef LMS7002_CONTROL_PARAMETERS_H
 #define LMS7002_CONTROL_PARAMETERS_H
+#include <lms7/Config.h>
 
 /** @brief All LMS7002M parameters enumeration
 */

@@ -1,14 +1,15 @@
 /**
-@file	RegistersMap.h
+@file	lms7/RegistersMap.h
 @author	Lime Microsystems
 @brief	Header for RegistersMap.cpp
 */
 
 #ifndef LMS7002_REGISTERS_MAP_H
 #define LMS7002_REGISTERS_MAP_H
+#include <lms7/Config.h>
 
-#include "ControlParameters.h"
-#include "MessageLog.h"
+#include <lms7/ControlParameters.h>
+#include <lms7/MessageLog.h>
 #include <string>
 #include <map>
 
@@ -91,7 +92,7 @@ struct ControlParameter
 /** @class RegistersMap
     @brief Class used for manipulating and storing memory registers
 */
-class RegistersMap
+class LMS7_API RegistersMap
 {
 public:
     RegTestPlan m_modulesInfo[LMS_MODULES_COUNT];

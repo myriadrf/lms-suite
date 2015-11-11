@@ -4,8 +4,8 @@
 @brief 	Configuring of Si5351C
 */
 
-#include "Si5351C.h"
-#include "ConnectionManager.h"
+#include <lms7/Si5351C.h>
+#include <lms7/ConnectionManager.h>
 #include <math.h>
 #include <iomanip>
 #include <fstream>
@@ -14,7 +14,7 @@
 #include <string.h>
 using namespace std;
 #include "CommonUtilities.h"
-#include "MessageLog.h"
+#include <lms7/MessageLog.h>
 
 /// Splits float into fraction integers A + B/C
 void realToFrac(const float real, int &A, int &B, int &C)

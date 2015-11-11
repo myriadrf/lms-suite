@@ -1,16 +1,17 @@
 /**
-@file	PLL_SX.h
+@file	lms7/PLL_SX.h
 @brief	Header for PLL_SX.cpp
 @author	Lime Microsystems
 */
 
 #ifndef PLL_SX_H
 #define PLL_SX_H
+#include <lms7/Config.h>
 
 #include <vector>
 
 //---------------------------------------------------------------------------
-class PLL_SX
+class LMS7_API PLL_SX
 {
 private:
     double *m_pdVCOH; //High VCO frequencies, MHz

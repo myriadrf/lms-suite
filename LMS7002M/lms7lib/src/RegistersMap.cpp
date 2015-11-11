@@ -4,15 +4,16 @@
 @brief 	Class for modifying LMS7002Mr2 registers
 */
 
-#include "RegistersMap.h"
+#include <lms7/RegistersMap.h>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "ConnectionManager.h"
+#include <lms7/ConnectionManager.h>
 #include "CommonUtilities.h"
 #include <string.h>
-#include "MessageLog.h"
+#include <lms7/MessageLog.h>
+
 using namespace std;
 
 unsigned short makeMask(int msb, int lsb)

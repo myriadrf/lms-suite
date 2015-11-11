@@ -1,15 +1,16 @@
 /**
-@file	ADF_module.h
+@file	lms7/ADF_module.h
 @author	Lime Microsystems
 @brief	Header for ADF_module.cpp
 */
 
 #ifndef ADF_MODULE_H
 #define ADF_MODULE_H
+#include <lms7/Config.h>
 
 class ConnectionManager;
 
-class ADF_module
+class LMS7_API ADF_module
 {
 public:
     ADF_module();

@@ -4,12 +4,12 @@
 @brief Implementation of interacting with on board MCU
 */
 
-#include "MCU_BD.h"
+#include <lms7/MCU_BD.h>
 using namespace std;
 #include <string>
 #include "File_.h"
 #include <sstream>
-#include "MessageLog.h"
+#include <lms7/MessageLog.h>
 #include <fstream>
 
 

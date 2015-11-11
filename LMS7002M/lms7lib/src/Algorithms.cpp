@@ -4,14 +4,14 @@
 @brief	calibration algorithms used for LMS7002
 */
 
-#include "Algorithms.h"
-#include "ConnectionManager.h"
-#include "LMS7002_MainControl.h"
-#include "MessageLog.h"
+#include <lms7/Algorithms.h>
+#include <lms7/ConnectionManager.h>
+#include <lms7/LMS7002_MainControl.h>
+#include <lms7/MessageLog.h>
 #include "CommonUtilities.h"
 #include <stdio.h>
 #include <cmath>
-#include "RegistersMap.h"
+#include <lms7/RegistersMap.h>
 #include <stdlib.h>
 #include <fstream>
 #include <sstream>

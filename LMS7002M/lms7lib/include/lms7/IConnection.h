@@ -1,11 +1,12 @@
 /**
-@file IConnection.h
+@file lms7/IConnection.h
 @author Lime Microsystems
 @brief Interface class for connection types
 */
 
 #ifndef ICONNECTION_H
 #define ICONNECTION_H
+#include <lms7/Config.h>
 
 #include <string>
 #include <vector>
@@ -21,7 +22,7 @@ enum eConnectionType
 	CONNECTION_TYPES_COUNT //used only for memory allocation
 };
 
-class IConnection
+class LMS7_API IConnection
 {
 public:
 	IConnection() : m_connectionType(CONNECTION_UNDEFINED){};

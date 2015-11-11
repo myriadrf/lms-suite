@@ -1,16 +1,17 @@
 /**
-@file	MCU_BD.h
+@file	lms7/MCU_BD.h
 @author	Lime Microsystems
 @brief	Header for MCU_BD.cpp
 */
 
 #ifndef MCU_BD_H
 #define MCU_BD_H
+#include <lms7/Config.h>
 
 #include <string>
-#include "ConnectionManager.h"
+#include <lms7/ConnectionManager.h>
 
-class MCU_BD
+class LMS7_API MCU_BD
 {
     public:
         MCU_BD();

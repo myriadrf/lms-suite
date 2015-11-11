@@ -1,11 +1,12 @@
 /**
-@file	Algorithms.h
+@file	lms7/Algorithms.h
 @author	Lime Microsystems
 @brief	Header for Algorithms.cpp
 */
 
 #ifndef ALGORITHMS_H
 #define ALGORITHMS_H
+#include <lms7/Config.h>
 
 class ConnectionManager;
 enum {MIMO_A, MIMO_B, MIMO_BOTH};
@@ -28,7 +29,7 @@ class LMS7002_MainControl;
     @class Algorithms
     @brief Class containing all calibration and tuning algorithms
 */
-class Algorithms
+class LMS7_API Algorithms
 {
 public:
     Algorithms(LMS7002_MainControl *pControl);

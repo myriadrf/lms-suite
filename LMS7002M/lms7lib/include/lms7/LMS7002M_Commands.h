@@ -1,11 +1,12 @@
 /**
-@file	LMS7002M_Commands.h
+@file	lms7/LMS7002M_Commands.h
 @author Lime Microsystems
 @brief	enumerations of available LMS7002M commands and statuses
 */
 
 #ifndef LMS7002M_COMMANDS_H
 #define LMS7002M_COMMANDS_H
+#include <lms7/Config.h>
 
 const int LMS_RST_DEACTIVATE = 0;
 const int LMS_RST_ACTIVATE = 1;
@@ -95,16 +96,6 @@ enum eCMD_STATUS
     STATUS_COUNT
 };
 
-static const char  status_text[][32]= {"Undefined/Failure", "Completed", "Unknown command", "Busy", "Too many blocks", "Error", "Wrong order", "Resource denied"};
-
-static const char* status2string(const int status)
-{
-    if(status >= 0 && status < STATUS_COUNT)
-        return status_text[status];
-    else
-        return "Unknown status";
-}
-
 enum eADC_UNITS
 {
 	RAW,
@@ -115,16 +106,11 @@ enum eADC_UNITS
 	ADC_UNITS_COUNT
 };
 
-static const char  adc_units_text[][8] = {"", "V", "A", "Ohm", "W"};
-
-static const char* adcUnits2string(const unsigned units)
+namespace lms7
 {
-	if (units < ADC_UNITS_COUNT)
-		return adc_units_text[units];
-	else
-		return " unknown";
+    LMS7_API const char* status2string(const int status);
+    LMS7_API const char* adcUnits2string(const unsigned units);
 }
-
 
 #endif // LMS7002M_COMMANDS_H
 

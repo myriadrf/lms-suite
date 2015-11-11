@@ -4,7 +4,7 @@
 @brief	Class for logging events and data
 */
 
-#include "MessageLog.h"
+#include <lms7/MessageLog.h>
 
 #include <fstream>
 #include <iostream>

@@ -1,11 +1,12 @@
 /**
-@file	MessageLog.h
+@file	lms7/MessageLog.h
 @author	Lime Microsystems
 @brief	Header for MessageLog.cpp
 */
 
 #ifndef LMS_MESSAGE_LOG_H
 #define LMS_MESSAGE_LOG_H
+#include <lms7/Config.h>
 
 #include <string>
 #include <list>
@@ -24,7 +25,7 @@ enum eMessageType
     @brief Singleton class used for logging messages
 */
 
-class MessageLog
+class LMS7_API MessageLog
 {
 public:
     static MessageLog* getInstance();

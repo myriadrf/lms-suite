@@ -4,12 +4,12 @@
 @brief	ADF4002 module configuring
 */
 
-#include "ADF_module.h"
+#include <lms7/ADF_module.h>
 
 #include <cmath>
-#include "ConnectionManager.h"
+#include <lms7/ConnectionManager.h>
 #include "CommonUtilities.h"
-#include "MessageLog.h"
+#include <lms7/MessageLog.h>
 #include <string.h>
 
 ADF_module::ADF_module()

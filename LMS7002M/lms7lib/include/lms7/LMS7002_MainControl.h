@@ -1,20 +1,21 @@
 /**
-@file	LMS7002_MainControl.h
+@file	lms7/LMS7002_MainControl.h
 @author	Lime Microsystems
 @brief	Header for LMS7002_MainControl.h
 */
 
 #ifndef LMS7002_MAIN_CONTROL_H
 #define LMS7002_MAIN_CONTROL_H
+#include <lms7/Config.h>
 
 #include <string>
 #include <vector>
 
-#include "ControlParameters.h"
-#include "PLL_SX.h"
-#include "PLL_CGEN.h"
-#include "Algorithms.h"
-#include "SignalHandler.h"
+#include <lms7/ControlParameters.h>
+#include <lms7/PLL_SX.h>
+#include <lms7/PLL_CGEN.h>
+#include <lms7/Algorithms.h>
+#include <lms7/SignalHandler.h>
 
 class ConnectionManager;
 class RegistersMap;
@@ -27,7 +28,7 @@ class MCU_BD;
     @brief Main class for controlling LMS7002 chip
 */
 
-class LMS7002_MainControl : public SignalHandler
+class LMS7_API LMS7002_MainControl : public SignalHandler
 {
     public:
         LMS7002_MainControl();

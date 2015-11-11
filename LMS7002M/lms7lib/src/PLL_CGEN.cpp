@@ -4,7 +4,7 @@
 @brief	Parameter calculations for CLKGEN PLL
 */
 
-#include "PLL_CGEN.h"
+#include <lms7/PLL_CGEN.h>
 #include <math.h>
 #include <fstream>
 #include <string.h>

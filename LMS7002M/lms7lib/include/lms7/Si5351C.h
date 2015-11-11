@@ -1,11 +1,12 @@
 /**
-@file	Si5351C.h
+@file	lms7/Si5351C.h
 @brief	Header for Si5351C.cpp
 @author	Lime Microsystems
 */
 
 #ifndef SI5351C_MODULE
 #define SI5351C_MODULE
+#include <lms7/Config.h>
 
 #include <stdio.h>
 #include <string>
@@ -43,7 +44,7 @@ struct Si5351_PLL
 };
 
 class ConnectionManager;
-class Si5351C
+class LMS7_API Si5351C
 {
 public:
     struct Status

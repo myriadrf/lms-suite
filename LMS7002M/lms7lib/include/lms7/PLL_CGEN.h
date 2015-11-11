@@ -1,16 +1,17 @@
 /**
-@file	PLL_CGEN.h
+@file	lms7/PLL_CGEN.h
 @author	Lime Microsystems
 @brief 	Header for PLL_CGEN.cpp
 */
 
 #ifndef PLL_CGEN_H_INCLUDED
 #define PLL_CGEN_H_INCLUDED
+#include <lms7/Config.h>
 
 #include <vector>
 
 //---------------------------------------------------------------------------
-class PLL_CGEN
+class LMS7_API PLL_CGEN
 {
 private:
     double *m_pdVCO; //High VCO frequencies, MHz

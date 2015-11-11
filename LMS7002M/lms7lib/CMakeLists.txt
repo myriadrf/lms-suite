@@ -19,7 +19,7 @@ endif()
 file(GLOB LMS7_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) #private headers
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/lms7) #public headers
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include) #public headers
 
 if(BUILD_SHARED_LIBS)
     add_definitions(-DLMS7_DLL)

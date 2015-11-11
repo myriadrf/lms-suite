@@ -1,24 +1,25 @@
 /**
-@file	ConnectionManager.h
+@file	lms7/ConnectionManager.h
 @author Lime Microsystems
 @brief Header for ConnectionManager.cpp
 */
 
 #ifndef CONNECTION_MANAGER_H
 #define CONNECTION_MANAGER_H
+#include <lms7/Config.h>
 
-#include "LMS7002M_Commands.h"
-#include "IConnection.h"
+#include <lms7/LMS7002M_Commands.h>
+#include <lms7/IConnection.h>
 #include <string>
 #include <map>
 #include <vector>
-#include "SignalHandler.h"
+#include <lms7/SignalHandler.h>
 
 class RegistersMap;
 /** @brief Handles communication with device. Data writing and reading is NOT
     thread safe
 */
-class ConnectionManager : public SignalHandler
+class LMS7_API ConnectionManager : public SignalHandler
 {
 public:
 	struct DeviceInfo

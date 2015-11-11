@@ -3,7 +3,7 @@
 @author	Lime Microsystems
 @brief	Class used for passing messages between modules
 */
-#include "SignalHandler.h"
+#include <lms7/SignalHandler.h>
 
 /** @brief SignalHandler
 */
