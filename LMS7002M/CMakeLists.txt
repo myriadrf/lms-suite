@@ -32,6 +32,18 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     add_compile_options(-Wall)
     add_compile_options(-Wextra)
 
+    #C++11 is a required language feature for this project
+    include(CheckCXXCompilerFlag)
+    CHECK_CXX_COMPILER_FLAG("-std=c++11" HAS_STD_CXX11)
+    if(HAS_STD_CXX11)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+    else(HAS_STD_CXX11)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+    endif()
+
+    #Thread support enabled (not the same as -lpthread)
+    list(APPEND SoapySDR_LIBRARIES -pthread)
+
     #symbols are only exported from libraries/modules explicitly
     add_compile_options(-fvisibility=hidden)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")

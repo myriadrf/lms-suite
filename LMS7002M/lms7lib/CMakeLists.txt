@@ -1,15 +1,6 @@
 ########################################################################
 # LMS7 driver library component
 ########################################################################
-list(APPEND LMS7_SOURCES
-    lib/CommonUtilities.cpp
-)
-
-#support threaded client code
-#notice that -pthread is not the same as -lpthread
-if(CMAKE_COMPILER_IS_GNUCXX)
-    list(APPEND LMS7_LIBRARIES -pthread)
-endif()
 
 ########################################################################
 ## Feature registration
@@ -17,7 +8,7 @@ endif()
 include(FeatureSummary)
 include(CMakeDependentOption)
 cmake_dependent_option(ENABLE_LMS7LIB "Enable LMS7 driver support library" ON "TRUE" OFF)
-add_feature_info(LMS7LIB ENABLE_LMS7LIB "LMS7 driver support library")
+add_feature_info(LMS7LIB ENABLE_LMS7LIB "LMS7 driver support library (v${LIME_SUITE_LIBVER})")
 if (NOT ENABLE_LMS7LIB)
     return()
 endif()
@@ -25,8 +16,11 @@ endif()
 ########################################################################
 # build library
 ########################################################################
+file(GLOB LMS7_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) #private headers
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include) #public headers
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/lms7) #public headers
+
 add_library(lms7 STATIC ${LMS7_SOURCES})
 if(LMS7_LIBRARIES)
     target_link_libraries(lms7 ${LMS7_LIBRARIES})

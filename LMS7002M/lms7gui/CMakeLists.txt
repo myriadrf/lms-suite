@@ -5,7 +5,7 @@
 ########################################################################
 ## WX dependency
 ########################################################################
-find_package(wxWidgets REQUIRED richtext xml html xrc adv aui core base gl)
+find_package(wxWidgets COMPONENTS richtext xml html xrc adv aui core base gl)
 message(STATUS "wxWidgets_FOUND: ${wxWidgets_FOUND}")
 message(STATUS "wxWidgets_USE_FILE: ${wxWidgets_USE_FILE}")
 message(STATUS "wxWidgets_LIBRARIES: ${wxWidgets_LIBRARIES}")
