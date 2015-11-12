@@ -46,5 +46,6 @@ Outside of this directory structure:
 
 Some finishing touches to remember:
 
+* Create debian/ control directory
 * Install package config file
 * Install cmake config file
