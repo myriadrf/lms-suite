@@ -1,10 +1,14 @@
-Primary goals of the re-factor:
+########################################################################
+Primary goals of the re-factor
+########################################################################
 
 Separate out hardware specific hooks and graphical specific hooks
 from the main LMS7 support library. LMS7 support should be as
 minimalistic as possible to appeal to the widest user-base.
 
-Re-factor thoughts and TODO list:
+########################################################################
+Re-factor thoughts and TODO list
+########################################################################
 
 Leave lms7suite/ alone as a reference.
 This directory will be gradually filled in from lms7suite/
@@ -44,7 +48,71 @@ Outside of this directory structure:
   can be integrated into a simple control + stream wrapper
   to be used with a vast ecosystem of SDR software.
 
-Some finishing touches to remember:
+########################################################################
+Phase I of the refactor
+########################################################################
+
+In this first phase of the refactor, the primary goal is to get
+the separate libraries and apps compiling in a new build system.
+Hardware specific interfaces will be removed from the main library.
+Only the LMS7 is focused on in this phase. Later when the pattern
+is worked out, LMS6 will be refactored in a similar way.
+
+TODO list:
+
+* lms7 library compiling without hardware specific interfaces
+  * and without GUI dependency (replace wx yield with function pointer)
+* lms7 gui compiling against lms7 library and public headers
+* top level app that uses the new gui and library with evb7
+
+########################################################################
+Phase II of the refactor
+########################################################################
+
+In this phase of the refactor, the primary focus is to
+implement a better connection abstraction for hardware designers.
+The current design is based around decoding and state machine
+logic found in the STREAM board and EVB7 micro-controller.
+The new interface will focus on using raw spi and GPIO access.
+The adaptation between this new interface and the state machine
+interface will go into the application glue layer.
+
+TODO list:
+
+* Refactor the connection interface for generic SPI access
+* Move state-machine adaptor into application/glue layer
+
+########################################################################
+Phase III of the refactor
+########################################################################
+
+Integrate the LMS7002M C driver into the project:
+https://github.com/myriadrf/LMS7002M-driver
+
+In addition, we want to be able to share one set of
+self-calibration and tuning algorithms.
+This may mean some refactoring of the algorithms.cpp
+to make the interface more generic/reusable.
+
+TODO list:
+
+* Integrate lms7 C bindings into this project
+* C bindings using shared calibration algorithms
+  * Some refactor for algorithms.cpp for reusability.
+
+########################################################################
+Phase IV of the refactor
+########################################################################
+
+TODO list:
+
+* same work as above, but for lms6
+
+########################################################################
+Some finishing touches
+########################################################################
+
+Might do this a long the way, this is just a list to not forget about it...
 
 * Create debian/ control directory
 * Install package config file
