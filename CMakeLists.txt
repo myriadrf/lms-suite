@@ -50,6 +50,9 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     add_compile_options(-Wall)
     add_compile_options(-Wextra)
 
+    #disable warnings for unused parameters (theres a lot of them)
+    add_definitions(-Wno-unused-parameter)
+
     #C++11 is a required language feature for this project
     include(CheckCXXCompilerFlag)
     CHECK_CXX_COMPILER_FLAG("-std=c++11" HAS_STD_CXX11)
@@ -66,6 +69,14 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     add_compile_options(-fvisibility=hidden)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
 endif()
+
+########################################################################
+## WX dependency
+########################################################################
+find_package(wxWidgets COMPONENTS richtext xml html xrc adv aui core base gl)
+message(STATUS "wxWidgets_FOUND: ${wxWidgets_FOUND}")
+message(STATUS "wxWidgets_USE_FILE: ${wxWidgets_USE_FILE}")
+message(STATUS "wxWidgets_LIBRARIES: ${wxWidgets_LIBRARIES}")
 
 ########################################################################
 # add components
