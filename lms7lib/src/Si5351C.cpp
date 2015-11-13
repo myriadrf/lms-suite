@@ -13,7 +13,8 @@
 #include <set>
 #include <string.h>
 using namespace std;
-#include "CommonUtilities.h"
+#include <lms7/CommonUtilities.h>
+using namespace lms7;
 #include <lms7/MessageLog.h>
 
 /// Splits float into fraction integers A + B/C

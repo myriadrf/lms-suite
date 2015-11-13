@@ -8,7 +8,8 @@
 #include <lms7/ConnectionManager.h>
 #include <lms7/LMS7002_MainControl.h>
 #include <lms7/MessageLog.h>
-#include "CommonUtilities.h"
+#include <lms7/CommonUtilities.h>
+using namespace lms7;
 #include <stdio.h>
 #include <cmath>
 #include <lms7/RegistersMap.h>

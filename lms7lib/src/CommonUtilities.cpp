@@ -4,7 +4,7 @@
 @brief 	various common utility functions used by all modules
 */
 
-#include "CommonUtilities.h"
+#include <lms7/CommonUtilities.h>
 #include <sstream>
 #include <iomanip>
 
@@ -19,9 +19,11 @@
 #include <stdlib.h>
 #include <cmath>
 
+using namespace std;
+
 /** @brief Sleeps for given amount of milliseconds
 */
-void milSleep(unsigned int miliseconds)
+void lms7::milSleep(unsigned int miliseconds)
 {
 #ifndef __unix__
     Sleep(miliseconds);
@@ -33,7 +35,7 @@ void milSleep(unsigned int miliseconds)
 /** @brief Returns number of miliseconds since system was started
     @return number of miliseconds
 */
-long getMilis()
+long lms7::getMilis()
 {
 #ifndef __unix__
     return GetTickCount();
@@ -48,7 +50,7 @@ long getMilis()
 
 /** @brief Converts given hex string to int
 */
-int hex2int(const string hex)
+int lms7::hex2int(const string hex)
 {
     return (int)strtol(hex.c_str(), NULL, 0);
 }
@@ -57,7 +59,7 @@ int hex2int(const string hex)
     @param i integer to convert
     @param sizeBytes number of bytes to print
 */
-string short2hex(unsigned short i)
+string lms7::short2hex(unsigned short i)
 {
     string str;
     char ctemp[16];
@@ -70,7 +72,7 @@ string short2hex(unsigned short i)
     @param i integer to convert
     @param sizeBytes number of bytes to print
 */
-string int2hex(int i, int sizeBytes)
+string lms7::int2hex(int i, int sizeBytes)
 {
     std::stringstream stream;
     for(int k=sizeBytes; k>0; --k)
@@ -82,7 +84,7 @@ string int2hex(int i, int sizeBytes)
     @param i integer to convert
     @param sizeBytes number of bytes to print
 */
-string uint2hex(unsigned int i, int sizeBytes)
+string lms7::uint2hex(unsigned int i, int sizeBytes)
 {
     std::stringstream stream;
     stream << std::setfill ('0') << std::setw(2*sizeBytes) << std::hex << i;
@@ -93,7 +95,7 @@ string uint2hex(unsigned int i, int sizeBytes)
     @param twosCompl two's complement number bits
     @return value index
 */
-int twoComplementToIndex(unsigned int twosCompl, int bitCount)
+int lms7::twoComplementToIndex(unsigned int twosCompl, int bitCount)
 {
     int index = 0;
     index = (twosCompl << (sizeof(int)*8-bitCount) >> (sizeof(int)*8-bitCount));
@@ -101,11 +103,22 @@ int twoComplementToIndex(unsigned int twosCompl, int bitCount)
     return index;
 }
 
-unsigned int indexToTwoComplement(int index, int bitCount)
+unsigned int lms7::indexToTwoComplement(int index, int bitCount)
 {
     int number = index - pow(2.0, bitCount-1);
     unsigned int mask = ~(0xFFFFFFFF << bitCount);
     unsigned int result = 0;
     result = number & mask;
     return result;
+}
+
+/** @brief Returns most repeated value, if all different returns first one
+*/
+unsigned char lms7::bestOfThree(const unsigned char A, const unsigned char B, const unsigned char C)
+{
+    if(A == B || A == C)
+        return A;
+    else if(B == C)
+        return B;
+    return A;
 }

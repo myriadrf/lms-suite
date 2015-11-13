@@ -1,18 +1,18 @@
 /**
-@file	iniParser.h
+@file	lms7/iniParser.h
 @author	Lime Microsystems
 @brief	Parser for saving and loading ini files
 */
 #ifndef INI_PARSER_H
 #define INI_PARSER_H
 
+#include <lms7/Config.h>
 #include <map>
 #include <string>
 #include <stdexcept>
 #include <sstream>
 #include <fstream>
 #include <string.h>
-using namespace std;
 
 class iniParser
 {
@@ -27,7 +27,7 @@ public:
     bool Open(const char* filename)
     {
         const int bufSize = 1024;
-        ifstream fin;
+        std::ifstream fin;
         fin.open(filename, ios::in);
         m_currentFilename = filename;
 

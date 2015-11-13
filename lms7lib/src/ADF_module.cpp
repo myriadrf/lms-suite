@@ -8,7 +8,8 @@
 
 #include <cmath>
 #include <lms7/ConnectionManager.h>
-#include "CommonUtilities.h"
+#include <lms7/CommonUtilities.h>
+using namespace lms7;
 #include <lms7/MessageLog.h>
 #include <string.h>
 

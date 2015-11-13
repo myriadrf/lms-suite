@@ -10,7 +10,8 @@
 #include <fstream>
 #include <sstream>
 #include <lms7/ConnectionManager.h>
-#include "CommonUtilities.h"
+#include <lms7/CommonUtilities.h>
+using namespace lms7;
 #include <string.h>
 #include <lms7/MessageLog.h>
 

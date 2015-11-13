@@ -8,7 +8,8 @@
 #include <iostream>
 #include <stdio.h>
 
-#include "CommonUtilities.h"
+#include <lms7/CommonUtilities.h>
+using namespace lms7;
 //#include "ConnectionCOM.h"
 //#include "ConnectionUSB.h"
 #include <lms7/MessageLog.h>
@@ -17,17 +18,6 @@
 #include <string.h>
 
 using namespace std;
-
-/** @brief Returns most repeated value, if all different returns first one
-*/
-unsigned char bestOfThree(const unsigned char A, const unsigned char B, const unsigned char C)
-{
-    if(A == B || A == C)
-        return A;
-    else if(B == C)
-        return B;
-    return A;
-}
 
 /** @brief Handles incoming messages
     @param msg message about event

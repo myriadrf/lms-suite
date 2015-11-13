@@ -11,15 +11,16 @@
 #include <lms7/ADF_module.h>
 #include <lms7/MCU_BD.h>
 #include <lms7/MessageLog.h>
-#include "CoefficientFileParser.h"
-#include "CommonUtilities.h"
+#include <lms7/CoefficientFileParser.h>
+#include <lms7/CommonUtilities.h>
 #include <math.h>
 #include <sstream>
 #include <fstream>
 #include <iomanip>
-#include "iniParser.h"
-//#include "cpp-feather-ini-parser/INI.h"
 using namespace std;
+#include <lms7/iniParser.h>
+//#include "cpp-feather-ini-parser/INI.h"
+using namespace lms7;
 
 /** @brief Handles incoming messages
     @param msg message about event

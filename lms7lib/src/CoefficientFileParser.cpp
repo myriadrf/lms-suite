@@ -7,7 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "CoefficientFileParser.h"
+#include <lms7/CoefficientFileParser.h>
 #include <fstream>
 using namespace std;
 

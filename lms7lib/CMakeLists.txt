@@ -14,11 +14,20 @@ if (NOT ENABLE_LMS7LIB)
 endif()
 
 ########################################################################
+# pthread dependency
+########################################################################
+if (UNIX)
+    set(CMAKE_THREAD_PREFER_PTHREAD ON)
+    find_package(Threads)
+    list(APPEND LMS7_LIBRARIES ${CMAKE_THREAD_LIBS_INIT})
+endif()
+
+########################################################################
 # build library
 ########################################################################
 file(GLOB LMS7_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib) #private headers
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src) #private headers
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include) #public headers
 
 if(BUILD_SHARED_LIBS)
