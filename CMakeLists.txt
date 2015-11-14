@@ -62,9 +62,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
     endif()
 
-    #Thread support enabled (not the same as -lpthread)
-    list(APPEND SoapySDR_LIBRARIES -pthread)
-
     #symbols are only exported from libraries/modules explicitly
     add_compile_options(-fvisibility=hidden)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
